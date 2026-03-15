@@ -29,39 +29,3 @@ const navLinks = document.querySelector(".nav-links");
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
-
-// HERO IMAGE WIPE ANIMATION
-gsap.to(".reveal-image img", {
-  clipPath: "inset(0 0% 0 0)",
-  scale: 1,
-  duration: 1.5
-});
-
-// SCROLL REVEAL ANIMATION
-gsap.utils.toArray(".feature-grid .card, .course-grid .course-card, .stats .stat").forEach(el=>{
-  gsap.from(el,{
-    scrollTrigger:{
-      trigger: el,
-      start:"top 80%",
-      toggleActions:"play none none none"
-    },
-    opacity:0,
-    y:50,
-    duration:0.8,
-    stagger:0.2
-  });
-});
-
-// SMOOTH SCROLL FOR NAV LINKS
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if(target){
-      window.scrollTo({
-        top: target.offsetTop - 60,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
