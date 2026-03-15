@@ -51,3 +51,17 @@ gsap.utils.toArray(".feature-grid .card, .course-grid .course-card, .stats .stat
     stagger:0.2
   });
 });
+
+// SMOOTH SCROLL FOR NAV LINKS
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target){
+      window.scrollTo({
+        top: target.offsetTop - 60,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
