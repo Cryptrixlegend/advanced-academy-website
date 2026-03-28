@@ -56,15 +56,50 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 #loader{position:fixed;width:100%;height:100%;background:white;display:flex;justify-content:center;align-items:center;font-size:30px;z-index:1000;}
 
 /* ===== TICKER ===== */
-.ticker-wrapper{display:flex;justify-content:space-between;gap:20px;padding:10px 5%;background:#EFF6FF;overflow:hidden;}
-.ticker{flex:1;overflow:hidden;white-space:nowrap;}
-.ticker-track{display:inline-block;animation:scroll-left 15s linear infinite;}
-.ticker.left .ticker-track{animation-direction:normal;}
-.ticker.right .ticker-track{animation-direction:reverse;}
-.ticker span{display:inline-block;margin-right:50px;font-weight:bold;color:#1E293B;}
-@keyframes scroll-left{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
-@keyframes scroll-right{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.ticker-wrapper {
+  overflow:hidden;
+  padding:10px 5%;
+  background:#EFF6FF;
+}
 
+.ticker-wrapper.top {
+  margin-bottom:10px; /* upar wala aur neeche wale ke beech space */
+}
+
+.ticker-wrapper.bottom {
+  margin-top:10px;
+}
+
+.ticker {
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.ticker-track {
+  display:inline-block;
+  animation:scroll-left 15s linear infinite;
+}
+
+.ticker.left .ticker-track {
+  animation-direction:normal;
+}
+
+.ticker.right .ticker-track {
+  animation-direction:reverse;
+}
+
+.ticker span {
+  display:inline-block;
+  margin-right:50px;
+  font-weight:bold;
+  color:#1E293B;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
 @media(max-width:768px){
 .hero{flex-direction:column;text-align:center;}
 .hero-image img{width:100%;margin-top:20px;}
