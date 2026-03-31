@@ -20,6 +20,8 @@ body {background:#F8FAFC; color:#1E293B;}
   color: #fff;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+  opacity: 1;              /* make sure opacity is 1 initially */
+  transition: opacity 0.5s ease;  /* fade effect */
 }
 
 #quantum-loader h1 {
