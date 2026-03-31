@@ -128,16 +128,16 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   }
 }
 
-/* IMAGE */
 .faculty-card img {
   width:100%;
-  height:200px;
-  object-fit:cover;
+  height:auto; /* height automatic */
+  max-height:250px; /* max height limit */
+  object-fit:contain; /* image fully visible, no cropping */
   transition:0.4s;
   border-bottom:3px solid #007bff;
   border-radius: 15px 15px 0 0;
+  background:#f0f0f0;
 }
-
 .faculty-card:hover img {
   transform:scale(1.05);
 }
