@@ -189,3 +189,92 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   }
   .director { grid-column: span 1; }
 }
+
+/* ===== RESULTS COMING SOON SECTION ===== */
+.results-coming-soon {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.banner .intro {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.blinking-lights {
+  margin: 15px 0;
+}
+
+.blinking-lights .light {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: red;
+  animation: blink 1s infinite alternate;
+}
+
+.blinking-lights .blue {
+  background-color: blue;
+  animation-delay: 0.5s;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(0.8);}
+  50% { opacity: 1; transform: scale(1.2);}
+  100% { opacity: 0.2; transform: scale(0.8);}
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.result-card {
+  background: #f5f5f5;
+  padding: 25px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card.placeholder {
+  opacity: 0.6;
+  font-style: italic;
+  color: #999;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.result-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.result-card .score {
+  font-weight: bold;
+  color: #007BFF;
+  font-size: 1.2rem;
+}
+
+.result-card .remark {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #666;
+}
