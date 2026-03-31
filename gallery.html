@@ -6,6 +6,110 @@
 <title>Gallery - Advanced Academy Shamli</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== GALLERY SLIDER ===== */
+.slider {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.slides img {
+  width: 100%;
+  display: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.slides img.active {
+  display: block;
+}
+
+/* Buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.9);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 10px;
+  animation: zoomIn 0.4s ease;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+.light-prev, .light-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.light-prev:hover, .light-next:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+.light-prev { left: 20px; }
+.light-next { right: 20px; }
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -26,35 +130,28 @@
 </header>
 
 <section class="gallery">
-
 <h1>Our Gallery</h1>
 
 <div class="slider">
-
-<button class="prev"><i class="fas fa-chevron-left"></i></button>
-
-<div class="slides">
-<img src="advanced.webp" class="slide active">
-<img src="gallery2.jpg.png" class="slide">
-<img src="gallery3.jpg.png" class="slide">
-<img src="gallery 4.jpeg" class="slide">
-<img src="gallery5.jpeg" class="slide">
-<img src="advanced academy 2.webp" class="slide">
-</div>
-
-<button class="next"><i class="fas fa-chevron-right"></i></button>
-
+  <button class="prev"><i class="fas fa-chevron-left"></i></button>
+  <div class="slides">
+    <img src="advanced.webp" class="slide active">
+    <img src="gallery2.jpg.png" class="slide">
+    <img src="gallery3.jpg.png" class="slide">
+    <img src="gallery 4.jpeg" class="slide">
+    <img src="gallery5.jpeg" class="slide">
+    <img src="advanced academy 2.webp" class="slide">
+  </div>
+  <button class="next"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
 <span class="close">&times;</span>
 <img class="lightbox-img" id="lightbox-img">
-
 <button class="light-prev"><i class="fas fa-chevron-left"></i></button>
 <button class="light-next"><i class="fas fa-chevron-right"></i></button>
 </div>
-
 </section>
 
 <footer>
@@ -65,6 +162,83 @@
 </footer>
 
 <a href="https://wa.me/917055557339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-<script src="js/script.js"></script>
+
+<script>
+// ===== NAVBAR HAMBURGER =====
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// ===== GALLERY SLIDER =====
+const slides = document.querySelectorAll('.slides .slide');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+// Next / Previous buttons
+next.addEventListener('click', () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+});
+
+prev.addEventListener('click', () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+});
+
+// Auto slide every 5 seconds
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 5000);
+
+// ===== LIGHTBOX FUNCTIONALITY =====
+const lightbox = document.getElementById('lightbox');
+const lightImg = document.getElementById('lightbox-img');
+const lightClose = document.querySelector('.lightbox .close');
+const lightPrev = document.querySelector('.light-prev');
+const lightNext = document.querySelector('.light-next');
+
+// Open lightbox on slide click
+slides.forEach((slide, index) => {
+  slide.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightImg.src = slide.src;
+    currentSlide = index;
+  });
+});
+
+// Close lightbox
+lightClose.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+// Next / Previous in lightbox
+lightNext.addEventListener('click', () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  lightImg.src = slides[currentSlide].src;
+});
+
+lightPrev.addEventListener('click', () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  lightImg.src = slides[currentSlide].src;
+});
+
+// Close lightbox on outside click
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox){
+    lightbox.style.display = 'none';
+  }
+});
+</script>
 </body>
 </html>
