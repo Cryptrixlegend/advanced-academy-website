@@ -440,22 +440,30 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 }
 
 /* ===== GALLERY SLIDER ===== */
-.slider {
+.slides {
   position: relative;
-  max-width: 800px;
-  margin: 40px auto;
-  overflow: hidden;
+  height: 450px; /* slider ka fixed height, smooth transition ke liye */
+}
+
+.slides {
+  position: relative;
+  height: 450px; /* slider ka fixed height */
 }
 
 .slides img {
   width: 100%;
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
   border-radius: 10px;
-  transition: 0.5s;
+  cursor: pointer;
 }
 
 .slides img.active {
-  display: block;
+  opacity: 1;
+  z-index: 1;
 }
 
 /* Buttons */
