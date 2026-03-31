@@ -29,15 +29,30 @@
 
 <h1>Our Gallery</h1>
 
-<div class="gallery-grid">
+<div class="slider">
 
-<img src="advanced.webp" alt="Academy Image">
-<img src="gallery2.jpg.png" alt="Academy Image">
-<img src="gallery3.jpg.png" alt="Academy Image">
-<img src="gallery 4.jpeg" alt="Academy Image">
-<img src="gallery5.jpeg" alt="Academy Image">
-<img src="advanced academy 2.webp" alt="Academy Image">
-  
+<button class="prev"><i class="fas fa-chevron-left"></i></button>
+
+<div class="slides">
+<img src="advanced.webp" class="slide active">
+<img src="gallery2.jpg.png" class="slide">
+<img src="gallery3.jpg.png" class="slide">
+<img src="gallery 4.jpeg" class="slide">
+<img src="gallery5.jpeg" class="slide">
+<img src="advanced academy 2.webp" class="slide">
+</div>
+
+<button class="next"><i class="fas fa-chevron-right"></i></button>
+
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+<span class="close">&times;</span>
+<img class="lightbox-img" id="lightbox-img">
+
+<button class="light-prev"><i class="fas fa-chevron-left"></i></button>
+<button class="light-next"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 </section>
