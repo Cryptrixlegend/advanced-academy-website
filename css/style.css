@@ -182,6 +182,106 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   font-weight: bold;
 }
 
+/* ===== ABOUT SECTION BEAST STYLE ===== */
+.about-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #222;
+}
+
+.about-section h1 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+/* Boxes for About Sections */
+.about-box {
+  position: relative;
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 30px 0;
+  transition: transform 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.about-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+/* RGB blinking lights */
+.rgb-light {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: red;
+  box-shadow: 0 0 15px red, 0 0 30px red;
+  animation: rgbBlink 2s infinite, rgbGlow 2s infinite;
+}
+
+@keyframes rgbBlink {
+  0% { background: red; }
+  33% { background: green; }
+  66% { background: blue; }
+  100% { background: red; }
+}
+
+@keyframes rgbGlow {
+  0% { box-shadow: 0 0 15px red, 0 0 30px red; }
+  33% { box-shadow: 0 0 15px green, 0 0 30px green; }
+  66% { box-shadow: 0 0 15px blue, 0 0 30px blue; }
+  100% { box-shadow: 0 0 15px red, 0 0 30px red; }
+}
+
+/* Headings & Paragraphs */
+.about-box h2 {
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #111;
+}
+
+.about-box p {
+  line-height: 1.7;
+  font-size: 16.5px;
+  color: #333;
+}
+
+/* Fade-in animation for each box */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.2s; }
+.fade-in:nth-child(2) { animation-delay: 0.4s; }
+.fade-in:nth-child(3) { animation-delay: 0.6s; }
+.fade-in:nth-child(4) { animation-delay: 0.8s; }
+.fade-in:nth-child(5) { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for mobile */
+@media(max-width:768px){
+  .about-box { padding: 25px 20px; }
+  .about-section h1 { font-size: 2.2rem; }
+}
+
 /* MOBILE FIX */
 @media(max-width:768px){
   .faculty-card img { 
