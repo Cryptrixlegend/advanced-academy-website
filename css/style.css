@@ -438,23 +438,33 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   font-size: 0.95rem;
   color: #666;
 }
+ve {
+  opacity: 1;
+  z-index: 1;
+}
 
-/* ===== GALLERY SLIDER ===== */
-./* ===== GALLERY SLIDER ===== */
+/* ===== SLIDES ===== */
 .slides {
   position: relative;
-  height: 450px; /* slider ka fixed height */
+  width: 100%;
+  height: 450px; /* desktop */
+  max-height: 60vh; /* responsive */
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .slides img {
-  width: 100%;
+  width: auto;          /* maintain width based on aspect ratio */
+  height: 100%;         /* fill container height */
+  max-width: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
-  border-radius: 10px;
   cursor: pointer;
+  object-fit: contain;  /* no cropping */
 }
 
 .slides img.active {
@@ -462,7 +472,7 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   z-index: 1;
 }
 
-/* Buttons */
+/* ===== SLIDER BUTTONS ===== */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -475,28 +485,7 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   font-size: 20px;
   border-radius: 50%;
   transition: 0.3s;
-}
-
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.9);
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
-
-/* Buttons */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 50%;
-  transition: 0.3s;
+  z-index: 2;
 }
 
 .prev:hover, .next:hover {
@@ -520,15 +509,14 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   z-index: 9999;
 }
 
-/* Image */
 .lightbox img {
   max-width: 85%;
   max-height: 85%;
   border-radius: 10px;
   animation: zoomIn 0.4s ease;
+  object-fit: contain;
 }
 
-/* Close Button */
 .lightbox .close {
   position: absolute;
   top: 20px;
@@ -538,7 +526,6 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   cursor: pointer;
 }
 
-/* Next / Prev buttons */
 .light-prev, .light-next {
   position: absolute;
   top: 50%;
@@ -559,14 +546,23 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 .light-prev { left: 20px; }
 .light-next { right: 20px; }
 
-/* Animation */
+/* ===== ANIMATION ===== */
 @keyframes zoomIn {
-  from {
-    transform: scale(0.7);
-    opacity: 0;
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .slides {
+    height: 300px;
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+  .prev, .next {
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 70%;
   }
 }
