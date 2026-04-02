@@ -62,22 +62,6 @@ body {background:#F8FAFC; color:#1E293B;}
   100% { transform: rotate(360deg); }
 }
 
-/* ===== NAVBAR ===== */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 40px;background:#4F46E5;color:white;position:sticky;top:0;z-index:100;}
-.logo{font-size:22px;font-weight:bold;}
-.nav-links{display:flex;list-style:none;}
-.nav-links li{margin-left:20px;}
-.nav-links a{color:white;text-decoration:none;position:relative;}
-.nav-links a::after{content:'';width:0%;height:2px;background:white;position:absolute;left:0;bottom:-5px;transition:0.3s;}
-.nav-links a:hover::after{width:100%;}
-.hamburger{display:none;font-size:28px;cursor:pointer;color:white;}
-
-/* ===== HERO ===== */
-.hero{display:flex;align-items:center;justify-content:space-between;padding:60px 10%;background:#EEF2FF;gap:40px;}
-.hero-text{max-width:500px;}
-.hero-text h1{font-size:48px;margin-bottom:15px;}
-.hero-image img{width:50%;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:0.3s;}
-.hero-image img:hover{transform:scale(1.03);}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-block;background:#4F46E5;color:white;padding:12px 25px;border-radius:8px;text-decoration:none;font-weight:bold;transition:0.3s;}
