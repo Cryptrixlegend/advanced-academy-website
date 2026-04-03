@@ -577,3 +577,37 @@ max-width: 90%;
 max-height: 90%;
 border-radius: 12px;
 animation: zoom
+
+  /* ===== FOOTER ===== */
+footer {
+  background: #4F46E5; /* same as contact page */
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+footer strong {
+  color: #FFD700; /* TANISHQ gold highlight */
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366; /* WhatsApp green */
+  color: #fff;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 24px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+}
