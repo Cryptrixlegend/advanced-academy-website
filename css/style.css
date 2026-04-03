@@ -616,75 +616,54 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 /* Mobile */
 @media(max-width:768px){
   .slides { height: 250px; }
-}
-/* ===== STUDENTS REVIEW SECTION ===== */
+}  font-size: 13px;
+/* ===== Tanishq Angel Styled Student Reviews ===== */
 .reviews-section {
   padding: 60px 20px;
-  background: #EEF2FF;
+  background: linear-gradient(145deg, #f0f4f8, #eef2ff);
   text-align: center;
 }
-
 .reviews-section h1 {
   font-size: 2.8rem;
   margin-bottom: 40px;
   font-family: 'Poppins', sans-serif;
   color: #1E293B;
+  letter-spacing: 0.5px;
 }
 
-/* Grid for review cards */
+/* Grid */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
 }
 
-/* Enhanced Review Cards */
+/* Review Cards */
 .review-card {
-  background: linear-gradient(145deg, #ffffff, #f0f4f8);
-  border-radius: 18px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
   padding: 25px 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-  position: relative;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUpReviews 0.6s forwards;
+  transform: translateY(30px);
+  position: relative;
 }
 
-/* Entrance animation delay per card */
-.review-card:nth-child(1) { animation-delay: 0.2s; }
-.review-card:nth-child(2) { animation-delay: 0.4s; }
-.review-card:nth-child(3) { animation-delay: 0.6s; }
-.review-card:nth-child(4) { animation-delay: 0.8s; }
-.review-card:nth-child(5) { animation-delay: 1s; }
-.review-card:nth-child(6) { animation-delay: 1.2s; }
-
-@keyframes fadeUpReviews {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Fade-in animation class */
+.review-card.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Hover effect */
 .review-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
-  background: linear-gradient(145deg, #fefefe, #e0f7fa);
-}
-
-/* Review text */
-.review-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 15px;
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
 /* Stars */
-.stars {
-  margin-bottom: 15px;
-}
 .stars i {
   color: gold;
   font-size: 20px;
@@ -693,7 +672,7 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   animation: blinkStar 1.5s infinite alternate;
 }
 .review-card:hover .stars i {
-  transform: scale(1.2);
+  transform: scale(1.3);
   color: #ffc107;
 }
 
@@ -703,14 +682,13 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   100% { transform: scale(1); opacity: 0.6; }
 }
 
-/* Student Name + Verified Tick */
+/* Verified Tick */
 .review-card h3 {
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 18px;
   color: #1E293B;
   font-weight: 600;
 }
-
 .review-card h3 .verified {
   color: #3b82f6;
   font-weight: bold;
@@ -719,46 +697,25 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   font-size: 18px;
   animation: tickGlow 1.5s infinite alternate;
 }
-
 @keyframes tickGlow {
   0% { text-shadow: 0 0 2px #3b82f6; transform: scale(1); }
   50% { text-shadow: 0 0 8px #3b82f6, 0 0 12px #93c5fd; transform: scale(1.2); }
   100% { text-shadow: 0 0 2px #3b82f6; transform: scale(1); }
 }
 
-.review-card:hover h3 .verified {
-  animation: tickGlowHover 1s infinite alternate;
-}
-.reviews-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  width: 100%;
-}
-
-/* Mobile */
-@media(max-width:768px){
-  .reviews-row {
-    grid-template-columns: 1fr;
-  }
-}
-@keyframes tickGlowHover {
-  0% { text-shadow: 0 0 4px #3b82f6; transform: scale(1.1); }
-  50% { text-shadow: 0 0 10px #3b82f6, 0 0 15px #93c5fd; transform: scale(1.4); }
-  100% { text-shadow: 0 0 4px #3b82f6; transform: scale(1.1); }
-}
-
 /* Source */
 .review-card .source {
   font-size: 13px;
   color: #555;
-  margin-top: 3px;
+  margin-top: 4px;
   font-style: italic;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* Mobile */
 @media(max-width:768px){
   .reviews-grid {
     grid-template-columns: 1fr;
   }
+  .reviews-section { padding: 40px 15px; }
+  .review-card p { font-size: 14px; }
   }
