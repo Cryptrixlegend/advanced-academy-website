@@ -719,3 +719,49 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   .reviews-section { padding: 40px 15px; }
   .review-card p { font-size: 14px; }
   }
+/* ===== CONTACT FORM FIX ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column; /* Vertical stacking */
+  gap: 15px; /* Space between inputs */
+  max-width: 500px; /* Form width */
+  margin: 0 auto; /* Center form */
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: 0.3s;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4F46E5;
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4F46E5; /* Main color */
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #4338CA; /* Darker on hover */
+}
