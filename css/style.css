@@ -617,3 +617,91 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 @media(max-width:768px){
   .slides { height: 250px; }
 }
+/* ===== STUDENTS REVIEW SECTION ===== */
+.reviews {
+  padding: 60px 20px;
+  background: #EEF2FF;
+  text-align: center;
+}
+
+.reviews h1 {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+  color: #1E293B;
+}
+
+/* Grid */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Card */
+.review-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Review Text */
+.review-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Stars */
+.stars {
+  margin-bottom: 15px;
+}
+
+.stars i {
+  color: gold;
+  font-size: 20px;
+  margin-right: 4px;
+  animation: blinkStar 1.5s infinite alternate;
+}
+
+.stars i.blink {
+  animation: blinkStar 1.5s infinite alternate;
+}
+
+@keyframes blinkStar {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* Student Name */
+.review-card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1E293B;
+  font-weight: 600;
+}
+
+/* Source */
+.review-card .source {
+  font-size: 13px;
+  color: #555;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  }
