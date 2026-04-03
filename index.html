@@ -15,10 +15,10 @@ button,a.btn{cursor:pointer;transition:all 0.3s ease;}
 h1,h2,h3{margin:0;}
 
 /* ===== LOADER ===== */
-#quantum-loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;color:#111;font-size:2rem;transition:opacity 0.5s;}
+#quantum-loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;z-index:9999;color:#fff;font-size:2rem;transition:opacity 0.5s;}
 
 /* ===== NAVBAR ===== */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#4F46E5;color:#fff;position:sticky;top:0;z-index:100;}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#4F46E5;position:sticky;top:0;z-index:100;color:#fff;}
 .navbar .logo{font-weight:bold;font-size:24px;}
 .nav-links{list-style:none;display:flex;gap:20px;}
 .nav-links li a{color:#fff;font-weight:500;}
@@ -26,30 +26,28 @@ h1,h2,h3{margin:0;}
 @media(max-width:768px){.nav-links{display:none;flex-direction:column;background:#4F46E5;position:absolute;top:60px;right:0;width:200px;padding:15px;border-radius:0 0 8px 8px;}.nav-links.active{display:flex;}.hamburger{display:block;}}
 
 /* ===== TICKER ===== */
-.ticker-wrapper{overflow:hidden;background:#1e1e2f;color:#fff;white-space:nowrap;padding:10px 0;}
+.ticker-wrapper{overflow:hidden;white-space:nowrap;background:#1e1e2f;color:#fff;}
+.ticker{display:inline-block;padding:10px 0;}
 .ticker-track{display:inline-block;animation:scrollLeft 20s linear infinite;}
 .ticker-track span{margin-right:50px;font-size:16px;}
-@keyframes scrollLeft{
-  0%{transform:translateX(100%);}
-  100%{transform:translateX(-100%);}
-}
+@keyframes scrollLeft{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
 
 /* ===== HERO ===== */
-.hero{display:flex;flex-wrap:wrap;justify-content:space-around;align-items:center;padding:50px 5%;}
+.hero{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:50px 5%;background:#fff;}
 .hero-text{flex:1;min-width:300px;}
 .hero-text h1{font-size:36px;color:#111;margin-bottom:20px;}
 .hero-text a.btn{background:#4F46E5;color:#fff;padding:12px 25px;margin-right:15px;border-radius:10px;}
 .hero-text a.btn.secondary{background:#22C55E;}
 .hero-text a.btn:hover{filter:brightness(1.2);}
 .hero-image{flex:1;min-width:300px;text-align:center;}
-.hero-image img{width:90%;max-width:400px;margin:10px 0;transition:transform 0.4s;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+.hero-image img{width:90%;max-width:400px;margin:10px 0;transition:transform 0.4s;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
 .hero-image img:hover{transform:scale(1.05);}
 
 /* ===== FEATURES ===== */
 .features{padding:50px 5%;text-align:center;}
 .features h2{color:#4F46E5;margin-bottom:40px;}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
-.feature-grid .card{background:#f9f9f9;padding:25px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;}
+.feature-grid .card{background:#1e1e2f;padding:25px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.5);transition:transform 0.3s,box-shadow 0.3s;}
 .feature-grid .card:hover{transform:scale(1.05);box-shadow:0 0 25px #4F46E5,0 0 40px inset;}
 .feature-grid i{font-size:28px;color:#FACC15;margin-bottom:10px;}
 
@@ -57,7 +55,7 @@ h1,h2,h3{margin:0;}
 .courses{padding:50px 5%;text-align:center;}
 .courses h2{color:#4F46E5;margin-bottom:40px;}
 .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
-.course-card{background:#f9f9f9;padding:20px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.1);transition:transform 0.3s,box-shadow 0.3s;}
+.course-card{background:#1e1e2f;padding:20px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.5);transition:transform 0.3s,box-shadow 0.3s;}
 .course-card:hover{transform:scale(1.05);box-shadow:0 0 30px #22C55E,0 0 40px inset;}
 
 /* ===== STATS ===== */
@@ -71,8 +69,10 @@ h1,h2,h3{margin:0;}
 .contact a.btn:hover{filter:brightness(1.2);box-shadow:0 0 15px #16a34a;}
 
 /* ===== FOOTER ===== */
-footer{text-align:center;padding:20px;background:#f1f1f1;color:#111;box-shadow:0 -5px 20px rgba(0,0,0,0.05);}
-footer .social a{margin:0 10px;color:#111;}
+footer{text-align:center;padding:20px;background:#111;box-shadow:0 -5px 20px rgba(0,0,0,0.5);}
+footer .social a{margin:0 10px;color:#fff;}
+
+/* ===== WHATSAPP ===== */
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#22C55E;color:#fff;padding:15px;border-radius:50%;font-size:22px;animation:float 2s infinite;}
 @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
 
@@ -82,48 +82,62 @@ footer .social a{margin:0 10px;color:#111;}
 </head>
 <body>
 
-<!-- QUANTUM LOADER -->
+<!-- LOADER -->
 <div id="quantum-loader">Advanced Academy Loading...</div>
 
 <!-- NAVBAR -->
 <header>
 <nav class="navbar">
-  <div class="logo">Advanced Academy™</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="faculty.html">Faculty</a></li>
-    <li><a href="results.html">Results</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="reviews.html">Students Reviews</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <div class="hamburger"><i class="fas fa-bars"></i></div>
+<div class="logo">Advanced Academy™</div>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="faculty.html">Faculty</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="reviews.html">Students Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 </header>
 
 <!-- TOP TICKER -->
-<div class="ticker-wrapper">
-  <div class="ticker-track">
-    <span>📢 Admission Open 2026-27</span>
-    <span>📢 Limited Seats Available</span>
-    <span>📢 जब तक सीखोगे नहीं, तब तक छोड़ेगे नहीं।।</span>
-    <span>📢 केवल अंग्रेजी बोलना ही नहीं, बल्कि अंग्रेजों के जैसी ही </span>
+<div class="ticker-wrapper top">
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>📢 Admission Open 2026-27</span>
+      <span>📢 Limited Seats Available</span>
+      <span>📢 जब तक सीखोगे नहीं, तब तक छोड़ेगे नहीं।।</span>
+      <span>📢 केवल अंग्रेजी बोलना ही नहीं, बल्कि अंग्रेजों के जैसी ही</span>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM TICKER (HERO KE UPPER) -->
+<div class="ticker-wrapper bottom">
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>🔔 Best Coaching in Shamli</span>
+      <span>🔔 Book Your Demo Class Now</span>
+      <span>🔔 Contact: +91 7055557339</span>
+    </div>
   </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <h1>Advanced Academy Shamli - Best Coaching Institute in Shamli, Uttar Pradesh</h1>
-    <a href="contact.html" class="btn">Book Demo</a>
-    <a href="courses.html" class="btn secondary">View Courses</a>
-  </div>
-  <div class="hero-image">
-    <img src="hero.jpg.png" alt="Advanced Academy">
-    <img src="advanced academy 2.webp" alt="Advanced Academy">
-  </div>
+<div class="hero-text">
+<h1>Advanced Academy Shamli - Best Coaching Institute in Shamli, Uttar Pradesh</h1>
+<a href="contact.html" class="btn">Book Demo</a>
+<a href="courses.html" class="btn secondary">View Courses</a>
+</div>
+
+<div class="hero-image">
+<img src="hero.jpg.png" alt="Advanced Academy">
+<img src="advanced academy 2.webp" alt="Advanced Academy">
+</div>
 </section>
 
 <!-- FEATURES -->
@@ -141,7 +155,7 @@ footer .social a{margin:0 10px;color:#111;}
 <section class="courses">
 <h2>Popular Courses</h2>
 <div class="course-grid">
-<div class="course-card"><h3>Spoken English & Communication</h3><p>Build fluency, boost confidence, master real-life communication.</p></div>
+<div class="course-card"><h3>Spoken English & Communication</h3><p>Build fluency, boost confidence & master real-life communication.</p></div>
 <div class="course-card"><h3>Class 9-10 Foundation</h3><p>Strong base in Maths, Science & English.</p></div>
 <div class="course-card"><h3>Class 11-12 Science</h3><p>Physics, Chemistry & Maths preparation.</p></div>
 <div class="course-card"><h3>Board Exam Preparation</h3><p>Complete strategy & revision.</p></div>
@@ -164,20 +178,10 @@ footer .social a{margin:0 10px;color:#111;}
 <a class="btn" href="contact.html">Get In Touch</a>
 </section>
 
-<!-- BOTTOM TICKER -->
-<div class="ticker-wrapper">
-  <div class="ticker-track">
-    <span>🔔 Best Coaching in Shamli</span>
-    <span>🔔 Book Your Demo Class Now</span>
-    <span>🔔 एक ऐसी Academy जहाँ सफलता के सपने सच होते है।</span>
-    <span>🔔 Contact: +91 7055557339</span>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
 <p>© 2026 Advanced Academy Shamli</p>
-<p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨</p>
+<p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨 BMW M Competition Level Design</p>
 <div class="social">
 <a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank"><i class="fas fa-phone"></i> Just Dial</a>
 </div>
@@ -195,9 +199,9 @@ hamburger.addEventListener("click", ()=>{navLinks.classList.toggle("active");});
 
 // Quantum loader
 window.addEventListener('load', ()=>{
-  const loader = document.getElementById('quantum-loader');
-  loader.style.opacity='0';
-  setTimeout(()=>{loader.style.display='none';},500);
+const loader = document.getElementById('quantum-loader');
+loader.style.opacity='0';
+setTimeout(()=>{loader.style.display='none';},500);
 });
 
 // Counter animation
