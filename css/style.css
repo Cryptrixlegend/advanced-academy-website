@@ -618,13 +618,13 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   .slides { height: 250px; }
 }
 /* ===== STUDENTS REVIEW SECTION ===== */
-.reviews {
+.reviews-section {
   padding: 60px 20px;
   background: #EEF2FF;
   text-align: center;
 }
 
-.reviews h1 {
+.reviews-section h1 {
   font-size: 2.8rem;
   margin-bottom: 40px;
   font-family: 'Poppins', sans-serif;
@@ -665,30 +665,49 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 .stars {
   margin-bottom: 15px;
 }
-
 .stars i {
   color: gold;
   font-size: 20px;
   margin-right: 4px;
   animation: blinkStar 1.5s infinite alternate;
 }
-
-.stars i.blink {
-  animation: blinkStar 1.5s infinite alternate;
-}
-
 @keyframes blinkStar {
   0% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); opacity: 0.6; }
 }
 
-/* Student Name */
+/* Student Name + Verified Tick */
 .review-card h3 {
   margin: 0;
   font-size: 18px;
   color: #1E293B;
   font-weight: 600;
+}
+.review-card h3 .verified {
+  color: #3b82f6; /* blue */
+  font-weight: bold;
+  margin-left: 8px;
+  display: inline-block;
+  animation: tickGlow 1.5s infinite alternate;
+  font-size: 18px;
+}
+
+@keyframes tickGlow {
+  0% { text-shadow: 0 0 2px #3b82f6; transform: scale(1); }
+  50% { text-shadow: 0 0 8px #3b82f6, 0 0 12px #93c5fd; transform: scale(1.2); }
+  100% { text-shadow: 0 0 2px #3b82f6; transform: scale(1); }
+}
+
+/* Hover sparkle effect */
+.review-card:hover h3 .verified {
+  animation: tickGlowHover 1s infinite alternate;
+}
+
+@keyframes tickGlowHover {
+  0% { text-shadow: 0 0 4px #3b82f6; transform: scale(1.1); }
+  50% { text-shadow: 0 0 10px #3b82f6, 0 0 15px #93c5fd; transform: scale(1.4); }
+  100% { text-shadow: 0 0 4px #3b82f6; transform: scale(1.1); }
 }
 
 /* Source */
@@ -699,64 +718,9 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   font-style: italic;
 }
 
-.reviews-section h1 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  font-family: 'Poppins', sans-serif;
-  color: #1E293B;
-  text-align: center;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.review-card {
-  background: #fff;
-  border-radius: 15px;
-  padding: 25px 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-}
-
-.review-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.stars i {
-  color: gold;
-  font-size: 20px;
-  margin-right: 4px;
-  animation: blinkStar 1.5s infinite alternate;
-}
-
-@keyframes blinkStar {
-  0% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.6; }
-}
-
-.review-card h3 {
-  margin: 0;
-  font-size: 18px;
-  color: #1E293B;
-  font-weight: 600;
-}
-
-.review-card .source {
-  font-size: 13px;
-  color: #555;
-  margin-top: 3px;
-  font-style: italic;
-}
-
-/* Mobile */
+/* Mobile Responsive */
 @media(max-width:768px){
   .reviews-grid {
     grid-template-columns: 1fr;
   }
-  }
+      }
