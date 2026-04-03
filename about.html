@@ -3,15 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Advanced Academy Shamli - Mission, Vision & Director Message.">
 <title>About - Advanced Academy Shamli</title>
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== GENERAL ===== */
+body{margin:0;font-family:'Poppins',sans-serif;background:#fff;color:#111;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button,a.btn{cursor:pointer;transition:all 0.3s ease;}
+h1,h2,h3{margin:0;}
+
+/* ===== NAVBAR ===== */
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#4F46E5;position:sticky;top:0;z-index:100;}
+.navbar .logo{font-weight:bold;font-size:24px;color:#fff;}
+.nav-links{list-style:none;display:flex;gap:20px;}
+.nav-links li a{color:#fff;font-weight:500;}
+.hamburger{display:none;font-size:22px;cursor:pointer;color:#fff;}
+@media(max-width:768px){.nav-links{display:none;flex-direction:column;background:#4F46E5;position:absolute;top:60px;right:0;width:200px;padding:15px;border-radius:0 0 8px 8px;}.nav-links.active{display:flex;}.hamburger{display:block;}}
+
+/* ===== ABOUT SECTION ===== */
+.about-section{padding:50px 5%;max-width:1200px;margin:0 auto;}
+.about-section h1{text-align:center;color:#4F46E5;margin-bottom:50px;}
+
+/* ABOUT BOXES */
+.about-box{background:#F3F4F6;position:relative;margin-bottom:40px;padding:30px;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.1);opacity:0;transform:translateY(50px);transition:all 1s ease;}
+.about-box h2{color:#4F46E5;margin-bottom:15px;}
+.about-box p{line-height:1.6;font-size:16px;color:#111;}
+
+/* RGB LIGHTS */
+.rgb-light{position:absolute;width:200px;height:200px;border-radius:50%;filter:blur(100px);opacity:0.3;animation:rgbMove 6s infinite alternate;}
+.rgb-light:nth-child(1){background:#4F46E5;top:-50px;left:-50px;}
+.rgb-light:nth-child(2){background:#22C55E;bottom:-60px;right:-60px;}
+.rgb-light:nth-child(3){background:#FACC15;top:30%;left:50%;transform:translateX(-50%);}
+@keyframes rgbMove{0%{transform:translate(0,0);}100%{transform:translate(20px,20px);}}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(50px);transition:all 1s ease;}
+.fade-in.show{opacity:1;transform:translateY(0);}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;background:#4F46E5;color:#fff;box-shadow:0 -5px 20px rgba(0,0,0,0.2);}
+footer .social a{margin:0 10px;color:#fff;text-decoration:none;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#22C55E;color:#fff;padding:15px;border-radius:50%;font-size:22px;animation:float 2s infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+
+/* RESPONSIVE */
+@media(max-width:768px){.about-box{padding:20px;}}
+</style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <header>
 <nav class="navbar">
-<div class="logo">Advanced Academy</div>
+<div class="logo">Advanced Academy™</div>
 <ul class="nav-links">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
@@ -26,65 +71,63 @@
 </nav>
 </header>
 
+<!-- ABOUT SECTION -->
 <section class="about-section">
-  <h1>About Advanced Academy Shamli 🎓</h1>
+<h1>About Advanced Academy Shamli 🎓</h1>
 
-  <!-- Mission Box -->
-  <div class="about-box fade-in">
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <h2>Our Mission 🚀</h2>
-    <p>
-      Delivering high-quality education with innovative teaching techniques, personalized mentorship, 
-      and continuous support so that every student can unlock their true potential and excel beyond limits. 
-      We aim to set the benchmark for coaching institutes across India.
-    </p>
-  </div>
+<div class="about-box fade-in">
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<h2>Our Mission 🚀</h2>
+<p>
+Delivering high-quality education with innovative teaching techniques, personalized mentorship, 
+and continuous support so that every student can unlock their true potential and excel beyond limits. 
+We aim to set the benchmark for coaching institutes across India.
+</p>
+</div>
 
-  <!-- Vision Box -->
-  <div class="about-box fade-in">
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <h2>Our Vision 🌟</h2>
-    <p>
-      To become the most trusted and result-oriented coaching institute in India, known for shaping 
-      confident individuals ready to conquer their dreams. We envision a generation of toppers, achievers, 
-      and leaders who represent the excellence of Indian education worldwide.
-    </p>
-  </div>
+<div class="about-box fade-in">
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<h2>Our Vision 🌟</h2>
+<p>
+To become the most trusted and result-oriented coaching institute in India, known for shaping 
+confident individuals ready to conquer their dreams. We envision a generation of toppers, achievers, 
+and leaders who represent the excellence of Indian education worldwide.
+</p>
+</div>
 
-  <!-- Director Message Box -->
-  <div class="about-box fade-in">
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <h2>Director's Message 💡</h2>
-    <p>
-      At Advanced Academy Shamli, we believe every student has the power to achieve greatness. 
-      With the right guidance, dedication, and mindset, success is inevitable. 
-      Join us and take the first step towards a brighter, stronger future.
-    </p>
-  </div>
+<div class="about-box fade-in">
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<h2>Director's Message 💡</h2>
+<p>
+At Advanced Academy Shamli, we believe every student has the power to achieve greatness. 
+With the right guidance, dedication, and mindset, success is inevitable. 
+Join us and take the first step towards a brighter, stronger future.
+</p>
+</div>
 
-  <!-- Developer Note Box -->
-  <div class="about-box fade-in">
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <div class="rgb-light"></div>
-    <h2>Developer's Note 🛠️ /🏎️</h2>
-    <p>
-      This platform is crafted with passion and precision to deliver the best experience for students. 
-      Designed and developed by Tanishq, with a vision to create something powerful, impactful, and truly next-level. 
-      Keep learning, keep growing — and aim for nothing less than excellence. 🖤
-      <br><br>
-      Dream Big. Work Hard. Stay Focused. 
-      One day — BMW M Competition & Porsche 911 Turbo S will be waiting for you. 🏎️
-    </p>
-  </div>
+<div class="about-box fade-in">
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<div class="rgb-light"></div>
+<h2>Developer's Note 🛠️ /🏎️</h2>
+<p>
+This platform is crafted with passion and precision to deliver the best experience for students. 
+Designed and developed by Tanishq, with a vision to create something powerful, impactful, and truly next-level. 
+Keep learning, keep growing — and aim for nothing less than excellence. 🖤
+<br><br>
+Dream Big. Work Hard. Stay Focused. 
+One day — BMW M Competition & Porsche 911 Turbo S will be waiting for you. 🏎️
+</p>
+</div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <p>© 2026 Advanced Academy Shamli</p>
 <div class="social">
@@ -92,7 +135,25 @@
 </div>
 </footer>
 
+<!-- WHATSAPP -->
 <a href="https://wa.me/917055557339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-<script src="js/script.js"></script>
+
+<script>
+// Hamburger toggle
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+hamburger.addEventListener("click", ()=>{navLinks.classList.toggle("active");});
+
+// Fade-in on scroll
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = {threshold:0.1};
+const appearOnScroll = new IntersectionObserver((entries, observer)=>{
+entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target);}
+});
+}, appearOptions);
+faders.forEach(fader=>{appearOnScroll.observe(fader);});
+</script>
+
 </body>
 </html>
