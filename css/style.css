@@ -729,7 +729,19 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
 .review-card:hover h3 .verified {
   animation: tickGlowHover 1s infinite alternate;
 }
+.reviews-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100%;
+}
 
+/* Mobile */
+@media(max-width:768px){
+  .reviews-row {
+    grid-template-columns: 1fr;
+  }
+}
 @keyframes tickGlowHover {
   0% { text-shadow: 0 0 4px #3b82f6; transform: scale(1.1); }
   50% { text-shadow: 0 0 10px #3b82f6, 0 0 15px #93c5fd; transform: scale(1.4); }
