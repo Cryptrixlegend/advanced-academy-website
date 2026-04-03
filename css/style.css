@@ -652,7 +652,66 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
+/* ===== ENHANCED STUDENT REVIEW CARD STYLES ===== */
+.review-card {
+  background: linear-gradient(145deg, #ffffff, #f0f4f8); /* subtle gradient */
+  border-radius: 18px;
+  padding: 25px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* softer shadow */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  position: relative;
+}
 
+/* Hover effect */
+.review-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+  background: linear-gradient(145deg, #fefefe, #e0f7fa); /* subtle hover gradient */
+}
+
+/* Smooth animation for stars */
+.stars i {
+  color: gold;
+  font-size: 20px;
+  margin-right: 4px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.review-card:hover .stars i {
+  transform: scale(1.2);
+  color: #ffc107; /* slightly brighter gold on hover */
+}
+
+/* Smooth animation for verified tick */
+.review-card h3 .verified {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.review-card:hover h3 .verified {
+  transform: scale(1.3);
+  text-shadow: 0 0 12px #3b82f6, 0 0 20px #93c5fd;
+}
+
+/* Optional: subtle entrance animation for cards */
+.review-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpReviews 0.6s forwards;
+}
+
+.review-card:nth-child(1) { animation-delay: 0.2s; }
+.review-card:nth-child(2) { animation-delay: 0.4s; }
+.review-card:nth-child(3) { animation-delay: 0.6s; }
+.review-card:nth-child(4) { animation-delay: 0.8s; }
+.review-card:nth-child(5) { animation-delay: 1s; }
+.review-card:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes fadeUpReviews {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+    }
 /* Review Text */
 .review-card p {
   font-size: 15px;
