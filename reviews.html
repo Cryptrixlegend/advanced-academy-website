@@ -7,7 +7,29 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ===== GENERAL PAGE STYLING ===== */
-body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#333; }
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background:#111; 
+  color:#fff;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ===== FLOATING BACKGROUND LIGHTS ===== */
+body::before {
+  content:'';
+  position:fixed;
+  width:100%; height:100%;
+  background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:50px 50px;
+  animation: moveBG 20s linear infinite;
+  z-index:-1;
+}
+@keyframes moveBG {
+  0% {background-position:0 0;}
+  100% {background-position:1000px 1000px;}
+}
 
 /* ===== NAVBAR ===== */
 .navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; color:#fff; position:relative; }
@@ -17,23 +39,65 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
 .hamburger { display:none; cursor:pointer; font-size:22px; }
 
 /* ===== HERO ===== */
-.hero-review { padding:60px 10%; text-align:center; background:#EEF2FF; }
-.hero-review h1 { font-size:48px; color:#4F46E5; margin-bottom:20px; }
-.hero-review p { font-size:18px; color:#555; }
+.hero-review { padding:60px 10%; text-align:center; background: linear-gradient(-45deg, #4F46E5, #00c6ff, #22c55e, #FACC15); background-size: 400% 400%; animation: gradientBG 15s ease infinite; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.5); }
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+.hero-review h1 { font-size:48px; margin-bottom:20px; text-shadow: 0 0 15px #fff; color:#fff; }
+.hero-review p { font-size:18px; color:#fff; text-shadow: 0 0 10px #000; }
 .star-rating { font-size:36px; color:gold; display:inline-block; animation:blinkStars 1.5s infinite; }
 @keyframes blinkStars { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:0.5; transform:scale(1.2);} }
+.star-rating i { animation: rainbowStar 2s infinite alternate; }
+@keyframes rainbowStar {
+  0% {color: red;}
+  20% {color: orange;}
+  40% {color: yellow;}
+  60% {color: green;}
+  80% {color: blue;}
+  100% {color: violet;}
+}
 
 /* ===== REVIEWS GRID ===== */
 .reviews-section { max-width:1000px; margin:50px auto; padding:0 20px; }
-.reviews-section h1 { text-align:center; color:#4F46E5; margin-bottom:40px; font-size:36px; }
+.reviews-section h1 { text-align:center; color:#4F46E5; margin-bottom:40px; font-size:36px; text-shadow: 0 0 10px #000; }
 .reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; }
-.review-card { background:#fff; padding:25px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1); transition:transform 0.3s ease, box-shadow 0.3s ease; }
-.review-card:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,0.2); }
+.review-card {
+  background:#1e1e2f; 
+  padding:25px; 
+  border-radius:15px; 
+  box-shadow:0 8px 25px rgba(0,0,0,0.5);
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+  perspective:1000px;
+  position:relative;
+  overflow:hidden;
+}
+.review-card:hover {
+  transform: rotateY(5deg) rotateX(3deg) scale(1.05);
+  box-shadow:0 15px 40px rgba(0,0,0,0.7), 0 0 20px #4F46E5 inset;
+}
 .review-card h3 { margin-bottom:10px; font-size:20px; color:#4F46E5; }
-.review-card p { color:#555; line-height:1.6; font-size:15px; }
+.review-card p { color:#fff; line-height:1.6; font-size:15px; }
 .review-card .stars { margin-bottom:10px; color:gold; font-size:20px; }
-.review-card .verified { color:#4F46E5; font-weight:bold; margin-left:5px; }
-.review-card .source { margin-top:10px; font-size:13px; color:#888; }
+.review-card .verified { color:#FACC15; font-weight:bold; margin-left:5px; animation: glowBadge 1.5s infinite alternate; }
+@keyframes glowBadge {
+  0% {text-shadow: 0 0 2px gold;}
+  50% {text-shadow: 0 0 10px gold, 0 0 20px orange;}
+  100% {text-shadow: 0 0 2px gold;}
+}
+.review-card .source { margin-top:10px; font-size:13px; color:#aaa; }
+
+/* ===== SPECIAL BEAST CAR CARD ===== */
+.review-card.beast {
+  border:2px solid #FF0000;
+  box-shadow:0 0 20px red,0 0 40px orange inset;
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.review-card.beast:hover {
+  transform:scale(1.07);
+  box-shadow:0 0 35px red,0 0 50px orange inset;
+}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
@@ -43,6 +107,18 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
   .nav-links.active { display:flex; }
   .hamburger { display:block; }
 }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align:center;
+  padding:20px;
+  background:#111;
+  color:#fff;
+  box-shadow:0 -5px 20px rgba(0,0,0,0.5);
+}
+footer a { color:#fff; text-decoration:none; margin:0 10px; }
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#22C55E;color:white;padding:15px;border-radius:50%;font-size:22px;animation:float 2s infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
 </style>
 </head>
 <body>
@@ -69,11 +145,7 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
 <section class="hero-review">
   <h1>What Our Students Say</h1>
   <div class="star-rating">
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
-    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
   </div>
   <p>★★★★★ Reviews from our students on Google</p>
 </section>
@@ -101,34 +173,8 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
       <div class="source">Student</div>
     </div>
 
-    <div class="review-card">
-      <div class="stars">
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      </div>
-      <h3>Meenakshi Mam <span class="verified">&#10004;</span></h3>
-      <p>English me meri improvement bahut noticeable hai. Mr. Manoj Rhulea sir ke guidance se concepts easily samajh aate hain. Thank you!</p>
-      <div class="source">Teacher</div>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      </div>
-      <h3>Vicky <span class="verified">&#10004;</span></h3>
-      <p>Learning Quantum Physics aur English dono ka perfect combination. Mr. Manoj Rhulea sir ki teaching style top-notch hai!</p>
-      <div class="source">Student</div>
-    </div>
-
-    <div class="review-card">
-      <div class="stars">
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      </div>
-      <h3>Riya <span class="verified">&#10004;</span></h3>
-      <p>Academy ka environment aur teaching style dono hi amazing hai. Har session engaging aur interactive hota hai.</p>
-      <div class="source">Student</div>
-    </div>
-
-    <div class="review-card">
+    <!-- BEAST CARD -->
+    <div class="review-card beast">
       <div class="stars">
         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
@@ -137,7 +183,7 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
       <div class="source">BEAST CAR</div>
     </div>
 
-    <div class="review-card">
+    <div class="review-card beast">
       <div class="stars">
         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
@@ -148,6 +194,7 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
 
   </div>
 </section>
+
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Advanced Academy Shamli™</p>
@@ -158,3 +205,6 @@ body { margin:0; font-family: 'Poppins', sans-serif; background:#f7f8fc; color:#
 <a href="https://wa.me/917055557339" class="whatsapp" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
+
+</body>
+</html>
