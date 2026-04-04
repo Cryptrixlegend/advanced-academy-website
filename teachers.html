@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty - Advanced Academy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== BACKGROUND ===== */
+body { margin:0; font-family:'Poppins',sans-serif; background:#111; color:#fff; }
+body::before { content:''; position:fixed; width:100%; height:100%; background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:50px 50px; animation:moveBG 20s linear infinite; z-index:-1; }
+@keyframes moveBG {0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
+
+/* ===== NAVBAR ===== */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; }
+.logo { font-size:22px; font-weight:bold; }
+.nav-links { list-style:none; display:flex; gap:18px; }
+.nav-links a { color:#fff; text-decoration:none; transition:0.3s; }
+.nav-links a:hover { color:#FACC15; }
+
+/* ===== HERO ===== */
+.hero { text-align:center; padding:60px 10%; background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; animation:gradientBG 15s ease infinite; border-radius:20px; margin:30px; }
+@keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+.hero h1 { font-size:45px; text-shadow:0 0 15px #fff; }
+.hero p { font-size:18px; }
+
+/* ===== TEACHERS ===== */
+.teachers { max-width:1100px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; padding:40px 20px; }
+.teacher-card { background:#1e1e2f; padding:25px; border-radius:20px; text-align:center; position:relative; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,0.5); transition:0.5s; }
+.teacher-card img { width:120px; height:120px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:4px solid #FACC15; }
+.teacher-card h3 { color:#22c55e; margin-bottom:5px; }
+.teacher-card p { font-size:14px; color:#fff; line-height:1.6; }
+.teacher-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; filter:blur(40px); opacity:0; transition:0.5s; z-index:0; }
+.teacher-card:hover::before { opacity:0.5; animation:glowAnim 5s linear infinite; }
+.teacher-card:hover { transform: scale(1.08); }
+
+/* ===== GLOW ANIMATION ===== */
+@keyframes glowAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+
+/* ===== FOOTER ===== */
+footer { text-align:center; padding:20px; background:#111; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Advanced Academy</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="courses.html">Courses</a></li>
+<li><a href="admission.html">Admission</a></li>
+<li><a href="faculty.html">Faculty</a></li>
+<li><a href="results.html">Results</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="teachers.html">Gallery</a></li>
+<li><a href="reviews.html">Students Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Meet Our Amazing Teachers</h1>
+  <p>Guiding you to academic excellence with passion and expertise 🚀</p>
+</section>
+
+<!-- TEACHERS -->
+<section class="teachers">
+  <div class="teacher-card">
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Manoj Rhuela">
+    <h3>Manoj Rhuela</h3>
+    <p><b>Subject:</b> English<br>
+       <b>Experience:</b> 10+ years<br>
+       <b>Specialty:</b> Creative writing, spoken English, personality development.<br>
+       "Inspiring minds and shaping confident communicators!"</p>
+  </div>
+
+  <div class="teacher-card">
+    <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Lokendar">
+    <h3>Lokendar</h3>
+    <p><b>Subject:</b> Chemistry<br>
+       <b>Experience:</b> 8+ years<br>
+       <b>Specialty:</b> Organic & Inorganic Chemistry, practical approach.<br>
+       "Making molecules fun & easy to understand!"</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Advanced Academy Shamli</p>
+</footer>
+
+</body>
+</html>
