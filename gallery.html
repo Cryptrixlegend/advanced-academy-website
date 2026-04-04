@@ -7,6 +7,28 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
+/* ===== BODY ===== */
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background:#111; 
+  color:#fff;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ===== MOVING BACKGROUND ANIMATION ===== */
+body::before {
+  content:'';
+  position:fixed;
+  width:100%; height:100%;
+  background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:50px 50px;
+  animation: moveBG 20s linear infinite;
+  z-index:-1;
+}
+@keyframes moveBG { 0% {background-position:0 0;} 100% {background-position:1000px 1000px;} }
+
 /* ===== GALLERY SLIDER ===== */
 .slider {
   position: relative;
@@ -21,6 +43,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: 0.5s;
+  object-fit: cover;
 }
 
 .slides img.active {
@@ -100,14 +123,36 @@
 .light-next { right: 20px; }
 
 @keyframes zoomIn {
-  from {
-    transform: scale(0.7);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== HEADER ===== */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; color:#fff; }
+.navbar .logo { font-size:24px; font-weight:bold; }
+.nav-links { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
+.nav-links li a { color:#fff; text-decoration:none; font-weight:500; }
+.hamburger { display:none; cursor:pointer; font-size:22px; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align:center;
+  padding:20px;
+  background:#111;
+  color:#fff;
+  box-shadow:0 -5px 20px rgba(0,0,0,0.5);
+}
+footer a { color:#fff; text-decoration:none; margin:0 10px; }
+
+/* ===== WHATSAPP ===== */
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#22C55E;color:white;padding:15px;border-radius:50%;font-size:22px;animation:float 2s infinite;}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .nav-links { display:none; flex-direction:column; background:#4F46E5; position:absolute; top:60px; right:0; width:200px; padding:15px; border-radius:0 0 8px 8px; }
+  .nav-links.active { display:flex; }
+  .hamburger { display:block; }
 }
 </style>
 </head>
@@ -142,16 +187,6 @@
     <img src="Academy image1.jpg" class="slide">
     <img src="Academy image2.jpg" class="slide">
     <img src="Academy image3.jpg" class="slide">
-    <img src="Academy image 4.jpg" class="slide">
-    <img src="Academy image 5.jpg" class="slide">
-    <img src="Academy image 6.jpg" class="slide">
-    <img src="Academy image 7.jpg" class="slide">
-    <img src="Academy image 8.jpg" class="slide">
-    <img src="Academy image 9.jpg" class="slide">
-    <img src="Academy image 10.jpg" class="slide">
-    <img src="gallery 4.jpeg" class="slide">
-    <img src="gallery3.jpg.png" class="slide">
-    <img src="advanced academy 2.webp" class="slide">
   </div>
   <button class="next"><i class="fas fa-chevron-right"></i></button>
 </div>
@@ -160,6 +195,31 @@
 <div class="lightbox" id="lightbox">
 <span class="close">&times;</span>
 <img class="lightbox-img" id="lightbox-img">
+<button class="light-prev"><i class="fas fa-chevron-left"></i></button>
+<button class="light-next"><i class="fas fa-chevron-right"></i></button>
+</div>
+</section>
+
+<!-- ===== NEW GALLERY SECTION BELOW ===== -->
+<section class="gallery">
+<h1>More Moments</h1>
+
+<div class="slider" id="slider2">
+  <button class="prev"><i class="fas fa-chevron-left"></i></button>
+  <div class="slides">
+    <img src="new1.jpg" class="slide active">
+    <img src="new2.jpg" class="slide">
+    <img src="new3.jpg" class="slide">
+    <img src="new4.jpg" class="slide">
+    <img src="new5.jpg" class="slide">
+  </div>
+  <button class="next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<!-- Lightbox for second gallery -->
+<div class="lightbox" id="lightbox2">
+<span class="close">&times;</span>
+<img class="lightbox-img" id="lightbox-img2">
 <button class="light-prev"><i class="fas fa-chevron-left"></i></button>
 <button class="light-next"><i class="fas fa-chevron-right"></i></button>
 </div>
@@ -183,10 +243,10 @@ hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-// ===== GALLERY SLIDER =====
-const slides = document.querySelectorAll('.slides .slide');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
+// ===== ORIGINAL GALLERY SLIDER =====
+const slides = document.querySelectorAll('.gallery:first-of-type .slides .slide');
+const prev = document.querySelector('.gallery:first-of-type .prev');
+const next = document.querySelector('.gallery:first-of-type .next');
 let currentSlide = 0;
 
 function showSlide(index) {
@@ -195,31 +255,27 @@ function showSlide(index) {
   });
 }
 
-// Next / Previous buttons
 next.addEventListener('click', () => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 });
-
 prev.addEventListener('click', () => {
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   showSlide(currentSlide);
 });
 
-// Auto slide every 5 seconds
 setInterval(() => {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }, 5000);
 
-// ===== LIGHTBOX FUNCTIONALITY =====
+// Lightbox original gallery
 const lightbox = document.getElementById('lightbox');
 const lightImg = document.getElementById('lightbox-img');
-const lightClose = document.querySelector('.lightbox .close');
-const lightPrev = document.querySelector('.light-prev');
-const lightNext = document.querySelector('.light-next');
+const lightClose = document.querySelector('.gallery:first-of-type .lightbox .close');
+const lightPrev = document.querySelector('.gallery:first-of-type .light-prev');
+const lightNext = document.querySelector('.gallery:first-of-type .light-next');
 
-// Open lightbox on slide click
 slides.forEach((slide, index) => {
   slide.addEventListener('click', () => {
     lightbox.style.display = 'flex';
@@ -228,28 +284,69 @@ slides.forEach((slide, index) => {
   });
 });
 
-// Close lightbox
-lightClose.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-});
-
-// Next / Previous in lightbox
+lightClose.addEventListener('click', () => { lightbox.style.display = 'none'; });
 lightNext.addEventListener('click', () => {
   currentSlide = (currentSlide + 1) % slides.length;
   lightImg.src = slides[currentSlide].src;
 });
-
 lightPrev.addEventListener('click', () => {
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
   lightImg.src = slides[currentSlide].src;
 });
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
 
-// Close lightbox on outside click
-lightbox.addEventListener('click', (e) => {
-  if(e.target === lightbox){
-    lightbox.style.display = 'none';
-  }
+// ===== NEW GALLERY SLIDER =====
+const slides2 = document.querySelectorAll('#slider2 .slides .slide');
+const prev2 = document.querySelector('#slider2 .prev');
+const next2 = document.querySelector('#slider2 .next');
+let currentSlide2 = 0;
+
+function showSlide2(index) {
+  slides2.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+next2.addEventListener('click', () => {
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  showSlide2(currentSlide2);
 });
+prev2.addEventListener('click', () => {
+  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  showSlide2(currentSlide2);
+});
+
+setInterval(() => {
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  showSlide2(currentSlide2);
+}, 5000);
+
+// Lightbox new gallery
+const lightbox2 = document.getElementById('lightbox2');
+const lightImg2 = document.getElementById('lightbox-img2');
+const lightClose2 = document.querySelector('#slider2 + .lightbox .close');
+const lightPrev2 = document.querySelector('#slider2 + .lightbox .light-prev');
+const lightNext2 = document.querySelector('#slider2 + .lightbox .light-next');
+
+slides2.forEach((slide, index) => {
+  slide.addEventListener('click', () => {
+    lightbox2.style.display = 'flex';
+    lightImg2.src = slide.src;
+    currentSlide2 = index;
+  });
+});
+
+lightClose2.addEventListener('click', () => { lightbox2.style.display = 'none'; });
+lightNext2.addEventListener('click', () => {
+  currentSlide2 = (currentSlide2 + 1) % slides2.length;
+  lightImg2.src = slides2[currentSlide2].src;
+});
+lightPrev2.addEventListener('click', () => {
+  currentSlide2 = (currentSlide2 - 1 + slides2.length) % slides2.length;
+  lightImg2.src = slides2[currentSlide2].src;
+});
+lightbox2.addEventListener('click', (e) => { if(e.target === lightbox2) lightbox2.style.display = 'none'; });
 </script>
+
 </body>
 </html>
