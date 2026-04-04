@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Results - Advanced Academy</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 <style>
 /* ===== BODY ===== */
@@ -61,23 +61,24 @@ body {
   width: 100%;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION (image fit fix) ===== */
 .hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto; /* automatic height */
+  height: auto;
+  max-height: 400px; /* limit height */
   background: black;
   overflow: hidden;
 }
 
 .hero-img {
   width: 100%;
-  height: auto;  /* keep original aspect ratio */
-  max-height: 400px; /* ensures it doesn't get too tall */
-  object-fit: contain; /* no cropping, fit inside container */
+  height: 100%;
+  max-height: 400px;
+  object-fit: contain; /* fit fully, no crop */
   transition: transform 0.5s ease, filter 0.5s ease;
-  border-radius: 0; /* optional, keep full image */
+  border-radius: 0;
 }
 
 .hero-img:hover {
@@ -85,20 +86,25 @@ body {
   filter: brightness(1.05);
 }
 
-/* ===== BANNER ===== */
+/* ===== BANNER with animated gradient background ===== */
 .banner {
   text-align: center;
-  padding: 40px 20px;
+  padding: 80px 20px;
+  background: linear-gradient(-45deg, #4F46E5, #00c6ff, #22c55e, #FACC15);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  color: white;
+  font-weight: bold;
+  font-size: 36px;
+  text-shadow: 0 0 15px #fff;
 }
 
-.banner h2, .banner p {
-  animation: blink 1s infinite;
-  color: gold;
-}
-
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 /* ===== RESULTS GRID ===== */
@@ -181,17 +187,10 @@ footer {
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease;
-  animation: float 2s infinite;
 }
 
 .whatsapp:hover {
   transform: scale(1.1);
-}
-
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-  100%{transform:translateY(0);}
 }
 
 /* ===== RESPONSIVE ===== */
@@ -231,20 +230,20 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-  <img src="advanced.webp" alt="Academy Image" class="hero-img">
+  <img src="advanced.webp" alt="Academy Image" class="hero-img" />
 </div>
 
 <!-- BANNER -->
 <section class="banner">
-  <h2>🏆 Top Achievers 2026</h2>
-  <p>Results will be announced soon. Stay tuned!</p>
+  <h1>Result</h1>
+  <p>🏆 Top Achievers 2026 — Results will be announced soon. Stay tuned!</p>
 </section>
 
 <!-- RESULTS GRID -->
 <div class="results-grid">
   <div class="result-card">
     <div class="rank">🥇</div>
-    <img src="placeholder.jpg" class="car-img" alt="Top Ranker">
+    <img src="placeholder.jpg" class="car-img" alt="Top Ranker" />
     <h3>Top Ranker</h3>
     <p>Score: --%</p>
     <p>Result Coming Soon</p>
@@ -252,7 +251,7 @@ footer {
 
   <div class="result-card">
     <div class="rank">🥈</div>
-    <img src="placeholder.jpg" class="car-img" alt="Second Ranker">
+    <img src="placeholder.jpg" class="car-img" alt="Second Ranker" />
     <h3>Second Ranker</h3>
     <p>Score: --%</p>
     <p>Result Coming Soon</p>
@@ -260,7 +259,7 @@ footer {
 
   <div class="result-card">
     <div class="rank">🥉</div>
-    <img src="placeholder.jpg" class="car-img" alt="Third Ranker">
+    <img src="placeholder.jpg" class="car-img" alt="Third Ranker" />
     <h3>Third Ranker</h3>
     <p>Score: --%</p>
     <p>Result Coming Soon</p>
