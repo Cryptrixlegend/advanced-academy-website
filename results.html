@@ -9,7 +9,7 @@
 
 <style>
 
-/* 🔥 GLOBAL */
+/* 🔥 BODY */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -21,9 +21,9 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px 30px;
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -31,48 +31,65 @@ body {
   font-weight: bold;
 }
 
-/* 🔥 HERO IMAGE */
-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
 }
 
-/* 🔥 BANNER */
-.banner {
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* 🔥 HERO (NO CUT IMAGE) */
+.hero {
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+.hero img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* ✅ NO CUT */
+}
+
+/* 🔥 OVERLAY TEXT */
+.hero-overlay {
+  position: absolute;
   text-align: center;
-  padding: 40px;
 }
 
-/* 🌈 RGB LIGHT EFFECT */
-.blinking-lights {
-  margin: 15px 0;
+.hero-overlay h1 {
+  font-size: 35px;
+  text-shadow: 0 0 10px red, 0 0 20px blue, 0 0 30px lime;
 }
 
+/* 🌈 RGB LIGHTS */
 .light {
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 12px;
+  height: 12px;
   margin: 5px;
   border-radius: 50%;
-  animation: rgbBlink 1s infinite alternate;
+  animation: rgb 1s infinite alternate;
 }
 
-.light:nth-child(2) {
-  animation-delay: 0.5s;
+@keyframes rgb {
+  0% {background:red;}
+  25% {background:blue;}
+  50% {background:lime;}
+  75% {background:yellow;}
+  100% {background:cyan;}
 }
 
-@keyframes rgbBlink {
-  0% { background: red; box-shadow: 0 0 10px red; }
-  25% { background: blue; box-shadow: 0 0 10px blue; }
-  50% { background: lime; box-shadow: 0 0 10px lime; }
-  75% { background: yellow; box-shadow: 0 0 10px yellow; }
-  100% { background: cyan; box-shadow: 0 0 10px cyan; }
-}
-
-/* 🔥 INTRO TEXT */
-.intro {
-  color: #cbd5e1;
+/* 🔥 SECTION */
+.banner {
+  text-align: center;
+  padding: 40px 20px;
 }
 
 /* 🔥 GRID */
@@ -80,51 +97,28 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 20px;
-  padding: 30px;
+  padding: 20px;
 }
 
 /* 🔥 CARD */
 .result-card {
   background: rgba(255,255,255,0.05);
-  border-radius: 15px;
   padding: 20px;
+  border-radius: 15px;
   text-align: center;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
   position: relative;
-  overflow: hidden;
 }
 
-/* 🌈 RGB BORDER GLOW */
+/* RGB BORDER */
 .result-card::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 15px;
   padding: 2px;
-  background: linear-gradient(45deg, red, blue, lime, yellow, cyan);
-  -webkit-mask: 
-    linear-gradient(#000 0 0) content-box, 
-    linear-gradient(#000 0 0);
+  background: linear-gradient(45deg, red, blue, lime, yellow);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.result-card:hover {
-  transform: translateY(-10px) scale(1.03);
-}
-
-/* 🧑 STUDENT IMG */
-.student-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-/* 🏆 RANK */
-.rank {
-  font-size: 22px;
 }
 
 /* 🔥 CTA */
@@ -137,8 +131,8 @@ img {
   background: #22c55e;
   padding: 10px 20px;
   border-radius: 10px;
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
 /* 🔥 FOOTER */
@@ -164,64 +158,74 @@ footer {
 
 <body>
 
+<!-- ✅ HEADER -->
 <header>
 <nav class="navbar">
 <div class="logo">Advanced Academy</div>
+
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Courses</a></li>
+<li><a href="#">Results</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
 </nav>
 </header>
 
-<img src="advanced.webp">
+<!-- ✅ HERO IMAGE (NO CUT) -->
+<div class="hero">
+  <img src="advanced.webp" alt="Academy Image">
+</div>
 
-<section>
-
-<div class="banner">
-  <h1>🏆 Top Achievers 2026</h1>
-
-  <div class="blinking-lights">
+<!-- RGB TEXT -->
+<div class="hero-overlay">
+  <h1>Results Coming Soon 🚀</h1>
+  <div>
+    <span class="light"></span>
     <span class="light"></span>
     <span class="light"></span>
   </div>
-
-  <p class="intro">🚀 Big Results Announcement Coming Soon</p>
 </div>
+
+<!-- CONTENT -->
+<section class="banner">
+  <h2>🏆 Top Achievers 2026</h2>
+  <p>Results will be announced soon. Stay tuned!</p>
+</section>
 
 <div class="results-grid">
 
   <div class="result-card">
-    <div class="rank">🥇</div>
-    <img src="https://i.pravatar.cc/100?img=1" class="student-img">
-    <h3>Top Performer</h3>
-    <p>Score: 90%+</p>
-    <p>Result will be revealed soon</p>
+    <h3>Top Student</h3>
+    <p>Score: --%</p>
+    <p>Coming Soon</p>
   </div>
 
   <div class="result-card">
-    <div class="rank">🥈</div>
-    <img src="https://i.pravatar.cc/100?img=2" class="student-img">
-    <h3>Top Performer</h3>
-    <p>Score: 85%+</p>
-    <p>Result will be revealed soon</p>
+    <h3>Top Student</h3>
+    <p>Score: --%</p>
+    <p>Coming Soon</p>
   </div>
 
   <div class="result-card">
-    <div class="rank">🥉</div>
-    <img src="https://i.pravatar.cc/100?img=3" class="student-img">
-    <h3>Top Performer</h3>
-    <p>Score: 80%+</p>
-    <p>Result will be revealed soon</p>
+    <h3>Top Student</h3>
+    <p>Score: --%</p>
+    <p>Coming Soon</p>
   </div>
 
 </div>
 
+<!-- CTA -->
 <div class="cta">
-  <h2>Join Next Batch Now 🚀</h2>
-  <a href="#">Enroll Today</a>
+  <h2>Join Next Batch 🚀</h2>
+  <a href="#">Enroll Now</a>
 </div>
 
-</section>
-
+<!-- FOOTER -->
 <footer>
-<p>© 2026 Advanced Academy</p>
+<p>© 2026 Advanced Academy Shamli</p>
 </footer>
 
 <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
