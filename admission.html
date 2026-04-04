@@ -7,32 +7,38 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* BACKGROUND */
+/* ===== BACKGROUND ===== */
 body { margin:0; font-family:'Poppins',sans-serif; background:#111; color:#fff; }
-body::before { content:''; position:fixed; width:100%; height:100%; background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:50px 50px; animation:moveBG 20s linear infinite; z-index:-1;}
+body::before { content:''; position:fixed; width:100%; height:100%; background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:50px 50px; animation:moveBG 20s linear infinite; z-index:-1; }
 @keyframes moveBG {0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; }
 .logo { font-size:22px; font-weight:bold; }
 .nav-links { list-style:none; display:flex; gap:18px; }
 .nav-links a { color:#fff; text-decoration:none; transition:0.3s; }
 .nav-links a:hover { color:#FACC15; }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero { text-align:center; padding:60px 10%; background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; animation:gradientBG 15s ease infinite; border-radius:20px; margin:30px; }
 @keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
 .hero h1 { font-size:45px; text-shadow:0 0 15px #fff; }
 .hero p { font-size:18px; }
 
-/* COURSES */
+/* ===== COURSES ===== */
 .courses { max-width:1100px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; padding:20px; }
-.course-card { background:#1e1e2f; padding:20px; border-radius:15px; transition:0.4s; box-shadow:0 5px 20px rgba(0,0,0,0.5);}
-.course-card:hover { transform:scale(1.05); box-shadow:0 0 25px #4F46E5; }
+.course-card { background:#1e1e2f; padding:20px; border-radius:15px; transition:0.5s ease; box-shadow:0 5px 20px rgba(0,0,0,0.5); position:relative; overflow:hidden; }
+.course-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(45deg, #4F46E5, #00c6ff, #22c55e, #FACC15); background-size:400% 400%; filter:blur(30px); opacity:0; transition:0.5s; z-index:0; }
+.course-card:hover::before { opacity:0.6; animation:glowAnim 6s linear infinite; }
+.course-card::after { content:''; position:absolute; width:50px; height:50px; background:rgba(255,255,255,0.2); border-radius:50%; top:-20px; left:20px; filter:blur(15px); animation:floatLight 4s ease-in-out infinite; }
+.course-card:hover { transform: scale(1.08) rotateZ(1deg); box-shadow: 0 0 30px #4F46E5, 0 0 40px #FACC15 inset; z-index:1; }
+.course-card h3, .course-card p { position:relative; z-index:1; }
+@keyframes glowAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+@keyframes floatLight {0%{ transform: translate(0,0);}50%{ transform: translate(100px,50px);}100%{ transform: translate(0,0);} }
 .course-card h3 { color:#FACC15; }
 .course-card p { font-size:14px; line-height:1.6; }
 
-/* FORM */
+/* ===== FORM ===== */
 .form-box { max-width:600px; margin:40px auto; background:#1e1e2f; padding:30px; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.6);}
 .form-box h2 { text-align:center; color:#4F46E5; }
 .form-box input, .form-box select { width:100%; padding:12px; margin:10px 0; border:none; border-radius:10px; background:#111; color:#fff; }
@@ -40,16 +46,16 @@ body::before { content:''; position:fixed; width:100%; height:100%; background:r
 .form-box button { width:100%; padding:12px; border:none; border-radius:10px; background:linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); color:#fff; font-weight:bold; cursor:pointer; }
 .form-box button:hover { box-shadow:0 0 20px #fff; }
 
-/* FOOTER */
-footer { text-align:center; padding:20px; background:#111; }
-
-/* POPUP */
+/* ===== POPUP ===== */
 .popup { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); display:none; justify-content:center; align-items:center; z-index:999; }
 .popup-box { background:#1e1e2f; padding:30px; border-radius:20px; text-align:center; box-shadow:0 0 25px #4F46E5; animation:pop 0.4s ease; }
 .popup-box i { font-size:50px; color:#22c55e; margin-bottom:10px; }
 .popup-box h2 { color:#FACC15; }
 .popup-box button { margin-top:15px; padding:10px 20px; border:none; border-radius:10px; background:#4F46E5; color:#fff; cursor:pointer; }
 @keyframes pop { from { transform:scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+/* ===== FOOTER ===== */
+footer { text-align:center; padding:20px; background:#111; }
 </style>
 </head>
 
@@ -144,10 +150,12 @@ footer { text-align:center; padding:20px; background:#111; }
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <p>© 2026 Advanced Academy Shamli</p>
 </footer>
 
+<!-- WHATSAPP SCRIPT -->
 <script>
 function closePopup(){ document.getElementById("thankYouPopup").style.display="none"; }
 
