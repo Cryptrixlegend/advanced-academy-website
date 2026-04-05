@@ -204,3 +204,52 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   transform: scale(1.05);
   transition: 0.3s;
 }
+/* Hero Director Card */
+.faculty-card.hero {
+  background: linear-gradient(135deg, #FFD700, #FFC107); /* golden gradient */
+  color: #333;
+  position: relative;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 215, 0, 0.2);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* Hover effect */
+.faculty-card.hero:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.3);
+}
+
+/* Crown Icon */
+.faculty-card.hero .crown {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #FFD700;
+  text-shadow: 0 0 8px #FFD700;
+  animation: crown-bounce 2s infinite;
+}
+
+/* Crown Bounce Animation */
+@keyframes crown-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Badge adjustment */
+.faculty-card.hero .badge {
+  background: #333;
+  color: #FFD700;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Text alignment */
+.faculty-card.hero p {
+  color: #333;
+  line-height: 1.5;
+  margin-top: 10px;
+}
