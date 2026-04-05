@@ -39,6 +39,7 @@ a { text-decoration:none; }
 
 .faculty-card .badge {
   display:inline-block; background:#4F46E5; color:#fff; padding:3px 10px; border-radius:5px; margin-bottom:10px;
+  transition: all 0.3s ease;
 }
 
 /* ===== DIRECTOR SPECIAL ===== */
@@ -47,16 +48,25 @@ a { text-decoration:none; }
   background: linear-gradient(135deg, #4F46E5, #6B5BFF);
   color:#fff;
   box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  padding:30px; /* slightly bigger */
 }
 .faculty-card.director .badge {
   background:#FACC15;
   color:#4F46E5;
   font-weight:bold;
-  font-size:1.1rem;
+  font-size:1.2rem;
+  animation: pulse 2s infinite;
 }
 .faculty-card.director:hover {
   transform: scale(1.05);
   box-shadow:0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(250, 204, 21, 0.7); }
+  50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(250, 204, 21, 1); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(250, 204, 21, 0.7); }
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
