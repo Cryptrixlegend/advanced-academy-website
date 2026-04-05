@@ -13,11 +13,14 @@ body::before { content:''; position:fixed; width:100%; height:100%; background:r
 @keyframes moveBG {0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
 
 /* ===== NAVBAR ===== */
-.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; }
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; position:relative; }
 .logo { font-size:22px; font-weight:bold; }
 .nav-links { list-style:none; display:flex; gap:18px; }
 .nav-links a { color:#fff; text-decoration:none; transition:0.3s; }
 .nav-links a:hover { color:#FACC15; }
+
+/* Hamburger for mobile */
+.hamburger { display:none; font-size:1.5rem; cursor:pointer; color:#fff; }
 
 /* ===== HERO ===== */
 .hero { text-align:center; padding:60px 10%; background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; animation:gradientBG 15s ease infinite; border-radius:20px; margin:30px; }
@@ -40,7 +43,26 @@ body::before { content:''; position:fixed; width:100%; height:100%; background:r
 
 /* ===== FOOTER ===== */
 footer { text-align:center; padding:20px; background:#111; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:768px) {
+  .nav-links { 
+    display:none; 
+    flex-direction:column; 
+    width:100%; 
+    background:#4F46E5; 
+    position:absolute; 
+    top:60px; left:0; 
+    z-index:1000; 
+  }
+  .nav-links.active { display:flex; }
+  .hamburger { display:block; }
+
+  .teachers { display:flex; flex-direction:column; align-items:center; padding:20px; }
+  .teacher-card { width:90%; max-width:300px; margin-bottom:20px; }
+}
 </style>
+
 </head>
 <body>
 
@@ -48,17 +70,18 @@ footer { text-align:center; padding:20px; background:#111; }
 <nav class="navbar">
   <div class="logo">Advanced Academy</div>
   <ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="courses.html">Courses</a></li>
-<li><a href="admission.html">Admission</a></li>
-<li><a href="Administration.html">Administration</a></li>
-<li><a href="results.html">Results</a></li>
-<li><a href="gallery.html">Gallery</a></li>
-<li><a href="teachers.html">Teachers</a></li>
-<li><a href="reviews.html">Students Reviews</a></li>
-<li><a href="contact.html">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 
 <!-- HERO -->
@@ -82,7 +105,7 @@ footer { text-align:center; padding:20px; background:#111; }
     <img src="faculty 3.jpg" alt="Lokendar sir">
     <h3>Lokendar sir </h3>
     <p><b>Subject:</b> Chemistry<br>
-       <b>Experience:</b> 8+ years<br>
+       <b>Experience:</b> 10+ years<br>
        <b>Specialty:</b> Organic & Inorganic Chemistry, practical approach.<br>
        "Making molecules fun & easy to understand!"</p>
   </div>
@@ -92,6 +115,16 @@ footer { text-align:center; padding:20px; background:#111; }
 <footer>
   <p>© 2026 Advanced Academy Shamli</p>
 </footer>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+</script>
 
 </body>
 </html>
