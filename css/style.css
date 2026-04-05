@@ -188,6 +188,17 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   transition: all 0.3s ease;
 }
 
+/* Director Golden Upgrade */
+.faculty-card.director {
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+  color: #333;
+}
+
+.faculty-card.director .badge {
+  background: #333;
+  color: #FFD700;
+  font-weight: bold;
+}
 /* Image zoom */
 .faculty-card:hover img {
   transform: scale(1.05);
