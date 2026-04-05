@@ -152,6 +152,7 @@
   justify-content:center;
   align-items:center;
   z-index:9999;
+  opacity:1;
   transition: opacity 0.5s ease;
 }
 </style>
@@ -184,8 +185,7 @@
 </nav>
 </header>
 
-<!-- Ticker, Hero, Features, Courses, Stats, Contact, Footer (preserved as before) -->
-<!-- [Paste all your existing sections here exactly as before] -->
+<!-- Ticker, Hero, Features, Courses, Stats, Contact, Footer (preserve your existing sections here) -->
 
 <!-- WHATSAPP BUTTON -->
 <a href="https://wa.me/917055557339" class="whatsapp">
@@ -212,21 +212,17 @@
 
 <script src="js/script.js"></script>
 <script>
-// Loader fix
+// Loader fix – ORIGINAL working sequence restored
 window.addEventListener('load', () => {
   const loader = document.getElementById('quantum-loader');
   loader.style.opacity = '0';
-  setTimeout(() => {
-    loader.style.display='none';
-  }, 600);
+  setTimeout(() => { loader.style.display='none'; }, 500);
 });
 
 // Hamburger toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
 // AI Chat Bot
 const chatIcon = document.getElementById('ai-chat-icon');
@@ -239,7 +235,7 @@ chatIcon.addEventListener('click', () => {
   chatModal.style.display = (chatModal.style.display === 'flex') ? 'none' : 'flex';
 });
 
-// Predefined answers
+// Predefined FAQ
 const faq = {
   "courses": "We offer Spoken English, Class 9-10 foundation, Class 11-12 Science, Board Exam Preparation & Competitive Exams.",
   "admission": "Admission process: Fill form → Submit docs → Pay fees → Start classes. Contact us for exact dates.",
