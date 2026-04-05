@@ -7,93 +7,59 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* Navbar */
+/* ===== GENERAL ===== */
+body { margin:0; font-family:'Poppins',sans-serif; background:#f4f4f4; color:#333; }
+a { text-decoration:none; }
+
+/* ===== NAVBAR ===== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: #333;
-  color: #fff;
+  display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; color:#fff; position:relative;
 }
-.navbar .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.nav-links {
-  display: flex;
-  gap: 15px;
-}
-.nav-links li { list-style: none; }
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  transition: 0.3s;
-}
-.nav-links a:hover { background: #555; border-radius: 5px; }
+.logo { font-size:22px; font-weight:bold; }
+.nav-links { list-style:none; display:flex; gap:18px; }
+.nav-links li { margin:0; }
+.nav-links a { color:#fff; padding:5px 10px; transition:0.3s; }
+.nav-links a:hover { color:#FACC15; }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
+.hamburger { display:none; font-size:1.5rem; cursor:pointer; }
 
-/* Faculty section */
-.faculty {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-.faculty h2 { text-align: center; margin-bottom: 30px; }
-.faculty-grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+/* ===== FACULTY ===== */
+.faculty { padding:40px 20px; max-width:1200px; margin:auto; }
+.faculty h2 { text-align:center; margin-bottom:30px; font-size:2rem; }
+.faculty-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+
 .faculty-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1 1 300px;
-  max-width: 350px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background:#fff; padding:20px; border-radius:10px; flex:1 1 300px; max-width:350px;
+  text-align:center; box-shadow:0 4px 8px rgba(0,0,0,0.1);
 }
-.faculty-card img { width: 100%; border-radius: 10px; }
+.faculty-card img { width:100%; border-radius:10px; margin-bottom:15px; }
+.faculty-card h3 { margin-bottom:10px; }
+.faculty-card p { font-size:14px; line-height:1.5; color:#555; }
+
 .faculty-card .badge {
-  display: inline-block;
-  margin-top: 10px;
-  background: #007bff;
-  color: #fff;
-  padding: 3px 10px;
-  border-radius: 5px;
+  display:inline-block; background:#4F46E5; color:#fff; padding:3px 10px; border-radius:5px; margin-bottom:10px;
 }
-/* Director card full width */
-.faculty-card.director { flex: 1 1 100%; }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: #333;
+/* Director full width */
+.faculty-card.director { flex:1 1 100%; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:768px) {
+  .nav-links { 
+    display:none; flex-direction:column; width:100%; background:#4F46E5; position:absolute; top:60px; left:0; z-index:1000;
   }
-  .nav-links.active { display: flex; }
-  .hamburger { display: block; }
+  .nav-links.active { display:flex; }
+  .hamburger { display:block; color:#fff; }
 
-  .faculty-grid { flex-direction: column; align-items: center; }
-  .faculty-card { max-width: 90%; }
+  .faculty-grid { flex-direction:column; align-items:center; }
+  .faculty-card { max-width:90%; }
 }
 </style>
 
 </head>
 <body>
 
-<header>
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">Advanced Academy</div>
   <ul class="nav-links">
@@ -110,12 +76,13 @@
   </ul>
   <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
-</header>
 
-<!-- FACULTY -->
+<!-- FACULTY SECTION -->
 <section class="faculty">
   <h2>Leadership Team ✅</h2>
   <div class="faculty-grid">
+
+    <!-- Director -->
     <div class="faculty-card director">
       <img src="faculty 1.jpg" alt="Mr. Manoj Ruhela Sir">
       <span class="badge">Director</span>
@@ -127,6 +94,8 @@
         He continuously motivates both students and faculty to achieve higher goals.
       </p>
     </div>
+
+    <!-- Sub-Director -->
     <div class="faculty-card">
       <img src="faculty 2.jpg" alt="Mr. Ram Kumar Sir">
       <h3>Mr. Ram Kumar Sir</h3>
@@ -136,6 +105,8 @@
         guidance and mentorship throughout their journey.
       </p>
     </div>
+
+    <!-- Manager -->
     <div class="faculty-card">
       <img src="faculty 3.jpg" alt="Mr. Lokender Panchal Sir">
       <h3>Mr. Lokender Panchal Sir</h3>
@@ -145,9 +116,11 @@
         coordination, making sure every student gets the best possible experience.
       </p>
     </div>
+
   </div>
 </section>
 
+<!-- MOBILE MENU SCRIPT -->
 <script>
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
