@@ -44,6 +44,8 @@ a { text-decoration:none; }
   transition: all 0.3s ease;
   position:relative;
   overflow:hidden;
+  z-index:1; /* ensures cards stay above background/nav */
+  box-sizing:border-box; /* fixes mobile text overflow */
 }
 
 /* Hover Effects */
@@ -66,7 +68,7 @@ a { text-decoration:none; }
 
 /* Text */
 .faculty-card h3 { margin-bottom:10px; }
-.faculty-card p { font-size:14px; color:#555; }
+.faculty-card p { font-size:14px; color:#555; word-wrap:break-word; }
 
 /* Badge */
 .faculty-card .badge {
@@ -78,6 +80,7 @@ a { text-decoration:none; }
   margin-bottom:10px;
   position:relative;
   overflow:hidden;
+  font-size:14px;
 }
 
 /* Shine Effect */
@@ -121,8 +124,21 @@ a { text-decoration:none; }
   }
   .nav-links.active { display:flex; }
   .hamburger { display:block; color:#fff; }
-  .faculty-grid { flex-direction:column; align-items:center; }
-  .faculty-card { max-width:90%; }
+
+  .faculty-grid {
+    flex-direction:column;
+    align-items:center;
+  }
+  .faculty-card {
+    max-width:100%;      /* full width on mobile */
+    flex:1 1 100%;       /* ensures stacking */
+    margin-bottom:20px;  /* spacing between cards */
+    box-sizing:border-box;
+  }
+  .faculty-card .badge {
+    font-size:13px;
+    padding:3px 10px;
+  }
 }
 
 </style>
