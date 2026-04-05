@@ -177,3 +177,19 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   .faculty-card img{height:300px;}
   .director{grid-column:span 1;}
 }
+/* Hover lift animation */
+.faculty-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+/* Smooth transition */
+.faculty-card {
+  transition: all 0.3s ease;
+}
+
+/* Image zoom */
+.faculty-card:hover img {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
