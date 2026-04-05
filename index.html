@@ -140,18 +140,27 @@ structured lessons and daily speaking practice.
 <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- AI BOT -->
+<div id="ai-bot">
+<img src="bmw-m5-small.jpg" alt="BMW M5">
+<div class="message">Hello! I am Advanced Academy Bot 🤖 – Developed by Tanishq.</div>
+</div>
+
 <!-- JS SCRIPTS -->
 <script src="js/script.js"></script>
 <script>
-// Quantum loader hide after page load
+// Loader fade fix
 window.addEventListener('load', () => {
-const loader = document.getElementById('quantum-loader');
-loader.style.opacity = '0';        // fade out
-setTimeout(() => {
-loader.style.display = 'none';
-}, 500);
+    const loader = document.getElementById('quantum-loader');
+    loader.style.opacity = '0';
+    setTimeout(() => { loader.style.display = 'none'; }, 600);
+
+    // Show AI bot after loader
+    const bot = document.getElementById('ai-bot');
+    setTimeout(() => { bot.classList.add('show'); }, 700);
 });
 </script>
 
 </body>
 </html>
+
