@@ -3,37 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About - Advanced Academy Shamli</title>
+<title>Administration - Advanced Academy Shamli</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- AOS Animation -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 <style>
-
 /* ===== GENERAL ===== */
-body { margin:0; font-family:'Poppins',sans-serif; background:#f4f4f4; color:#333; }
-a { text-decoration:none; }
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#f4f4f4;
+  color:#333;
+  overflow-x:hidden;
+}
+
+a { text-decoration:none; color:inherit; }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 5%; background:#4F46E5; color:#fff; position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 5%;
+  background:#4F46E5;
+  color:#fff;
+  position:relative;
+  z-index:1000;
 }
 .logo { font-size:22px; font-weight:bold; }
-.nav-links { list-style:none; display:flex; gap:18px; }
-.nav-links a { color:#fff; padding:5px 10px; transition:0.3s; }
-.nav-links a:hover { color:#FACC15; }
-.hamburger { display:none; font-size:1.5rem; cursor:pointer; }
+.nav-links {
+  list-style:none;
+  display:flex;
+  gap:18px;
+  margin:0;
+  padding:0;
+}
+.nav-links li a {
+  color:#fff;
+  padding:5px 10px;
+  transition:0.3s;
+}
+.nav-links li a:hover { color:#FACC15; }
+.hamburger {
+  display:none;
+  font-size:1.5rem;
+  cursor:pointer;
+  z-index:1100;
+}
 
-/* ===== FACULTY ===== */
-.faculty { padding:40px 20px; max-width:1200px; margin:auto; }
-.faculty h2 { text-align:center; margin-bottom:30px; font-size:2rem; }
-.faculty-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+/* ===== ADMIN CONTENT ===== */
+.admin-section {
+  padding:50px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.admin-section h2 {
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:30px;
+  color:#4F46E5;
+}
+.admin-grid {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
 
-/* ===== CARD ===== */
-.faculty-card {
+.admin-card {
   background:#fff;
   padding:20px;
   border-radius:10px;
@@ -41,37 +78,25 @@ a { text-decoration:none; }
   max-width:350px;
   text-align:center;
   box-shadow:0 4px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  position:relative;
-  overflow:hidden;
-  z-index:1; /* ensures cards stay above background/nav */
-  box-sizing:border-box; /* fixes mobile text overflow */
+  transition:all 0.3s ease;
 }
-
-/* Hover Effects */
-.faculty-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px rgba(79,70,229,0.4);
+.admin-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 0 20px rgba(79,70,229,0.4);
   border:1px solid #4F46E5;
 }
-
-/* Image */
-.faculty-card img {
+.admin-card img {
   width:100%;
   border-radius:10px;
   margin-bottom:15px;
   transition:0.4s;
 }
-.faculty-card:hover img {
+.admin-card:hover img {
   transform:scale(1.08);
 }
-
-/* Text */
-.faculty-card h3 { margin-bottom:10px; }
-.faculty-card p { font-size:14px; color:#555; word-wrap:break-word; }
-
-/* Badge */
-.faculty-card .badge {
+.admin-card h3 { margin-bottom:10px; }
+.admin-card p { font-size:14px; color:#555; }
+.admin-card .badge {
   display:inline-block;
   background:#4F46E5;
   color:#fff;
@@ -80,11 +105,8 @@ a { text-decoration:none; }
   margin-bottom:10px;
   position:relative;
   overflow:hidden;
-  font-size:14px;
 }
-
-/* Shine Effect */
-.faculty-card .badge::after {
+.admin-card .badge::after {
   content:'';
   position:absolute;
   top:0;
@@ -93,54 +115,31 @@ a { text-decoration:none; }
   height:100%;
   background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
 }
-.faculty-card:hover .badge::after {
+.admin-card:hover .badge::after {
   left:100%;
   transition:0.6s;
 }
 
-/* ===== DIRECTOR ===== */
-.faculty-card.director {
-  flex:1 1 100%;
-  background: linear-gradient(135deg, #4F46E5, #6B5BFF);
-  color:#fff;
-  padding:30px;
-}
-.faculty-card.director .badge {
-  background:#FACC15;
-  color:#4F46E5;
-  font-weight:bold;
-}
-
 /* ===== MOBILE ===== */
-@media (max-width:768px) {
+@media(max-width:768px){
   .nav-links {
     display:none;
     flex-direction:column;
-    width:100%;
     background:#4F46E5;
     position:absolute;
     top:60px;
     left:0;
+    width:100%;
+    padding:15px 0;
+    border-radius:0 0 8px 8px;
+    z-index:1000;
+    transition:all 0.3s ease;
   }
   .nav-links.active { display:flex; }
   .hamburger { display:block; color:#fff; }
-
-  .faculty-grid {
-    flex-direction:column;
-    align-items:center;
-  }
-  .faculty-card {
-    max-width:100%;      /* full width on mobile */
-    flex:1 1 100%;       /* ensures stacking */
-    margin-bottom:20px;  /* spacing between cards */
-    box-sizing:border-box;
-  }
-  .faculty-card .badge {
-    font-size:13px;
-    padding:3px 10px;
-  }
+  .admin-grid { flex-direction:column; align-items:center; }
+  .admin-card { max-width:90%; }
 }
-
 </style>
 </head>
 
@@ -150,63 +149,50 @@ a { text-decoration:none; }
 <nav class="navbar">
   <div class="logo">Advanced Academy</div>
   <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="teachers.html">Teachers</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="reviews.html">Students Reviews</a></li>
-      <li><a href="Administration.html">Administration</a></li>
-      <li><a href="admission.html">Admission</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
   <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- FACULTY -->
-<section class="faculty">
-  <h2>Leadership Team ✅</h2>
+<!-- ADMINISTRATION CONTENT -->
+<section class="admin-section">
+  <h2>Administration Team 🏫</h2>
+  <div class="admin-grid">
 
-  <div class="faculty-grid">
-
-    <!-- Director -->
-    <div class="faculty-card director hero" data-aos="zoom-in">
-      <div class="crown"><i class="fas fa-crown"></i></div>
-      <img src="faculty 1.jpg" alt="Mr. Manoj Ruhela Sir">
-      <span class="badge">Director</span>
+    <div class="admin-card">
+      <img src="admin1.jpg" alt="Principal">
+      <span class="badge">Principal</span>
       <h3>Mr. Manoj Ruhela Sir</h3>
-      <p>
-        Director - The backbone of Advanced Academy, known for excellence, leadership, 
-        and dedication. His vision drives the institute forward and inspires every 
-        student to achieve success and build a bright future.
-      </p>
+      <p>Principal - Leadership and academic excellence at Advanced Academy.</p>
     </div>
 
-    <!-- Sub Director -->
-    <div class="faculty-card" data-aos="fade-up">
-      <img src="faculty 2.jpg">
-      <span class="badge">Sub-Director</span>
-      <h3>Mr. Ram Kumar Sir</h3>
-      <p>Ensures high academic standards and guidance.</p>
+    <div class="admin-card">
+      <img src="admin2.jpg" alt="Vice Principal">
+      <span class="badge">Vice Principal</span>
+      <h3>Mrs. Seema Sharma</h3>
+      <p>Vice Principal - Ensuring smooth operations and student support.</p>
     </div>
 
-    <!-- Manager -->
-    <div class="faculty-card" data-aos="fade-up" data-aos-delay="200">
-      <img src="faculty 3.jpg">
-      <span class="badge">Manager</span>
-      <h3>Mr. Lokender Panchal Sir</h3>
-      <p>Manages operations and student experience.</p>
+    <div class="admin-card">
+      <img src="admin3.jpg" alt="Administrator">
+      <span class="badge">Administrator</span>
+      <h3>Mr. Lokender Panchal</h3>
+      <p>Administrator - Manages administration, staff, and student affairs.</p>
     </div>
 
   </div>
 </section>
 
-<!-- JS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init();
-
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
