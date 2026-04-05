@@ -253,3 +253,25 @@ footer a{color:white;text-decoration:none;margin:0 10px;}
   line-height: 1.5;
   margin-top: 10px;
 }
+/* ===== DIRECTOR CARD HIGHLIGHT ===== */
+.faculty-card.director {
+  background: linear-gradient(135deg, #6D5BFF, #4F46E5); /* colorful gradient */
+  color:#fff; /* text white */
+  border:2px solid #FFD700; /* golden border */
+  position:relative;
+  overflow:hidden;
+}
+.faculty-card.director .badge {
+  background:#FFD700; /* gold badge */
+  color:#4F46E5;
+  font-weight:bold;
+}
+.faculty-card.director h3,
+.faculty-card.director p {
+  color:#fff; /* text white */
+}
+.faculty-card.director:hover {
+  transform:translateY(-10px);
+  box-shadow:0 0 25px rgba(255,215,0,0.6); /* golden glow */
+  border:2px solid #FFD700;
+}
