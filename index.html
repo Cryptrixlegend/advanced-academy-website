@@ -12,47 +12,8 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <title>Advanced Academy Shamli™</title>
-
-<style>
-/* ===== AI BOT STYLING ===== */
-#ai-bot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 220px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.5s ease;
-    z-index: 999;
-}
-
-#ai-bot.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-#ai-bot img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
-}
-
-#ai-bot .message {
-    font-size: 14px;
-    color: #333;
-}
-</style>
-
 </head>
+
 <body>
 
 <!-- QUANTUM LOADER -->
@@ -70,7 +31,6 @@
 <li><a href="about.html">About</a></li>
 <li><a href="courses.html">Courses</a></li>
 <li><a href="admission.html">Admission</a></li>
-<li><a href="faculty.html">Faculty</a></li>
 <li><a href="Administration.html">Administration</a></li>
 <li><a href="results.html">Results</a></li>
 <li><a href="gallery.html">Gallery</a></li>
@@ -136,7 +96,10 @@
 <div class="course-grid">
 <div class="course-card">
 <h3>Spoken English & Communication</h3>
-<p>Build fluency, boost confidence, and master real-life communication with structured lessons and daily speaking practice.</p>
+<p>
+Build fluency, boost confidence, and master real-life communication with
+structured lessons and daily speaking practice.
+</p>
 </div>
 <div class="course-card"><h3>Class 9-10 Foundation</h3><p>Strong base in Maths, Science & English.</p></div>
 <div class="course-card"><h3>Class 11-12 Science</h3><p>Physics, Chemistry & Maths preparation.</p></div>
@@ -176,23 +139,16 @@
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- AI BOT -->
-<div id="ai-bot">
-<div class="message">Hello! I am Advanced Academy Bot 🤖 – Developed by Tanishq.</div>
-</div>
-
 <!-- JS SCRIPTS -->
 <script src="js/script.js"></script>
 <script>
+// Quantum loader hide after page load
 window.addEventListener('load', () => {
-    // Fade out loader
-    const loader = document.getElementById('quantum-loader');
-    loader.style.opacity = '0';
-    setTimeout(() => { loader.style.display = 'none'; }, 600);
-
-    // Show AI bot after loader
-    const bot = document.getElementById('ai-bot');
-    setTimeout(() => { bot.classList.add('show'); }, 700);
+const loader = document.getElementById('quantum-loader');
+loader.style.opacity = '0';        // fade out
+setTimeout(() => {
+loader.style.display = 'none';
+}, 500);
 });
 </script>
 
