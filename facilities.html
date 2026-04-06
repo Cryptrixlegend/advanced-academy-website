@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Advanced Academy Shamli - Facilities and Gallery.">
+
+<link rel="icon" href="cropped%20(1).jpg" type="image/jpeg">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<title>Advanced Academy Shamli - Facilities</title>
+
+<style>
+/* Body & root colors */
+:root {
+    --bg: #0f172a;
+    --text: #fff;
+    --accent: #38bdf8;
+}
+body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Facilities Section */
+.facilities {
+    padding: 50px 20px;
+    text-align: center;
+    background: #111827;
+}
+.facilities h2 {
+    color: var(--accent);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+}
+.facility-card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.facility-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--accent);
+}
+.facility-card i {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--accent);
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 50px 20px;
+    background: #1e293b;
+}
+.gallery h2 {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 30px;
+}
+.slider-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.slide {
+    min-width: 100%;
+    transition: transform 0.5s ease;
+}
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+/* Prev/Next Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+.prev:hover, .next:hover { opacity:1; }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Header/Footer (same as index) */
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background: var(--accent);
+    font-weight:bold;
+}
+header nav a {
+    color:#fff;
+    margin-left:15px;
+    text-decoration:none;
+}
+
+/* WhatsApp Button */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.whatsapp:hover { transform: scale(1.1); }
+
+/* Footer */
+footer {
+    background: #111827;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+footer .social a { color: var(--accent); text-decoration: none; }
+
+@media(max-width:600px){
+    .facility-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="logo">Advanced Academy™</div>
+<ul class="nav-links">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="courses.html">Courses</a></li>
+  <li><a href="results.html">Results</a></li>
+  <li><a href="teachers.html">Teachers</a></li>
+  <li><a href="gallery.html">Gallery</a></li>
+  <li><a href="reviews.html">Students Reviews</a></li>
+  <li><a href="Administration.html">Administration</a></li>
+  <li><a href="admission.html">Admission</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+</header>
+
+<!-- Facilities Section -->
+<section class="facilities">
+<h2>Our Facilities</h2>
+<div class="facilities-grid">
+<div class="facility-card"><i class="fas fa-chalkboard-teacher"></i><h3>Smart Classrooms</h3><p>Modern smart boards, projectors and interactive lessons.</p></div>
+<div class="facility-card"><i class="fas fa-snowflake"></i><h3>AC Rooms</h3><p>Comfortable temperature-controlled classrooms for learning.</p></div>
+<div class="facility-card"><i class="fas fa-book"></i><h3>Library</h3><p>Well-stocked with books, reference materials and journals.</p></div>
+<div class="facility-card"><i class="fas fa-laptop"></i><h3>Computer Lab</h3><p>High-end computers for practical learning and basics sessions.</p></div>
+</div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="gallery">
+<h2>Our Gallery</h2>
+<div class="slider-container">
+  <div class="slider-track">
+    <div class="slide"><img src="IMG-20260404-WA0037.jpg" alt="Gallery Image 1"></div>
+    <div class="slide"><img src="IMG-20260401-WA0125.jpg" alt="Gallery Image 2"></div>
+    <div class="slide"><img src="gallery2.jpg.png" alt="Gallery Image 3"></div>
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Advanced Academy Shamli</p>
+<p>Designed by TANISHQ 🏎️💨</p>
+<div class="social">
+<a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
+<i class="fas fa-phone"></i> Just Dial
+</a>
+</div>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/917055557339" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- JS SLIDER -->
+<script>
+const track = document.querySelector('.slider-track');
+const slides = Array.from(track.children);
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentIndex = 0;
+
+function updateSlide() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+    updateSlide();
+});
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+    updateSlide();
+});
+
+// Auto slide every 5s
+setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlide();
+}, 5000);
+</script>
+
+</body>
+</html>
