@@ -25,6 +25,19 @@ body {
     background: var(--bg);
     color: var(--text);
 }
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background: var(--accent);
+    font-weight:bold;
+}
+header nav a {
+    color:#fff;
+    margin-left:15px;
+    text-decoration:none;
+}
 .container {
     max-width: 900px;
     margin: auto;
@@ -87,11 +100,6 @@ h1 {
     max-height:300px;
     padding:15px;
 }
-.category {
-    margin-top:30px;
-    color: var(--accent);
-    font-weight:bold;
-}
 
 /* Chatbox */
 .chatbox {
@@ -140,17 +148,31 @@ h1 {
 
 <body>
 
+<header>
+    <div>Advanced Academy Shamli</div>
+   <ul class="nav-links">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About</a></li>
+  <li><a href="courses.html">Courses</a></li>
+  <li><a href="results.html">Results</a></li>
+  <li><a href="teachers.html">Teachers</a></li>
+  <li><a href="gallery.html">Gallery</a></li>
+  <li><a href="reviews.html">Students Reviews</a></li>
+  <li><a href="Administration.html">Administration</a></li>
+  <li><a href="admission.html">Admission</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+</header>
+
 <div class="container">
 
 <div class="toggle">
 <button onclick="toggleMode()">🌙 / ☀️</button>
 </div>
 
-<h1>Advanced Academy Shamli FAQs</h1>
+<h1>FAQs</h1>
 
 <input type="text" id="search" placeholder="Search FAQs...">
-
-<div class="category">Courses</div>
 
 <div class="faq"><div class="question">Ultimate English Mastery Program kya hai?</div>
 <div class="answer">Complete English Fluency – Grammar, Spoken English, Writing & Personality Development. Lifetime access with full support.</div></div>
@@ -169,7 +191,7 @@ h1 {
 
 </div>
 
-<!-- CHATBOT -->
+<!-- CHATBOX -->
 <div class="chatbox">
 <div class="chat-header">Ask Anything 🤖</div>
 <div class="chat-body" id="chatBody"></div>
@@ -180,9 +202,6 @@ h1 {
 </div>
 
 <script>
-const API_KEY = "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";
-const WEBHOOK_URL = "PASTE_YOUR_WEBHOOK_URL";
-
 /* FAQ toggle */
 document.querySelectorAll(".faq").forEach(faq=>{
     faq.onclick=()=>faq.classList.toggle("active");
@@ -201,75 +220,24 @@ function toggleMode(){
     document.body.classList.toggle("light");
 }
 
-/* CHAT SYSTEM */
-async function sendMsg(){
-    let input = document.getElementById("userInput").value;
+/* ---------- SIMPLE AUTOMATIC CHAT ---------- */
+function sendMsg(){
+    let input = document.getElementById("userInput").value.trim();
     let chat = document.getElementById("chatBody");
-
     chat.innerHTML += `<div>👤 ${input}</div>`;
 
-    // LEAD FLOW
-    if(input.toLowerCase().includes("admission") || input.toLowerCase().includes("join")){
-        chat.innerHTML += `<div>🤖 Great! Please enter your name:</div>`;
-        window.step = 1;
-        return;
-    }
+    let reply = "Sorry, I did not understand. Please ask about courses or exams.";
 
-    if(window.step === 1){
-        window.name = input;
-        chat.innerHTML += `<div>📱 Enter your phone number:</div>`;
-        window.step = 2;
-        return;
-    }
-
-    if(window.step === 2){
-        fetch(WEBHOOK_URL,{
-            method:"POST",
-            body:JSON.stringify({name:window.name, phone:input})
-        });
-        chat.innerHTML += `<div>✅ Thank you! We will contact you soon.</div>`;
-        window.step = 0;
-        return;
-    }
-
-    // REAL AI
-    let res = await fetch("https://api.openai.com/v1/chat/completions",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":"Bearer "+API_KEY
-        },
-        body:JSON.stringify({
-            model:"gpt-4o-mini",
-            messages:[
-                {role:"system",content:"You are a helpful assistant for Advanced Academy Shamli. Suggest courses smartly."},
-                {role:"user",content:input}
-            ]
-        })
-    });
-
-    let data = await res.json();
-    let reply = data.choices[0].message.content;
+    // Simple keyword-based auto reply
+    input = input.toLowerCase();
+    if(input.includes("english")) reply = "Ultimate English Mastery Program helps you achieve fluency in grammar, spoken English, writing, and personality development.";
+    else if(input.includes("class 9") || input.includes("foundation")) reply = "Class 9–10 Foundation covers Maths, Science, English for 1 year with practice and doubt clearing.";
+    else if(input.includes("class 11") || input.includes("science")) reply = "Class 11–12 Science program includes Physics, Chemistry, Maths with test series for 2 years.";
+    else if(input.includes("board")) reply = "Board Exam Preparation includes all subjects with revision sessions, practice papers and doubt clearing.";
+    else if(input.includes("competitive") || input.includes("exam")) reply = "Competitive Exam Preparation covers Maths, Reasoning, General Science with mock tests and performance analysis.";
 
     chat.innerHTML += `<div>🤖 ${reply}</div>`;
-}
-</script>
-
-<!-- FAQ Schema -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "FAQPage",
-"mainEntity": [
-{
-"@type": "Question",
-"name": "Ultimate English Mastery Program kya hai?",
-"acceptedAnswer": {
-"@type": "Answer",
-"text": "Complete English Fluency program with lifetime access."
-}
-}
-]
+    document.getElementById("userInput").value="";
 }
 </script>
 
