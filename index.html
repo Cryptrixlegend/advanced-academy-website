@@ -6,12 +6,93 @@
 
 <meta name="description" content="Advanced Academy Shamli - Best coaching institute for classes 9 to 12 and competitive exams.">
 
-<!-- Google Search Console Verification -->
 <meta name="google-site-verification" content="OuYR-eu_5xxOOorzbn_TP1UIHD2GacmE6KH_-RIIfJg" />
 <link rel="icon" href="cropped%20(1).jpg" type="image/jpeg">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <title>Advanced Academy Shamli™</title>
+
+<style>
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR GLASS ===== */
+.navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.65);
+}
+
+/* ===== BUTTON UPGRADE ===== */
+.btn {
+  background: linear-gradient(135deg,#6366F1,#22C55E);
+  color: #fff;
+  border: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ===== CARD HOVER ===== */
+.card, .course-card {
+  transition: 0.3s;
+}
+.card:hover, .course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* ===== HERO ANIMATION ===== */
+.hero-text {
+  animation: fadeUp 1s ease;
+}
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* ===== POPUP ===== */
+.ad-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.ad-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+  animation: popupFade 0.5s ease;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+@keyframes popupFade {
+  from {transform: scale(0.7); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+</style>
+
 </head>
 
 <body>
@@ -70,8 +151,8 @@
 <!-- HERO -->
 <section class="hero">
 <div class="hero-text">
-<h1>Advanced Academy Shamli - Best Coaching Institute in Shamli, Uttar Pradesh</h1>
-<a href="contact.html" class="btn">Book Demo</a>
+<h1>Learn English & Score Higher with Advanced Academy Shamli</h1>
+<a href="contact.html" class="btn">Book Free Demo</a>
 <a href="courses.html" class="btn secondary">View Courses</a>
 </div>
 
@@ -136,21 +217,46 @@ structured lessons and daily speaking practice.
 </div>
 </footer>
 
-<!-- WHATSAPP BUTTON -->
+<!-- WHATSAPP BUTTON (PRESERVED) -->
 <a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- JS SCRIPTS -->
+<!-- POPUP -->
+<div id="ad-popup" class="ad-popup">
+  <div class="ad-box">
+    <span class="close-btn">&times;</span>
+    <h2>New Batch Coming Soon 🚀</h2>
+    <p>
+      We are starting a new batch soon for junior classes.
+      Improve your English speaking skills with us!
+    </p>
+    <a href="contact.html" class="btn">Join Now</a>
+  </div>
+</div>
+
+<!-- JS -->
 <script src="js/script.js"></script>
+
 <script>
-// Quantum loader hide after page load
+// Loader + Popup
 window.addEventListener('load', () => {
-const loader = document.getElementById('quantum-loader');
-loader.style.opacity = '0';        // fade out
-setTimeout(() => {
-loader.style.display = 'none';
-}, 500);
+
+  const loader = document.getElementById('quantum-loader');
+  loader.style.opacity = '0';
+
+  setTimeout(() => {
+    loader.style.display = 'none';
+  }, 500);
+
+  setTimeout(() => {
+    document.getElementById('ad-popup').style.display = 'flex';
+  }, 1200);
+});
+
+// Close popup
+document.querySelector('.close-btn').addEventListener('click', () => {
+  document.getElementById('ad-popup').style.display = 'none';
 });
 </script>
 
