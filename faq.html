@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Academy Shamli - FAQ</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-
+<title>Advanced Academy Shamli™ - FAQ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
 <style>
 :root {
     --bg: #0f172a;
@@ -26,45 +25,35 @@ body {
     color: var(--text);
 }
 header {
+    position: fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 20px;
+    padding:15px 30px;
     background: var(--accent);
     font-weight:bold;
 }
-header nav a {
-    color:#fff;
-    margin-left:15px;
-    text-decoration:none;
-}
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-h1 {
-    text-align:center;
-    color: var(--accent);
-}
-.toggle {
+header .logo { font-size: 1.5rem; }
+.nav-links {
+    list-style:none;
     display:flex;
-    justify-content:flex-end;
+    gap:20px;
 }
-.toggle button {
-    background: var(--accent);
-    border:none;
-    padding:8px 15px;
-    border-radius:20px;
-    cursor:pointer;
+.nav-links li a {
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
 }
-#search {
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:none;
-    margin:20px 0;
-}
+.nav-links li a:hover { text-decoration: underline; }
+.container { max-width:900px; margin:120px auto 40px auto; padding:20px; }
+h1 { text-align:center; color: var(--accent); margin-bottom:30px; }
+.toggle { display:flex; justify-content:flex-end; margin-bottom:10px; }
+.toggle button { background: var(--accent); border:none; padding:8px 15px; border-radius:20px; cursor:pointer; color:#fff; }
+
+/* FAQ cards */
 .faq {
     background: var(--card);
     backdrop-filter: blur(10px);
@@ -72,76 +61,34 @@ h1 {
     margin-bottom: 15px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,0.1);
-    transition:0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s;
+    opacity:0;
+    transform: translateY(30px);
 }
-.faq:hover {
-    box-shadow: 0 0 15px var(--accent);
-}
-.question {
-    padding:15px;
-    cursor:pointer;
-    position:relative;
-}
-.question::after {
-    content:"+";
-    position:absolute;
-    right:20px;
-}
-.faq.active .question::after {
-    content:"−";
-}
-.answer {
-    max-height:0;
-    overflow:hidden;
-    transition:0.4s;
-    padding:0 15px;
-}
-.faq.active .answer {
-    max-height:300px;
-    padding:15px;
-}
+.faq.visible { opacity:1; transform: translateY(0); }
+.faq:hover { box-shadow: 0 0 25px var(--accent); transform: translateY(-3px); }
+.question { padding:15px; cursor:pointer; position:relative; font-weight:500; }
+.question::after { content:"+"; position:absolute; right:20px; font-size:1.2rem; transition:0.3s; }
+.faq.active .question::after { content:"−"; }
+.answer { max-height:0; overflow:hidden; transition: max-height 0.5s ease, padding 0.4s ease; padding:0 15px; }
+.faq.active .answer { max-height:400px; padding:15px; }
 
-/* Chatbox */
-.chatbox {
+/* Dark/Light Mode */
+body.light { color:#000; }
+body.light header { background:#38bdf8; }
+
+/* WhatsApp Button */
+.whatsapp {
     position:fixed;
     bottom:20px;
     right:20px;
-    width:300px;
-    background:#1e293b;
-    border-radius:10px;
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-}
-.chat-header {
-    background: var(--accent);
-    padding:10px;
-    font-weight:bold;
-}
-.chat-body {
-    height:200px;
-    overflow-y:auto;
-    padding:10px;
-    font-size:13px;
-}
-.chat-input {
-    display:flex;
-}
-.chat-input input {
-    flex:1;
-    padding:8px;
-    border:none;
-}
-.chat-input button {
-    background: var(--accent);
-    border:none;
-    padding:8px;
-}
-@media(max-width:600px){
-    .chatbox {
-        width:90%;
-        right:5%;
-    }
+    background:#25D366;
+    color:#fff;
+    border-radius:50%;
+    padding:15px;
+    font-size:22px;
+    z-index:1000;
+    text-align:center;
 }
 </style>
 </head>
@@ -150,9 +97,7 @@ h1 {
 
 <!-- NAVBAR -->
 <header>
-<nav class="navbar">
 <div class="logo">Advanced Academy™</div>
-
 <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -164,21 +109,14 @@ h1 {
       <li><a href="Administration.html">Administration</a></li>
       <li><a href="admission.html">Admission</a></li>
       <li><a href="contact.html">Contact</a></li>
-    </ul>
-
-<div class="hamburger"><i class="fas fa-bars"></i></div>
-</nav>
+</ul>
 </header>
 
-
 <div class="container">
-
 <div class="toggle">
 <button onclick="toggleMode()">🌙 / ☀️</button>
 </div>
-
-<h1>FAQs</h1>
-
+<h1>Frequently Asked Questions</h1>
 <input type="text" id="search" placeholder="Search FAQs...">
 
 <div class="faq"><div class="question">Ultimate English Mastery Program kya hai?</div>
@@ -195,57 +133,39 @@ h1 {
 
 <div class="faq"><div class="question">Competitive Exam Preparation?</div>
 <div class="answer">Maths, Reasoning, General Science with mock tests & analysis.</div></div>
-
 </div>
 
-<!-- CHATBOX -->
-<div class="chatbox">
-<div class="chat-header">Ask Anything 🤖</div>
-<div class="chat-body" id="chatBody"></div>
-<div class="chat-input">
-<input type="text" id="userInput" placeholder="Type...">
-<button onclick="sendMsg()">Send</button>
-</div>
-</div>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/917055557339" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
-/* FAQ toggle */
+// Dark mode toggle
+function toggleMode(){ document.body.classList.toggle("light"); }
+
+// FAQ toggle
 document.querySelectorAll(".faq").forEach(faq=>{
     faq.onclick=()=>faq.classList.toggle("active");
 });
 
-/* Search */
-document.getElementById("search").addEventListener("input",function(){
-    let val=this.value.toLowerCase();
+// FAQ search filter
+document.getElementById("search").addEventListener("input", function(){
+    let val = this.value.toLowerCase();
     document.querySelectorAll(".faq").forEach(f=>{
-        f.style.display=f.innerText.toLowerCase().includes(val)?"block":"none";
+        f.style.display = f.innerText.toLowerCase().includes(val) ? "block" : "none";
     });
 });
 
-/* Dark Mode */
-function toggleMode(){
-    document.body.classList.toggle("light");
-}
-
-/* ---------- SIMPLE AUTOMATIC CHAT ---------- */
-function sendMsg(){
-    let input = document.getElementById("userInput").value.trim();
-    let chat = document.getElementById("chatBody");
-    chat.innerHTML += `<div>👤 ${input}</div>`;
-
-    let reply = "Sorry, I did not understand. Please ask about courses or exams.";
-
-    // Simple keyword-based auto reply
-    input = input.toLowerCase();
-    if(input.includes("english")) reply = "Ultimate English Mastery Program helps you achieve fluency in grammar, spoken English, writing, and personality development.";
-    else if(input.includes("class 9") || input.includes("foundation")) reply = "Class 9–10 Foundation covers Maths, Science, English for 1 year with practice and doubt clearing.";
-    else if(input.includes("class 11") || input.includes("science")) reply = "Class 11–12 Science program includes Physics, Chemistry, Maths with test series for 2 years.";
-    else if(input.includes("board")) reply = "Board Exam Preparation includes all subjects with revision sessions, practice papers and doubt clearing.";
-    else if(input.includes("competitive") || input.includes("exam")) reply = "Competitive Exam Preparation covers Maths, Reasoning, General Science with mock tests and performance analysis.";
-
-    chat.innerHTML += `<div>🤖 ${reply}</div>`;
-    document.getElementById("userInput").value="";
-}
+// Fade-in animation for FAQ cards
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+}, {threshold:0.1});
+document.querySelectorAll(".faq").forEach(f=>observer.observe(f));
 </script>
 
 </body>
