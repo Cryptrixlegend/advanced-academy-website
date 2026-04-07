@@ -27,73 +27,114 @@
     z-index: -1;
   }
 
-  /* Navigation */
-  .nav-links {
-    list-style: none;
+  /* Header and Navigation */
+  .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     background: #111;
-    padding: 10px 0;
+    padding: 10px 20px;
     position: sticky;
     top: 0;
     z-index: 10;
   }
-  .nav-links li { margin: 0 15px; }
-  .nav-links a {
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #ffcc00;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
     transition: color 0.3s;
   }
-  .nav-links a:hover { color: #ffcc00; }
 
-/* Wrapper for image */
-.img-wrapper {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px;
-  border-radius: 10px; 
-  background: #111;
-  box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
-}
-.director-img {
-  width: 260px;
-  height: 260px;
-  border-radius: 10px;
-  border: 4px solid #ffcc00;
-  box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-  object-fit: cover;
-}
+  .nav-links li a:hover {
+    color: #ffcc00;
+  }
 
-.container {
-  text-align: center;
-  padding: 60px 20px;
-}
-  /* Director image */
-.director-img {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  padding: 10px;
-  background: #111;
-  object-fit: contain; 
-  object-position: center;
-  border: 4px solid #ffcc00;
-  box-shadow: 0 0 20px #ffcc00;
-  transition: transform 0.5s, box-shadow 0.5s;
-  animation: float 4s ease-in-out infinite;
-}
+  /* Hamburger menu */
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffcc00;
+  }
 
-.director-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px #ffcc00, 0 0 80px #ff9900;
-  filter: brightness(1.2);
-}
+  /* Responsive: Mobile menu */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      flex-direction: column;
+      background: #111;
+      width: 100%;
+      text-align: center;
+      transition: left 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+      left: 0;
+    }
+
+    .nav-links li {
+      margin: 15px 0;
+    }
+
+    .hamburger {
+      display: block;
+    }
+  }
+
+  /* Wrapper for image */
+  .img-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 10px; 
+    background: #111;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+  }
+
+  .director-img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    padding: 10px;
+    background: #111;
+    object-fit: contain; 
+    object-position: center;
+    border: 4px solid #ffcc00;
+    box-shadow: 0 0 20px #ffcc00;
+    transition: transform 0.5s, box-shadow 0.5s;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .director-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #ffcc00, 0 0 80px #ff9900;
+    filter: brightness(1.2);
+  }
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
+  }
+
+  .container {
+    text-align: center;
+    padding: 60px 20px;
   }
 
   /* Message box */
@@ -140,6 +181,22 @@
     0%,100% { text-shadow: 0 0 5px gold, 0 0 15px gold; }
     50% { text-shadow: 0 0 20px #fff700, 0 0 30px #ffcc00; }
   }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    margin-top: 50px;
+  }
+
+  .social a {
+    text-decoration: none;
+    color: #ffcc00;
+    margin: 0 10px;
+    display: inline-block;
+  }
+
 </style>
 </head>
 <body>
@@ -148,24 +205,24 @@
 <canvas id="particles"></canvas>
 
 <header>
-<nav class="navbar">
-<div class="logo">Advanced Academy™</div>
+  <nav class="navbar">
+    <div class="logo">Advanced Academy™</div>
 
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="courses.html">Courses</a></li>
-<li><a href="results.html">Results</a></li>
-<li><a href="teachers.html">Teachers</a></li>
-<li><a href="gallery.html">Gallery</a></li>
-<li><a href="reviews.html">Students Reviews</a></li>
-<li><a href="Administration.html">Administration</a></li>
-<li><a href="admission.html">Admission</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="teachers.html">Teachers</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="reviews.html">Students Reviews</a></li>
+      <li><a href="Administration.html">Administration</a></li>
+      <li><a href="admission.html">Admission</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
 
-<div class="hamburger"><i class="fas fa-bars"></i></div>
-</nav>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+  </nav>
 </header>
 
 <div class="container">
@@ -184,7 +241,7 @@
 
 </div>
 
-<!-- JS: Typewriter + Particles -->
+<!-- JS: Typewriter + Particles + Hamburger -->
 <script>
   // Typewriter effect
   const text = "Dear Parents, Greetings! I am Mr. Manoj Ruhela, and it gives me immense pleasure to begin this journey with our talented students. Together, we will achieve excellence and unlock every student's true potential. Let's make learning an unforgettable experience!";
@@ -253,16 +310,25 @@
 
   initParticles();
   animateParticles();
+
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
 </script>
 
-  <footer>
-<p>© 2026 Advanced Academy Shamli</p>
-<p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨 BMW M Competition Level Design</p>
-<div class="social">
-<a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
-<i class="fas fa-phone"></i> Just Dial
-</a>
-</div>
+<footer>
+  <p>© 2026 Advanced Academy Shamli</p>
+  <p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨 BMW M Competition Level Design</p>
+  <div class="social">
+    <a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
+      <i class="fas fa-phone"></i> Just Dial
+    </a>
+  </div>
 </footer>
+
 </body>
 </html>
