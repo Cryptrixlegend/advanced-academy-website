@@ -84,7 +84,7 @@ body{background:#F8FAFC;color:#1E293B;}
 .ticker-wrapper.top{margin-bottom:10px;}
 .ticker-wrapper.bottom{margin-top:10px;}
 .ticker{width:100%;overflow:hidden;white-space:nowrap;}
-.ticker-track{display:inline-block;animation:scroll-left 15s linear infinite;}
+.ticker-track{display:inline-block;animation:scroll-left 30s linear infinite;}
 .ticker.left .ticker-track{animation-direction:normal;}
 .ticker.right .ticker-track{animation-direction:reverse;}
 .ticker span{display:inline-block;margin-right:50px;font-weight:bold;color:#1E293B;}
