@@ -6,329 +6,222 @@
 <title>Director - Mr. Manoj Ruhela</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  /* Body and background */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #1e1e2f;
-    color: #fff;
-    overflow-x: hidden;
-    position: relative;
-  }
+/* ===== BODY & BACKGROUND ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #1e1e2f;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
 
-  /* Particle canvas */
-  #particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+/* Particle canvas */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
-  /* Header and Navigation */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #111;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+/* ===== NAVBAR ===== */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#111; position:sticky; top:0; z-index:10; }
+.logo { font-size:22px; font-weight:bold; }
+.nav-links { list-style:none; display:flex; gap:18px; }
+.nav-links a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
+.nav-links a:hover { color:#ffcc00; }
 
-  .logo {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #ffcc00;
-  }
+/* Hamburger for mobile */
+.hamburger { display:none; font-size:1.5rem; cursor:pointer; color:#fff; }
 
+/* ===== CONTAINER ===== */
+.container { text-align:center; padding:60px 20px; }
+
+/* ===== DIRECTOR IMAGE ===== */
+.img-wrapper {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:6px;
+  border-radius:50%;
+  background:#111;
+  box-shadow:0 0 30px rgba(255,204,0,0.3);
+}
+
+.director-img {
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  border:4px solid #ffcc00;
+  object-fit:cover;
+  box-shadow:0 0 20px #ffcc00;
+  transition: transform 0.5s, box-shadow 0.5s;
+  animation: float 4s ease-in-out infinite;
+}
+
+.director-img:hover {
+  transform: scale(1.1);
+  box-shadow:0 0 50px #ffcc00,0 0 80px #ff9900;
+  filter:brightness(1.2);
+}
+
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
+
+/* ===== HERO MESSAGE ===== */
+.message {
+  margin-top:30px;
+  font-size:1.5rem;
+  color:#fff;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:20px;
+  border-radius:20px;
+  min-height:140px;
+  position:relative;
+  background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15);
+  background-size:400% 400%;
+  animation:gradientBG 15s ease infinite;
+  color:#fff;
+  text-shadow:0 0 10px #000;
+}
+
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align:center;
+  padding:20px;
+  background:#111;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:768px) {
   .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+    display:none;
+    flex-direction:column;
+    width:100%;
+    background:#111;
+    position:absolute;
+    top:60px;
+    left:0;
+    z-index:1000;
   }
-
-  .nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-
-  .nav-links li a:hover {
-    color: #ffcc00;
-  }
-
-  /* Hamburger menu */
-  .hamburger {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #ffcc00;
-  }
-
-  /* Responsive: Mobile menu */
-  @media (max-width: 768px) {
-    .nav-links {
-      position: absolute;
-      top: 60px;
-      left: -100%;
-      flex-direction: column;
-      background: #111;
-      width: 100%;
-      text-align: center;
-      transition: left 0.3s ease-in-out;
-    }
-
-    .nav-links.active {
-      left: 0;
-    }
-
-    .nav-links li {
-      margin: 15px 0;
-    }
-
-    .hamburger {
-      display: block;
-    }
-  }
-
-  /* Wrapper for image */
-  .img-wrapper {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    border-radius: 10px; 
-    background: #111;
-    box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
-  }
-
-  .director-img {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    padding: 10px;
-    background: #111;
-    object-fit: contain; 
-    object-position: center;
-    border: 4px solid #ffcc00;
-    box-shadow: 0 0 20px #ffcc00;
-    transition: transform 0.5s, box-shadow 0.5s;
-    animation: float 4s ease-in-out infinite;
-  }
-
-  .director-img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px #ffcc00, 0 0 80px #ff9900;
-    filter: brightness(1.2);
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-  }
-
-  .container {
-    text-align: center;
-    padding: 60px 20px;
-  }
-
-  /* Message box */
-  .message {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    color: #fff;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    border-left: 5px solid #ffcc00;
-    background: rgba(255, 204, 0, 0.1);
-    border-radius: 10px;
-    min-height: 140px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .message::after {
-    content: '|';
-    position: absolute;
-    right: 10px;
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%,50%,100% { opacity: 1; }
-    25%,75% { opacity: 0; }
-  }
-
-  /* Rating */
-  .rating {
-    margin-top: 20px;
-    font-size: 2rem;
-    color: gold;
-    font-weight: bold;
-  }
-  .star {
-    display: inline-block;
-    animation: sparkle 1.5s infinite;
-  }
-  @keyframes sparkle {
-    0%,100% { text-shadow: 0 0 5px gold, 0 0 15px gold; }
-    50% { text-shadow: 0 0 20px #fff700, 0 0 30px #ffcc00; }
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    margin-top: 50px;
-  }
-
-  .social a {
-    text-decoration: none;
-    color: #ffcc00;
-    margin: 0 10px;
-    display: inline-block;
-  }
-
+  .nav-links.active { display:flex; }
+  .hamburger { display:block; }
+}
 </style>
 </head>
 <body>
 
-<!-- Particle Canvas -->
+<!-- PARTICLE CANVAS -->
 <canvas id="particles"></canvas>
 
-<header>
-  <nav class="navbar">
-    <div class="logo">Advanced Academy™</div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Advanced Academy™</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
+</nav>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="teachers.html">Teachers</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="reviews.html">Students Reviews</a></li>
-      <li><a href="Administration.html">Administration</a></li>
-      <li><a href="admission.html">Admission</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-
-    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-  </nav>
-</header>
-
+<!-- DIRECTOR SECTION -->
 <div class="container">
-
   <div class="img-wrapper">
     <img src="IMG-20260407-WA0175.jpg" alt="Mr. Manoj Ruhela" class="director-img">
   </div>
-
   <div class="message" id="message"></div>
-
-  <div class="rating" id="rating">
-    <span class="star">⭐</span><span class="star">⭐</span>
-    <span class="star">⭐</span><span class="star">⭐</span>
-    <span class="star">⭐</span> 
-  </div>
-
 </div>
 
-<!-- JS: Typewriter + Particles + Hamburger -->
-<script>
-  // Typewriter effect
-  const text = "Dear Parents, Greetings! I am Mr. Manoj Ruhela, and it gives me immense pleasure to begin this journey with our talented students. Together, we will achieve excellence and unlock every student's true potential. Let's make learning an unforgettable experience!";
-  const messageEl = document.getElementById('message');
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      messageEl.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 40);
-    }
-  }
-  window.onload = typeWriter;
-
-  // Particle animation
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let w = canvas.width = window.innerWidth;
-  let h = canvas.height = window.innerHeight;
-
-  const particlesArray = [];
-  const colors = ['#ffcc00', '#fff700', '#ff9900'];
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * w;
-      this.y = Math.random() * h;
-      this.size = Math.random() * 3 + 1;
-      this.speedX = Math.random() * 1 - 0.5;
-      this.speedY = Math.random() * 1 - 0.5;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if (this.x < 0 || this.x > w) this.speedX *= -1;
-      if (this.y < 0 || this.y > h) this.speedY *= -1;
-    }
-    draw() {
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    for (let i = 0; i < 100; i++) {
-      particlesArray.push(new Particle());
-    }
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, w, h);
-    particlesArray.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    requestAnimationFrame(animateParticles);
-  }
-
-  window.addEventListener('resize', () => {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  });
-
-  initParticles();
-  animateParticles();
-
-  // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-</script>
-
+<!-- FOOTER -->
 <footer>
   <p>© 2026 Advanced Academy Shamli</p>
-  <p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨 BMW M Competition Level Design</p>
-  <div class="social">
-    <a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
-      <i class="fas fa-phone"></i> Just Dial
-    </a>
-  </div>
+  <p>© Designed & Created by <strong>TANISHQ</strong></p>
 </footer>
+
+<!-- TYPEWRITER + PARTICLE JS -->
+<script>
+const text = "Dear Parents, Greetings! I am Mr. Manoj Ruhela, and it gives me immense pleasure to begin this journey with our talented students. Together, we will achieve excellence and unlock every student's true potential. Let's make learning an unforgettable experience!";
+const messageEl = document.getElementById('message');
+let i = 0;
+function typeWriter() {
+  if(i < text.length) {
+    messageEl.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
+}
+window.onload = typeWriter;
+
+// PARTICLES
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+const particlesArray = [];
+const colors = ['#ffcc00','#fff700','#ff9900'];
+
+class Particle {
+  constructor() {
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.size = Math.random()*3 +1;
+    this.speedX = Math.random()*1 -0.5;
+    this.speedY = Math.random()*1 -0.5;
+    this.color = colors[Math.floor(Math.random()*colors.length)];
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x<0||this.x>w) this.speedX*=-1;
+    if(this.y<0||this.y>h) this.speedY*=-1;
+  }
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  for(let i=0;i<100;i++) particlesArray.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0,0,w,h);
+  particlesArray.forEach(p=>{p.update(); p.draw();});
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;});
+
+initParticles();
+animateParticles();
+
+// MOBILE MENU
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click',()=>{navLinks.classList.toggle('active');});
+</script>
 
 </body>
 </html>
