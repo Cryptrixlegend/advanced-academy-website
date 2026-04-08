@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Director - Mr. Manoj Ruhela</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 /* ===== BODY & BACKGROUND ===== */
 body {
@@ -33,12 +34,12 @@ body {
 .nav-links { list-style:none; display:flex; gap:18px; }
 .nav-links a { color:#fff; text-decoration:none; font-weight:bold; transition:0.3s; }
 .nav-links a:hover { color:#ffcc00; }
-
-/* Hamburger for mobile */
 .hamburger { display:none; font-size:1.5rem; cursor:pointer; color:#fff; }
 
 /* ===== CONTAINER ===== */
-.container { text-align:center; padding:60px 20px; }
+.container { text-align:center; padding:60px 20px; animation:fadeIn 1.2s ease; }
+
+@keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
 /* ===== DIRECTOR IMAGE ===== */
 .img-wrapper {
@@ -70,58 +71,51 @@ body {
 
 @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
 
+/* ===== DIRECTOR NAME & TITLE ===== */
+.director-name { font-size:2.2rem; margin-bottom:5px; }
+.director-title { color:#ffcc00; font-weight:bold; margin-bottom:20px; }
+.director-intro { max-width:700px; margin:20px auto; color:#ddd; line-height:1.6; opacity:0; transform:translateY(30px); transition:1s ease; }
+
 /* ===== HERO MESSAGE ===== */
 .message {
   margin-top:30px;
-  font-size:1.5rem;
-  color:#fff;
-  max-width:700px;
+  font-size:1.4rem;
+  max-width:750px;
   margin-left:auto;
   margin-right:auto;
-  padding:20px;
+  padding:25px;
   border-radius:20px;
-  min-height:140px;
-  position:relative;
-  background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15);
-  background-size:400% 400%;
-  animation:gradientBG 15s ease infinite;
-  color:#fff;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+  line-height:1.6;
   text-shadow:0 0 10px #000;
+  opacity:0; transform:translateY(30px); transition:1s ease;
 }
 
-@keyframes gradientBG {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
+/* ===== BLINKING CURSOR ===== */
+.cursor { display:inline-block; width:1ch; background:#ffcc00; margin-left:2px; animation:blink 1s infinite; }
+@keyframes blink { 0%,50%,100% {opacity:1;} 25%,75% {opacity:0;} }
+
+/* ===== STATS ===== */
+.stats { margin-top:40px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+.stat-box { background:#111; padding:20px; border-radius:15px; min-width:150px; box-shadow:0 0 15px rgba(255,204,0,0.3); transition:0.3s; opacity:0; transform:translateY(30px); }
+.stat-box:hover { transform:translateY(-5px); }
 
 /* ===== FOOTER ===== */
-footer {
-  text-align:center;
-  padding:20px;
-  background:#111;
-}
+footer { text-align:center; padding:20px; background:#111; }
 
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width:768px) {
-  .nav-links {
-    display:none;
-    flex-direction:column;
-    width:100%;
-    background:#111;
-    position:absolute;
-    top:60px;
-    left:0;
-    z-index:1000;
-  }
+  .nav-links { display:none; flex-direction:column; width:100%; background:#111; position:absolute; top:60px; left:0; z-index:1000; }
   .nav-links.active { display:flex; }
   .hamburger { display:block; }
 }
+
 </style>
 </head>
 <body>
 
-<!-- PARTICLE CANVAS -->
 <canvas id="particles"></canvas>
 
 <!-- NAVBAR -->
@@ -142,91 +136,95 @@ footer {
   <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- DIRECTOR SECTION -->
 <div class="container">
+
+  <h1 class="director-name">Mr. Manoj Ruhela</h1>
+  <p class="director-title">Director, Advanced Academy</p>
+
   <div class="img-wrapper">
     <img src="MANOJ SIR .jpg" alt="Mr. Manoj Ruhela" class="director-img">
   </div>
+
+  <p class="director-intro">With years of dedication in education, our director has guided hundreds of students toward success. His vision is to create a learning environment where every student can grow and achieve excellence.</p>
+
+  <h2 style="color:#ffcc00;">Message from Director</h2>
   <div class="message" id="message"></div>
+
+  <div class="stats">
+    <div class="stat-box"><h2>10+</h2><p>Years Experience</p></div>
+    <div class="stat-box"><h2>1000+</h2><p>Students Taught</p></div>
+    <div class="stat-box"><h2>95%</h2><p>Success Rate</p></div>
+  </div>
+
 </div>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Advanced Academy Shamli</p>
   <p>© Designed & Created by <strong>TANISHQ</strong> 🏎️💨 BMW M Competition Level Design</p>
 </footer>
-  
-<!-- WHATSAPP BUTTON (PRESERVED) -->
+
 <a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
-  
-<!-- TYPEWRITER + PARTICLE JS -->
+
 <script>
+/* ===== TYPEWRITER WITH BLINKING CURSOR ===== */
 const text = "Dear Parents, Greetings! I am Mr. Manoj Ruhela, and it gives me immense pleasure to begin this journey with our talented students. Together, we will achieve excellence and unlock every student's true potential. Let's make learning an unforgettable experience!";
 const messageEl = document.getElementById('message');
 let i = 0;
+const cursor = document.createElement('span');
+cursor.classList.add('cursor');
+messageEl.appendChild(cursor);
+
 function typeWriter() {
   if(i < text.length) {
-    messageEl.innerHTML += text.charAt(i);
+    messageEl.innerHTML = text.substring(0,i);
+    messageEl.appendChild(cursor);
     i++;
-    setTimeout(typeWriter,40);
-  }
+    let speed = Math.random()*40+20;
+    if(text.charAt(i)=='.'||text.charAt(i)==',') speed+=200;
+    setTimeout(typeWriter,speed);
+  } else { cursor.style.display='none'; }
 }
-window.onload = typeWriter;
 
-// PARTICLES
+/* ===== PARTICLES ===== */
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = window.innerHeight;
-
 const particlesArray = [];
 const colors = ['#ffcc00','#fff700','#ff9900'];
-
 class Particle {
-  constructor() {
-    this.x = Math.random()*w;
-    this.y = Math.random()*h;
-    this.size = Math.random()*3 +1;
-    this.speedX = Math.random()*1 -0.5;
-    this.speedY = Math.random()*1 -0.5;
-    this.color = colors[Math.floor(Math.random()*colors.length)];
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x<0||this.x>w) this.speedX*=-1;
-    if(this.y<0||this.y>h) this.speedY*=-1;
-  }
-  draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-  }
+  constructor() { this.x=Math.random()*w; this.y=Math.random()*h; this.size=Math.random()*3+1; this.speedX=Math.random()*1-0.5; this.speedY=Math.random()*1-0.5; this.color=colors[Math.floor(Math.random()*colors.length)]; }
+  update() { this.x+=this.speedX; this.y+=this.speedY; if(this.x<0||this.x>w) this.speedX*=-1; if(this.y<0||this.y>h) this.speedY*=-1; }
+  draw() { ctx.fillStyle=this.color; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
 }
+function initParticles(){ for(let i=0;i<100;i++) particlesArray.push(new Particle()); }
+function animateParticles(){ ctx.clearRect(0,0,w,h); particlesArray.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateParticles); }
+window.addEventListener('resize',()=>{ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; });
+initParticles(); animateParticles();
 
-function initParticles() {
-  for(let i=0;i<100;i++) particlesArray.push(new Particle());
-}
-
-function animateParticles() {
-  ctx.clearRect(0,0,w,h);
-  particlesArray.forEach(p=>{p.update(); p.draw();});
-  requestAnimationFrame(animateParticles);
-}
-
-window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;});
-
-initParticles();
-animateParticles();
-
-// MOBILE MENU
+/* ===== MOBILE MENU ===== */
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click',()=>{navLinks.classList.toggle('active');});
+
+/* ===== SCROLL ANIMATION ===== */
+const faders = document.querySelectorAll('.director-intro, .message, .stat-box');
+const appearOptions = { threshold: 0.3, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+faders.forEach(fader=>{ appearOnScroll.observe(fader); });
+
+window.onload = typeWriter;
 </script>
 
 </body>
-</html>
+  </html>
