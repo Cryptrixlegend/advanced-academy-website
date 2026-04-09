@@ -4,8 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Director - Mr. Manoj Ruhela</title>
+
+<!-- ✅ NEW: Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<style>
+
+/* ================= NEW PREMIUM GLOBAL STYLES ================= */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: radial-gradient(circle at top, #2a2a40, #0f0f1a);
+}
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* ================= NAVBAR UPGRADE ================= */
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.6);
+  border-bottom: 1px solid rgba(255,204,0,0.2);
+  transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+  padding:10px 5%;
+  background: rgba(0,0,0,0.9);
+}
+
+.logo {
+  color:#ffcc00;
+  letter-spacing:1px;
+}
+
+/* ================= HERO ADDITION ================= */
+.hero {
+  text-align:center;
+  padding:80px 20px 40px;
+  animation:fadeIn 1s ease;
+}
+
+.hero h1 {
+  font-size:2.8rem;
+  background: linear-gradient(90deg,#ffcc00,#ff9900);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p {
+  color:#ccc;
+  margin-top:10px;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  margin-top:25px;
+}
+
+.btn {
+  display:inline-block;
+  padding:12px 25px;
+  margin:10px;
+  border-radius:30px;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.btn-primary {
+  background:#ffcc00;
+  color:#000;
+}
+
+.btn-primary:hover {
+  background:#ff9900;
+  transform:translateY(-3px);
+}
+
+.btn-secondary {
+  border:1px solid #ffcc00;
+  color:#ffcc00;
+}
+
+.btn-secondary:hover {
+  background:#ffcc00;
+  color:#000;
+}
+
+/* ================= DIRECTOR CARD ENHANCEMENT ================= */
+.container {
+  backdrop-filter: blur(8px);
+}
+
+/* ================= MESSAGE GLASS UPGRADE ================= */
+.message {
+  box-shadow:0 0 40px rgba(255,204,0,0.15);
+}
+
+/* ================= STATS HOVER PREMIUM ================= */
+.stat-box:hover {
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 0 30px rgba(255,204,0,0.6);
+}
+
+/* ================= WHATSAPP BUTTON UPGRADE ================= */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  font-size:22px;
+  color:#fff;
+  box-shadow:0 0 15px rgba(0,255,100,0.5);
+  transition:0.3s;
+}
+
+.whatsapp:hover {
+  transform:scale(1.1);
+}
+
+/* ================= MOBILE IMPROVEMENT ================= */
+@media(max-width:768px){
+  .hero h1 { font-size:2rem; }
+}
+
+</style>
+
+<!-- ================= YOUR ORIGINAL STYLE (UNCHANGED) ================= -->
 <style>
 /* ===== BODY & BACKGROUND ===== */
 body {
@@ -98,6 +227,155 @@ body {
 @keyframes blink { 0%,50%,100% {opacity:1;} 25%,75% {opacity:0;} }
 
 /* ===== STATS ===== */
+.stats { margin-top:40px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+.stat-box { background:#111; padding:20px; border-radius:15px; min-width:150px; box-shadow:0 0 15px rgba(255,204,0,0.3); transition:0.3s; opacity:0; transform:translateY(30px); }
+.stat-box:hover { transform:translateY(-5px); }
+
+/* ===== FOOTER ===== */
+footer { text-align:center; padding:20px; background:#111; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width:768px) {
+  .nav-links { display:none; flex-direction:column; width:100%; background:#111; position:absolute; top:60px; left:0; z-index:1000; }
+  .nav-links.active { display:flex; }
+  .hamburger { display:block; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- ✅ NEW HERO -->
+<section class="hero">
+  <h1>Meet Our Director</h1>
+  <p>Vision • Leadership • Excellence</p>
+
+  <div class="cta-buttons">
+    <a href="admission.html" class="btn btn-primary">Apply Now</a>
+    <a href="contact.html" class="btn btn-secondary">Contact</a>
+  </div>
+</section>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Advanced Academy™</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
+</nav>
+
+<div class="container">
+
+  <h1 class="director-name">Mr. Manoj Ruhela</h1>
+  <p class="director-title">Director, Advanced Academy</p>
+
+  <div class="img-wrapper">
+    <img src="MANOJ SIR .jpg" alt="Mr. Manoj Ruhela" class="director-img">
+  </div>
+
+  <p class="director-intro">With years of dedication in education, our director has guided hundreds of students toward success. His vision is to create a learning environment where every student can grow and achieve excellence.</p>
+
+  <h2 style="color:#ffcc00;">Message from Director</h2>
+  <div class="message" id="message"></div>
+
+  <div class="stats">
+    <div class="stat-box"><h2>10+</h2><p>Years Experience</p></div>
+    <div class="stat-box"><h2>1000+</h2><p>Students Taught</p></div>
+    <div class="stat-box"><h2>95%</h2><p>Success Rate</p></div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Advanced Academy Shamli</p>
+  <p>© Designed & Created by <strong>TANISHQ</strong></p>
+</footer>
+
+<a href="https://wa.me/917055557339" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+
+/* ================= NEW NAVBAR SCROLL EFFECT ================= */
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* ===== TYPEWRITER WITH BLINKING CURSOR ===== */
+const text = "Dear Parents, Greetings! I am Mr. Manoj Ruhela, and it gives me immense pleasure to begin this journey with our talented students. Together, we will achieve excellence and unlock every student's true potential. Let's make learning an unforgettable experience!";
+const messageEl = document.getElementById('message');
+let i = 0;
+const cursor = document.createElement('span');
+cursor.classList.add('cursor');
+messageEl.appendChild(cursor);
+
+function typeWriter() {
+  if(i < text.length) {
+    messageEl.innerHTML = text.substring(0,i);
+    messageEl.appendChild(cursor);
+    i++;
+    let speed = Math.random()*40+20;
+    if(text.charAt(i)=='.'||text.charAt(i)==',') speed+=200;
+    setTimeout(typeWriter,speed);
+  } else { cursor.style.display='none'; }
+}
+
+/* ===== PARTICLES ===== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+const particlesArray = [];
+const colors = ['#ffcc00','#fff700','#ff9900'];
+class Particle {
+  constructor() { this.x=Math.random()*w; this.y=Math.random()*h; this.size=Math.random()*3+1; this.speedX=Math.random()*1-0.5; this.speedY=Math.random()*1-0.5; this.color=colors[Math.floor(Math.random()*colors.length)]; }
+  update() { this.x+=this.speedX; this.y+=this.speedY; if(this.x<0||this.x>w) this.speedX*=-1; if(this.y<0||this.y>h) this.speedY*=-1; }
+  draw() { ctx.fillStyle=this.color; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+}
+function initParticles(){ for(let i=0;i<100;i++) particlesArray.push(new Particle()); }
+function animateParticles(){ ctx.clearRect(0,0,w,h); particlesArray.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateParticles); }
+window.addEventListener('resize',()=>{ w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; });
+initParticles(); animateParticles();
+
+/* ===== MOBILE MENU ===== */
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click',()=>{navLinks.classList.toggle('active');});
+
+/* ===== SCROLL ANIMATION ===== */
+const faders = document.querySelectorAll('.director-intro, .message, .stat-box');
+const appearOptions = { threshold: 0.3, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, appearOptions);
+faders.forEach(fader=>{ appearOnScroll.observe(fader); });
+
+window.onload = typeWriter;
+
+</script>
+
+</body>
+</html>/* ===== STATS ===== */
 .stats { margin-top:40px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
 .stat-box { background:#111; padding:20px; border-radius:15px; min-width:150px; box-shadow:0 0 15px rgba(255,204,0,0.3); transition:0.3s; opacity:0; transform:translateY(30px); }
 .stat-box:hover { transform:translateY(-5px); }
