@@ -7,31 +7,94 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ===== GALLERY SLIDER ===== */
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #121212; /* dark but not full black */
+  color: #fff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: #1a1a1a;
+}
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s;
+}
+.nav-links li a:hover {
+  color: #1ed760;
+}
+
+/* ===== GALLERY BOX ===== */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.gallery h1 {
+  text-align: center;
+  padding: 15px 40px;
+  font-size: 36px;
+  border-radius: 15px;
+  animation: colorShift 6s infinite alternate;
+  box-shadow: 0 0 20px #1ed760, 0 0 40px #1ed760 inset;
+}
+
+@keyframes colorShift {
+  0% { background: #0f0; color: #000; box-shadow: 0 0 20px #0f0, 0 0 40px #0f0 inset;}
+  25% { background: #0ff; color: #000; box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;}
+  50% { background: #ff0; color: #000; box-shadow: 0 0 20px #ff0, 0 0 40px #ff0 inset;}
+  75% { background: #f0f; color: #000; box-shadow: 0 0 20px #f0f, 0 0 40px #f0f inset;}
+  100% { background: #1ed760; color: #000; box-shadow: 0 0 20px #1ed760, 0 0 40px #1ed760 inset;}
+}
+
+/* ===== SLIDER ===== */
 .slider {
   position: relative;
+  width: 90%;
   max-width: 900px;
-  height: 500px; /* fixed height to avoid page jump */
-  margin: 40px auto;
+  height: 500px;
+  margin-top: 40px;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-  background: #111;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  background: #1a1a1a;
 }
 
 .slides {
   display: flex;
+  height: 100%;
   transition: transform 1s ease-in-out;
 }
 
 .slides img {
   width: 100%;
+  height: 100%;
+  object-fit: contain; /* ensures full image visible */
   flex-shrink: 0;
-  object-fit: contain;
-  cursor: pointer;
   border-radius: 10px;
+  cursor: pointer;
   transition: transform 0.5s, filter 0.5s;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .slides img:hover {
@@ -39,26 +102,24 @@
   filter: brightness(1.1);
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
 .prev, .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
+  background: rgba(30, 215, 96, 0.7);
+  color: #fff;
   border: none;
   padding: 12px 15px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
   border-radius: 50%;
-  transition: 0.3s;
   z-index: 10;
+  transition: 0.3s;
 }
-
 .prev:hover, .next:hover {
-  background: rgba(0,0,0,0.9);
+  background: rgba(30, 215, 96, 1);
 }
-
 .prev { left: 15px; }
 .next { right: 15px; }
 
@@ -66,10 +127,8 @@
 .lightbox {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.95);
   justify-content: center;
   align-items: center;
@@ -80,7 +139,7 @@
   max-height: 85%;
   border-radius: 10px;
   animation: zoomIn 0.4s ease;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.7);
 }
 .lightbox .close {
   position: absolute;
@@ -105,12 +164,39 @@
 .light-prev:hover, .light-next:hover {
   background: rgba(255,255,255,0.5);
 }
-.light-prev { left: 20px; }
-.light-next { right: 20px; }
 
 @keyframes zoomIn {
   from { transform: scale(0.7); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 25px;
+  text-align: center;
+  background: #1a1a1a;
+}
+footer .social a {
+  color: #1ed760;
+  text-decoration: none;
+  margin-left: 15px;
+}
+.whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 22px;
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+  .slider { height: 300px; }
+  .gallery h1 { font-size: 28px; padding: 12px 25px; }
 }
 </style>
 </head>
@@ -129,7 +215,7 @@
       <li><a href="Administration.html">Administration</a></li>
       <li><a href="admission.html">Admission</a></li>
       <li><a href="contact.html">Contact</a></li>
-    </ul>
+</ul>
 <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 </header>
@@ -160,7 +246,7 @@
 <button class="next"><i class="fas fa-chevron-right"></i></button>
 </div>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
 <span class="close">&times;</span>
 <img class="lightbox-img" id="lightbox-img">
@@ -181,46 +267,26 @@
 // ===== NAVBAR HAMBURGER =====
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-// ===== INFINITE LOOP SLIDER =====
+// ===== INFINITE SLIDER =====
 const slidesContainer = document.getElementById('slides-container');
-const slides = Array.from(document.querySelectorAll('.slides .slide'));
+const slides = Array.from(slidesContainer.children);
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
-
 let currentIndex = 0;
 
-// Clone slides for infinite loop
+// Clone for seamless infinite
 slides.forEach(slide => slidesContainer.appendChild(slide.cloneNode(true)));
 const totalSlides = slidesContainer.children.length;
 
-// Update slide transform
 function moveToSlide(index) {
-  const offset = -index * 100;
   slidesContainer.style.transition = 'transform 1s ease-in-out';
-  slidesContainer.style.transform = `translateX(${offset}%)`;
+  slidesContainer.style.transform = `translateX(${-index * 100}%)`;
 }
 
-// Auto-slide infinite
+// Auto slide
 let slideInterval = setInterval(() => {
-  currentIndex++;
-  moveToSlide(currentIndex);
-  // reset without animation
-  if (currentIndex >= totalSlides / 2) {
-    setTimeout(() => {
-      slidesContainer.style.transition = 'none';
-      currentIndex = 0;
-      moveToSlide(currentIndex);
-    }, 1000); // match transition duration
-  }
-}, 5000);
-
-// Next / Prev buttons
-nextBtn.addEventListener('click', () => {
-  clearInterval(slideInterval);
   currentIndex++;
   moveToSlide(currentIndex);
   if (currentIndex >= totalSlides / 2) {
@@ -230,51 +296,42 @@ nextBtn.addEventListener('click', () => {
       moveToSlide(currentIndex);
     }, 1000);
   }
+}, 5000);
+
+// Buttons
+nextBtn.addEventListener('click', () => {
+  clearInterval(slideInterval);
+  currentIndex++;
+  moveToSlide(currentIndex);
+  if (currentIndex >= totalSlides / 2) {
+    setTimeout(() => { slidesContainer.style.transition='none'; currentIndex=0; moveToSlide(currentIndex); },1000);
+  }
 });
 
 prevBtn.addEventListener('click', () => {
   clearInterval(slideInterval);
   currentIndex--;
   if (currentIndex < 0) {
-    slidesContainer.style.transition = 'none';
+    slidesContainer.style.transition='none';
     currentIndex = totalSlides / 2 - 1;
     moveToSlide(currentIndex);
-    setTimeout(() => {
-      slidesContainer.style.transition = 'transform 1s ease-in-out';
-    }, 50);
-  } else {
-    moveToSlide(currentIndex);
-  }
+    setTimeout(()=>{slidesContainer.style.transition='transform 1s ease-in-out';},50);
+  } else moveToSlide(currentIndex);
 });
 
-// ===== LIGHTBOX FUNCTIONALITY =====
+// ===== LIGHTBOX =====
 const lightbox = document.getElementById('lightbox');
 const lightImg = document.getElementById('lightbox-img');
 const lightClose = document.querySelector('.lightbox .close');
 const lightPrev = document.querySelector('.light-prev');
 const lightNext = document.querySelector('.light-next');
+const originalSlides = slides.slice(0, slides.length / 2);
 
-const originalSlides = Array.from(document.querySelectorAll('.slides .slide')).slice(0, slides.length / 2);
-
-originalSlides.forEach((slide, index) => {
-  slide.addEventListener('click', () => {
-    lightbox.style.display = 'flex';
-    lightImg.src = slide.src;
-    currentIndex = index;
-  });
-});
-
-lightClose.addEventListener('click', () => { lightbox.style.display = 'none'; });
-lightNext.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % originalSlides.length;
-  lightImg.src = originalSlides[currentIndex].src;
-});
-lightPrev.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + originalSlides.length) % originalSlides.length;
-  lightImg.src = originalSlides[currentIndex].src;
-});
-
-lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
+originalSlides.forEach((slide,i)=>slide.addEventListener('click',()=>{lightbox.style.display='flex'; lightImg.src=slide.src; currentIndex=i;}));
+lightClose.addEventListener('click',()=>lightbox.style.display='none');
+lightNext.addEventListener('click',()=>{currentIndex=(currentIndex+1)%originalSlides.length; lightImg.src=originalSlides[currentIndex].src;});
+lightPrev.addEventListener('click',()=>{currentIndex=(currentIndex-1+originalSlides.length)%originalSlides.length; lightImg.src=originalSlides[currentIndex].src;});
+lightbox.addEventListener('click',e=>{if(e.target===lightbox) lightbox.style.display='none';});
 </script>
 </body>
 </html>
