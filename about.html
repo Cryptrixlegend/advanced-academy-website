@@ -5,52 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="About Advanced Academy Shamli - Mission, Vision & Director Message.">
 <title>About - Advanced Academy Shamli</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
-/* ===== GENERAL ===== */
-body{margin:0;font-family:'Poppins',sans-serif;background:#fff;color:#111;overflow-x:hidden;}
-a{text-decoration:none;color:inherit;}
-button,a.btn{cursor:pointer;transition:all 0.3s ease;}
-h1,h2,h3{margin:0;}
+
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif;
+  background:#0b0f1a;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== BACKGROUND GRADIENT MESH ===== */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background: radial-gradient(circle at 20% 20%, #4F46E5, transparent 40%),
+              radial-gradient(circle at 80% 30%, #22C55E, transparent 40%),
+              radial-gradient(circle at 50% 80%, #FACC15, transparent 40%);
+  opacity:0.25;
+  animation: moveBG 15s ease-in-out infinite alternate;
+  z-index:-2;
+}
+
+@keyframes moveBG{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(20px,30px) scale(1.1);}
+}
 
 /* ===== NAVBAR ===== */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px 5%;background:#4F46E5;position:sticky;top:0;z-index:100;}
-.navbar .logo{font-weight:bold;font-size:24px;color:#fff;}
-.nav-links{list-style:none;display:flex;gap:20px;}
-.nav-links li a{color:#fff;font-weight:500;}
-.hamburger{display:none;font-size:22px;cursor:pointer;color:#fff;}
-@media(max-width:768px){.nav-links{display:none;flex-direction:column;background:#4F46E5;position:absolute;top:60px;right:0;width:200px;padding:15px;border-radius:0 0 8px 8px;}.nav-links.active{display:flex;}.hamburger{display:block;}}
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 6%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  transition:0.4s;
+}
 
-/* ===== ABOUT SECTION ===== */
-.about-section{padding:50px 5%;max-width:1200px;margin:0 auto;}
-.about-section h1{text-align:center;color:#4F46E5;margin-bottom:50px;}
+.navbar.scrolled{
+  background:rgba(10,15,30,0.7);
+  backdrop-filter:blur(15px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
 
-/* ABOUT BOXES */
-.about-box{background:#F3F4F6;position:relative;margin-bottom:40px;padding:30px;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.1);opacity:0;transform:translateY(50px);transition:all 1s ease;}
-.about-box h2{color:#4F46E5;margin-bottom:15px;}
-.about-box p{line-height:1.6;font-size:16px;color:#111;}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  font-weight:700;
+  color:#fff;
+}
 
-/* RGB LIGHTS */
-.rgb-light{position:absolute;width:200px;height:200px;border-radius:50%;filter:blur(100px);opacity:0.3;animation:rgbMove 6s infinite alternate;}
-.rgb-light:nth-child(1){background:#4F46E5;top:-50px;left:-50px;}
-.rgb-light:nth-child(2){background:#22C55E;bottom:-60px;right:-60px;}
-.rgb-light:nth-child(3){background:#FACC15;top:30%;left:50%;transform:translateX(-50%);}
-@keyframes rgbMove{0%{transform:translate(0,0);}100%{transform:translate(20px,20px);}}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
 
-/* FADE IN */
-.fade-in{opacity:0;transform:translateY(50px);transition:all 1s ease;}
-.fade-in.show{opacity:1;transform:translateY(0);}
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  opacity:0.8;
+  transition:0.3s;
+}
 
-/* FOOTER */
-footer{text-align:center;padding:20px;background:#4F46E5;color:#fff;box-shadow:0 -5px 20px rgba(0,0,0,0.2);}
-footer .social a{margin:0 10px;color:#fff;text-decoration:none;}
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#22C55E;color:#fff;padding:15px;border-radius:50%;font-size:22px;animation:float 2s infinite;}
-@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+.nav-links a:hover{
+  opacity:1;
+  color:#4F46E5;
+}
 
-/* RESPONSIVE */
-@media(max-width:768px){.about-box{padding:20px;}}
+.hamburger{
+  display:none;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ===== SECTION ===== */
+.about-section{
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 20px;
+}
+
+.about-section h1{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  margin-bottom:60px;
+}
+
+/* ===== GLASS CARDS ===== */
+.about-box{
+  position:relative;
+  margin-bottom:40px;
+  padding:35px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.1);
+  transform:translateY(40px);
+  opacity:0;
+  transition:all 0.8s ease;
+}
+
+.about-box.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.about-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.about-box h2{
+  font-family:'Playfair Display',serif;
+  margin-bottom:15px;
+  color:#fff;
+}
+
+.about-box p{
+  line-height:1.7;
+  opacity:0.85;
+}
+
+/* ===== SOFT LIGHT GLOWS ===== */
+.glow{
+  position:absolute;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  filter:blur(90px);
+  opacity:0.25;
+  animation:float 8s ease-in-out infinite;
+  z-index:-1;
+}
+
+.glow.blue{background:#4F46E5;top:-40px;left:-40px;}
+.glow.green{background:#22C55E;bottom:-40px;right:-40px;}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+  100%{transform:translateY(0);}
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:25px;
+  margin-top:80px;
+  background:rgba(0,0,0,0.3);
+  backdrop-filter:blur(10px);
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22C55E;
+  color:#fff;
+  padding:15px;
+  border-radius:50%;
+  font-size:22px;
+  animation:float 2s infinite;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:70px;
+    right:20px;
+    flex-direction:column;
+    background:rgba(0,0,0,0.9);
+    padding:15px;
+    border-radius:10px;
+  }
+  .nav-links.active{display:flex;}
+  .hamburger{display:block;}
+}
+
 </style>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
@@ -74,88 +224,72 @@ footer .social a{margin:0 10px;color:#fff;text-decoration:none;}
 </nav>
 </header>
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 <section class="about-section">
-<h1>About Advanced Academy Shamli 🎓</h1>
 
-<div class="about-box fade-in">
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
+<h1>About Advanced Academy Shamli</h1>
+
+<!-- Mission -->
+<div class="about-box">
+<div class="glow blue"></div>
 <h2>Our Mission 🚀</h2>
-<p>
-Delivering high-quality education with innovative teaching techniques, personalized mentorship, 
-and continuous support so that every student can unlock their true potential and excel beyond limits. 
-We aim to set the benchmark for coaching institutes across India.
-</p>
+<p>To provide high-quality education with modern teaching methods, personalized mentorship, and continuous academic support so that every student can achieve excellence and unlock their full potential.</p>
 </div>
 
-<div class="about-box fade-in">
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
+<!-- Vision -->
+<div class="about-box">
+<div class="glow green"></div>
 <h2>Our Vision 🌟</h2>
-<p>
-To become the most trusted and result-oriented coaching institute in India, known for shaping 
-confident individuals ready to conquer their dreams. We envision a generation of toppers, achievers, 
-and leaders who represent the excellence of Indian education worldwide.
-</p>
+<p>To become one of India’s most trusted coaching institutes, empowering students to become confident achievers, toppers, and future leaders.</p>
 </div>
 
-<div class="about-box fade-in">
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
+<!-- Director -->
+<div class="about-box">
 <h2>Director's Message 💡</h2>
-<p>
-At Advanced Academy Shamli, we believe every student has the power to achieve greatness. 
-With the right guidance, dedication, and mindset, success is inevitable. 
-Join us and take the first step towards a brighter, stronger future.
-</p>
+<p>Every student has the ability to succeed. With the right guidance, discipline, and mindset, success becomes a natural outcome. We are committed to shaping brighter futures.</p>
 </div>
 
-<div class="about-box fade-in">
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
-<div class="rgb-light"></div>
-<h2>Developer's Note 🛠️ /🏎️</h2>
-<p>
-This platform is crafted with passion and precision to deliver the best experience for students. 
-Designed and developed by Tanishq, with a vision to create something powerful, impactful, and truly next-level. 
-Keep learning, keep growing — and aim for nothing less than excellence. 🖤
-<br><br>
-Dream Big. Work Hard. Stay Focused. 
-One day — BMW M Competition & Porsche 911 Turbo S will be waiting for you. 🏎️
-</p>
-</div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-<p>© 2026 Advanced Academy Shamli</p>
-<div class="social">
-<a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank"><i class="fas fa-phone"></i> Just Dial</a>
-</div>
+© 2026 Advanced Academy Shamli
 </footer>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/917055557339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/917055557339" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
-// Hamburger toggle
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-hamburger.addEventListener("click", ()=>{navLinks.classList.toggle("active");});
 
-// Fade-in on scroll
-const faders = document.querySelectorAll('.fade-in');
-const appearOptions = {threshold:0.1};
-const appearOnScroll = new IntersectionObserver((entries, observer)=>{
-entries.forEach(entry=>{
-  if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target);}
+// hamburger
+const hamburger=document.querySelector(".hamburger");
+const nav=document.querySelector(".nav-links");
+
+hamburger.addEventListener("click",()=>{
+  nav.classList.toggle("active");
 });
-}, appearOptions);
-faders.forEach(fader=>{appearOnScroll.observe(fader);});
+
+// scroll animation
+const boxes=document.querySelectorAll(".about-box");
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+
+boxes.forEach(b=>observer.observe(b));
+
+// navbar scroll effect
+window.addEventListener("scroll",()=>{
+  document.querySelector(".navbar")
+  .classList.toggle("scrolled",window.scrollY>50);
+});
+
 </script>
 
 </body>
