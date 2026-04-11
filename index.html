@@ -7,6 +7,7 @@
 <meta name="description" content="Advanced Academy Shamli - Best coaching institute for classes 9 to 12 and competitive exams.">
 
 <meta name="google-site-verification" content="OuYR-eu_5xxOOorzbn_TP1UIHD2GacmE6KH_-RIIfJg" />
+
 <link rel="icon" href="cropped%20(1).jpg" type="image/jpeg">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,131 +18,68 @@
 
 /* ===== GLOBAL ===== */
 body {
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-  background:#f9fafb;
-  cursor: none;
+font-family: 'Poppins', sans-serif;
+scroll-behavior: smooth;
 }
-
-/* ===== CURSOR GLOW ===== */
-.cursor {
-  width: 20px;
-  height: 20px;
-  background: rgba(34,197,94,0.8);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 99999;
-  box-shadow: 0 0 20px rgba(34,197,94,0.8);
-}
-
-/* ===== LOADER FIX ===== */
-#quantum-loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg,#4F46E5,#22C55E);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:99999;
-  transition:opacity 0.5s ease;
-}
-.loader-box { text-align:center; color:#fff; }
-.spinner {
-  width:65px; height:65px;
-  border:5px solid rgba(255,255,255,0.3);
-  border-top:5px solid #fff;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-@keyframes spin {100%{transform:rotate(360deg);}}
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: rgba(79,70,229,0.6);
-  backdrop-filter: blur(12px);
+background: #4F46E5;
+backdrop-filter: none;
 }
 
 /* ===== BUTTON ===== */
 .btn {
-  background: linear-gradient(135deg,#6366F1,#22C55E);
-  color:#fff;
-  transition:0.3s;
+background: linear-gradient(135deg,#6366F1,#22C55E);
+color: #fff;
+border: none;
+transition: 0.3s;
 }
+
 .btn:hover {
-  transform: scale(1.08);
-  box-shadow:0 15px 35px rgba(0,0,0,0.3);
+transform: scale(1.05);
+box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* ===== HERO VIDEO SUPPORT ===== */
-.hero {
-  position: relative;
-  overflow:hidden;
-}
-.hero video {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* overlay */
-.hero::before {
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.55);
-  top:0;
-  left:0;
-}
-
-/* ===== CARDS ===== */
+/* ===== CARD ===== */
 .card, .course-card {
-  transition:0.4s;
+transition: 0.3s;
 }
+
 .card:hover, .course-card:hover {
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:0 25px 50px rgba(0,0,0,0.25);
+transform: translateY(-8px);
+box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-/* ===== DARK MODE ===== */
-.dark-mode {
-  background:#0f172a;
-  color:#fff;
+/* ===== HERO ===== */
+.hero-text {
+animation: fadeUp 1s ease;
 }
 
-/* ===== TESTIMONIAL ===== */
-.testimonial {
-  padding:20px;
-  background:#fff;
-  border-radius:12px;
-  margin:10px;
-  animation:fadeIn 1s ease;
-}
-@keyframes fadeIn {
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+@keyframes fadeUp {
+from {opacity:0; transform:translateY(30px);}
+to {opacity:1; transform:translateY(0);}
 }
 
-/* ===== WHATSAPP FLOATING ===== */
+/* ===== COUNTER ===== */
+.counter {
+font-size: 40px;
+}
+
+/* ===== WHATSAPP ===== */
 .whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: #fff;
-  font-size: 28px;
-  padding: 15px;
-  border-radius: 50%;
-  z-index: 999;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6);}
-  70% { box-shadow: 0 0 0 15px rgba(37,211,102,0);}
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #25D366;
+width: 55px;
+height: 55px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+box-shadow: 0 0 20px rgba(37,211,102,0.5);
 }
 
 </style>
@@ -150,22 +88,10 @@ body {
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-
-<!-- LOADER -->
+<!-- QUANTUM LOADER -->
 <div id="quantum-loader">
-  <div class="loader-box">
-    <div class="spinner"></div>
-    <h2>Advanced Academy</h2>
-    <p>Loading Experience...</p>
-  </div>
+<h1>Advanced Academy Loading...</h1>
 </div>
-
-<!-- DARK MODE TOGGLE -->
-<button onclick="toggleDark()" style="position:fixed;top:10px;right:10px;z-index:9999;">
-🌙
-</button>
 
 <!-- NAVBAR -->
 <header>
@@ -185,10 +111,11 @@ body {
 <li><a href="contact.html">Contact</a></li>
 </ul>
 
+<div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 </header>
 
-<!-- TICKER (UNCHANGED) -->
+<!-- TICKER -->
 <div class="ticker-wrapper top">
 <div class="ticker left">
 <div class="ticker-track">
@@ -196,72 +123,105 @@ body {
 <span>📢 जब तक सीखोगे नहीं, तब तक छोड़ेगे नहीं।।</span>
 <span>📢 एक ऐसी Academy जहाँ सफलता के सपने सच होते है।</span>
 <span>📢 Limited Seats Available</span>
-<span>📢 English Speaking Practice Daily </span>
+<span>📢 English Speaking Practice Daily</span>
 </div>
 </div>
 </div>
 
-<!-- HERO (VIDEO READY) -->
+<div class="ticker-wrapper bottom">
+<div class="ticker right">
+<div class="ticker-track">
+<span>🔔 Best Coaching in Shamli</span>
+<span>🔔 English Speaking Practice</span>
+<span>🔔 Book Your Demo Class Now</span>
+<span>🔔 Contact: +91 7055557339</span>
+</div>
+</div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-<video autoplay muted loop>
-<source src="_shamli _shamliup19 _up19(MP4).mp4" type="video/mp4">
-</video>
+<div class="hero-text">
+<h1>Learn English & Score Higher with Advanced Academy Shamli</h1>
+<h1>Advanced Academy Shamli - Best Coaching Institute in Shamli, Uttar Pradesh</h1>
+<a href="admission.html" class="btn">Book Free Demo</a>
+<a href="courses.html" class="btn secondary">View Courses</a>
+</div>
 
-<div class="hero-text" style="position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);color:white;text-align:center;">
-<h1>Advanced Academy Shamli</h1>
-<a class="btn" href="admission.html">Book Demo</a>
+<div class="hero-image">
+<img src="IMG-20260411-WA0005.jpg" alt="Advanced Academy">
+<img src="advanced academy 2.webp" alt="Advanced Academy">
 </div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-<div class="card">Expert Teachers</div>
-<div class="card">Proven Results</div>
-<div class="card">Interactive Classes</div>
+<h2>Why Choose Advanced Academy</h2>
+<div class="feature-grid">
+<div class="card"><i class="fas fa-user-graduate"></i><h3>Expert Teachers</h3><p>Experienced faculty dedicated to student success.</p></div>
+<div class="card"><i class="fas fa-chart-line"></i><h3>Proven Results</h3><p>Top students every year.</p></div>
+<div class="card"><i class="fas fa-chalkboard"></i><h3>Interactive Classes</h3><p>Group discussions & practical learning.</p></div>
+<div class="card"><i class="fas fa-award"></i><h3>Career Guidance</h3><p>Personality development & interview skills.</p></div>
+</div>
 </section>
 
-<!-- TESTIMONIAL SLIDER SIMPLE -->
-<section>
-<div class="testimonial">“Best coaching in Shamli!” - Student</div>
-<div class="testimonial">“Improved my English a lot” - Student</div>
+<!-- COURSES -->
+<section class="courses">
+<h2>Popular Courses</h2>
+<div class="course-grid">
+<div class="course-card">
+<h3>Spoken English & Communication</h3>
+<p>Build fluency, boost confidence, and master real-life communication.</p>
+</div>
+<div class="course-card"><h3>Class 9-10 Foundation</h3><p>Strong base in Maths, Science & English.</p></div>
+<div class="course-card"><h3>Class 11-12 Science</h3><p>Physics, Chemistry & Maths preparation.</p></div>
+<div class="course-card"><h3>Board Exam Preparation</h3><p>Complete strategy & revision.</p></div>
+<div class="course-card"><h3>Competitive Exams</h3><p>Government & entrance exam preparation.</p></div>
+</div>
 </section>
 
-<!-- STATS (UNCHANGED IDEA) -->
+<!-- STATS -->
 <section class="stats">
-<h2 class="counter" data-target="1000">0</h2>
+<div class="stat"><h2 class="counter" data-target="1000">0</h2><p>Students Taught</p></div>
+<div class="stat"><h2 class="counter" data-target="100">0</h2><p>Top Results</p></div>
+<div class="stat"><h2 class="counter" data-target="10">0</h2><p>Years Experience</p></div>
 </section>
 
 <!-- CONTACT -->
 <section class="contact">
-<p>+91 7055557339</p>
+<h2>Contact Us</h2>
+<p>📞 +91 7055557339</p>
+<p>📍 Mazra Road, Shamli, Uttar Pradesh</p>
+<a class="btn" href="contact.html">Get In Touch</a>
 </section>
 
-<!-- WHATSAPP FLOATING -->
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Advanced Academy Shamli</p>
+<p>© Designed & Created by <strong>TANISHQ</strong></p>
+
+<div class="social">
+<a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
+<i class="fas fa-phone"></i> Just Dial
+</a>
+</div>
+</footer>
+
+<!-- WHATSAPP -->
 <a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- JS -->
+<script src="js/script.js"></script>
+
 <script>
-
-// LOADER FIX
-window.addEventListener('load',()=>{
-  const loader=document.getElementById('quantum-loader');
-  loader.style.opacity='0';
-  setTimeout(()=>loader.style.display='none',500);
+// Loader only
+window.addEventListener('load', () => {
+  const loader = document.getElementById('quantum-loader');
+  loader.style.opacity = '0';
+  setTimeout(() => loader.style.display = 'none', 500);
 });
-
-// DARK MODE
-function toggleDark(){
-  document.body.classList.toggle('dark-mode');
-}
-
-// CURSOR
-const cursor=document.getElementById('cursor');
-document.addEventListener('mousemove',(e)=>{
-  cursor.style.left=e.clientX+'px';
-  cursor.style.top=e.clientY+'px';
-});
-
 </script>
 
 </body>
