@@ -3,218 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Facilities - Advanced Academy Shamli™</title>
-<meta name="description" content="Advanced Academy Shamli Facilities - Smart Classrooms, AC Rooms, Computer Lab & Gallery">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 
-/* ===== GLOBAL ===== */
+<style>
+/* ========== ROOT SYSTEM ========== */
+:root{
+  --bg:#050816;
+  --card:rgba(255,255,255,0.06);
+  --stroke:rgba(255,255,255,0.12);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.7);
+  --accent:#4F46E5;
+  --accent2:#22c55e;
+  --accent3:#FACC15;
+}
+
+/* ========== BASE ========== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+  font-family:"Inter",sans-serif;
 }
 
 body{
-  background: radial-gradient(circle at top,#0b1020,#020617);
-  color:#fff;
+  background:var(--bg);
+  color:var(--text);
   overflow-x:hidden;
 }
 
-/* ===== PREMIUM BACKGROUND ===== */
+/* ========== AURORA BACKGROUND ========== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.35), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.25), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.15), transparent 40%);
-  filter: blur(80px);
-  animation: moveBG 12s ease-in-out infinite alternate;
-  z-index:-1;
+    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.4), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.3), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.2), transparent 40%);
+  filter:blur(90px);
+  animation:floatBG 10s ease-in-out infinite alternate;
+  z-index:-2;
 }
 
-@keyframes moveBG{
-  0%{transform:translate(0,0) scale(1);}
-  100%{transform:translate(20px,15px) scale(1.05);}
+@keyframes floatBG{
+  0%{transform:scale(1) translate(0,0);}
+  100%{transform:scale(1.1) translate(20px,10px);}
 }
 
-/* ===== NAVBAR (PRESERVED EXACT LINKS) ===== */
+/* ========== CURSOR ========== */
+.cursor{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:white;
+  position:fixed;
+  pointer-events:none;
+  mix-blend-mode:difference;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+}
+
+.cursor-ring{
+  width:40px;
+  height:40px;
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+}
+
+/* ========== NAVBAR ========== */
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:#4F46E5;
+  backdrop-filter:blur(20px);
+  background:rgba(10,10,20,0.6);
+  border-bottom:1px solid var(--stroke);
   padding:15px 20px;
 }
 
 .logo{
   font-weight:700;
-  color:#fff;
-  font-size:20px;
-  margin-bottom:10px;
+  font-size:18px;
 }
 
 .nav-links{
-  list-style:none;
   display:flex;
   flex-wrap:wrap;
-  gap:15px;
+  gap:14px;
+  list-style:none;
+  margin-top:10px;
 }
 
 .nav-links a{
-  color:#fff;
+  color:var(--text);
   text-decoration:none;
-  font-weight:500;
-  position:relative;
-}
-
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0%;
-  height:2px;
-  background:#FACC15;
+  font-size:14px;
+  opacity:0.8;
   transition:0.3s;
 }
 
-.nav-links a:hover::after{
-  width:100%;
+.nav-links a:hover{
+  opacity:1;
+  color:var(--accent3);
 }
 
-/* ===== SECTION TITLE ===== */
+/* ========== TITLE ========== */
 .section-title{
   text-align:center;
-  font-size:36px;
-  margin:40px 0;
-  background:linear-gradient(45deg,#4F46E5,#22c55e,#FACC15);
+  font-size:42px;
+  margin:50px 0;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
   -webkit-background-clip:text;
   color:transparent;
-  animation: glow 3s infinite alternate;
 }
 
-@keyframes glow{
-  0%{filter:drop-shadow(0 0 5px #4F46E5);}
-  100%{filter:drop-shadow(0 0 20px #22c55e);}
-}
-
-/* ===== FACILITIES GRID ===== */
+/* ========== BENTO GRID ========== */
 .facilities-grid{
   max-width:1200px;
   margin:auto;
   padding:20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(12,1fr);
+  gap:18px;
 }
 
-/* ===== ULTRA CARDS ===== */
 .facility-card{
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:18px;
-  padding:25px;
-  text-align:center;
+  grid-column:span 6;
+  background:var(--card);
+  border:1px solid var(--stroke);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:28px;
   position:relative;
   overflow:hidden;
-  transition:0.4s;
-  transform:translateY(30px);
+  transform:translateY(40px);
   opacity:0;
-  animation: fadeUp 0.8s forwards;
 }
 
-.facility-card:nth-child(1){animation-delay:0.1s;}
-.facility-card:nth-child(2){animation-delay:0.2s;}
-.facility-card:nth-child(3){animation-delay:0.3s;}
-.facility-card:nth-child(4){animation-delay:0.4s;}
-
-@keyframes fadeUp{
-  to{transform:translateY(0);opacity:1;}
+/* bento variation */
+.facility-card:nth-child(3){
+  grid-column:span 12;
 }
 
-/* glow border effect */
-.facility-card::before{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:conic-gradient(#4F46E5,#22c55e,#FACC15,#4F46E5);
-  animation: rotate 6s linear infinite;
-  opacity:0.12;
-}
-
-@keyframes rotate{
-  100%{transform:rotate(360deg);}
-}
-
-.facility-card:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 0 30px rgba(79,70,229,0.5);
-}
-
-/* ICON */
 .facility-card i{
-  font-size:40px;
-  margin-bottom:15px;
+  font-size:34px;
+  margin-bottom:14px;
+  color:var(--accent3);
 }
-
-/* COLORS PER CARD */
-.facility-card:nth-child(1) i{color:#38bdf8;}
-.facility-card:nth-child(2) i{color:#22c55e;}
-.facility-card:nth-child(3) i{color:#facc15;}
-.facility-card:nth-child(4) i{color:#a855f7;}
 
 .facility-card h3{
   margin-bottom:10px;
-  color:#fff;
+  font-size:20px;
 }
 
 .facility-card p{
+  color:var(--muted);
   font-size:14px;
-  opacity:0.85;
   line-height:1.6;
 }
 
-/* ===== GALLERY ===== */
-.gallery{
-  margin-top:60px;
-  padding:40px 20px;
-  background:rgba(0,0,0,0.3);
+/* hover glow */
+.facility-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,0.2),transparent 40%);
+  opacity:0;
+  transition:0.3s;
 }
 
-.gallery h2{
-  text-align:center;
-  font-size:30px;
-  margin-bottom:20px;
-  color:#38bdf8;
+.facility-card:hover::before{
+  opacity:1;
+}
+
+/* ========== GALLERY ========== */
+.gallery{
+  margin-top:80px;
+  padding:40px 20px;
 }
 
 .slider{
   max-width:900px;
   margin:auto;
   overflow:hidden;
-  border-radius:15px;
-  position:relative;
+  border-radius:20px;
+  border:1px solid var(--stroke);
 }
 
 .slides{
   display:flex;
-  transition:0.6s ease;
+  transition:0.8s cubic-bezier(0.22,1,0.36,1);
 }
 
 .slides img{
   width:100%;
-  border-radius:15px;
+  flex-shrink:0;
 }
 
 /* buttons */
@@ -222,10 +217,10 @@ header{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:#4F46E5;
-  color:#fff;
+  background:rgba(255,255,255,0.1);
   border:none;
-  padding:10px 15px;
+  color:white;
+  padding:10px;
   border-radius:50%;
   cursor:pointer;
 }
@@ -233,46 +228,45 @@ header{
 .prev{left:10px;}
 .next{right:10px;}
 
-/* ===== WHATSAPP ===== */
+/* ========== WHATSAPP ========== */
 .whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
-  background:#25D366;
   width:55px;
   height:55px;
+  background:#25D366;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
+  color:white;
   font-size:24px;
+  animation:float 2s infinite;
   z-index:9999;
-  animation: float 2s infinite;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-6px);}
-  100%{transform:translateY(0);}
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
 }
 
-/* ===== MOBILE ===== */
+/* ========== MOBILE ========== */
 @media(max-width:768px){
-  .nav-links{
-    flex-direction:column;
+  .facility-card{
+    grid-column:span 12;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER (PRESERVED EXACT LINKS) -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
 <header>
 <div class="logo">Advanced Academy™</div>
-
 <ul class="nav-links">
   <li><a href="index.html">Home</a></li>
   <li><a href="about.html">About</a></li>
@@ -287,40 +281,38 @@ header{
 </ul>
 </header>
 
-<!-- FACILITIES -->
-<h1 class="section-title">Our Premium Facilities</h1>
+<h1 class="section-title">Premium Learning Facilities</h1>
 
 <div class="facilities-grid">
 
   <div class="facility-card">
     <i class="fas fa-chalkboard-teacher"></i>
     <h3>Smart Classrooms</h3>
-    <p>Interactive digital boards for modern learning experience.</p>
+    <p>Interactive AI-enhanced digital boards for immersive learning.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-snowflake"></i>
-    <h3>AC Classrooms</h3>
-    <p>Comfortable environment for better concentration and learning.</p>
+    <h3>AC Learning Environment</h3>
+    <p>Optimized temperature-controlled rooms for peak focus.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-couch"></i>
     <h3>Student Lounge</h3>
-    <p>Relaxing space for students between sessions.</p>
+    <p>Relax, collaborate and recharge in a premium social space.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-laptop"></i>
-    <h3>Computer Lab</h3>
-    <p>Advanced systems for practical learning and skills.</p>
+    <h3>Advanced Computer Lab</h3>
+    <p>Hands-on training with modern computing systems.</p>
   </div>
 
 </div>
 
-<!-- GALLERY -->
 <section class="gallery">
-<h2>Academy Gallery</h2>
+<h2 style="text-align:center;margin-bottom:20px;">Academy Gallery</h2>
 
 <div class="slider">
   <div class="slides">
@@ -328,31 +320,65 @@ header{
     <img src="IMG-20260401-WA0125.jpg">
     <img src="gallery2.jpg.png">
   </div>
-
   <button class="btn prev">&#10094;</button>
   <button class="btn next">&#10095;</button>
 </div>
 </section>
 
-<!-- WHATSAPP -->
 <a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
-const slides = document.querySelector('.slides');
-const images = document.querySelectorAll('.slides img');
-let index = 0;
+/* ===== CURSOR ===== */
+const cursor = document.querySelector(".cursor");
+const ring = document.querySelector(".cursor-ring");
 
-document.querySelector('.next').onclick = ()=>{
+window.addEventListener("mousemove",(e)=>{
+  gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:0.1});
+  gsap.to(ring,{x:e.clientX,y:e.clientY,duration:0.4});
+});
+
+/* ===== HOVER MAGNETIC ===== */
+document.querySelectorAll(".facility-card").forEach(card=>{
+  card.addEventListener("mousemove",(e)=>{
+    let rect = card.getBoundingClientRect();
+    card.style.setProperty("--x", (e.clientX - rect.left)+"px");
+    card.style.setProperty("--y", (e.clientY - rect.top)+"px");
+  });
+});
+
+/* ===== SLIDER AUTO ===== */
+let index = 0;
+const slides = document.querySelector(".slides");
+const images = document.querySelectorAll(".slides img");
+
+function showSlide(){
   index = (index + 1) % images.length;
   slides.style.transform = `translateX(-${index * 100}%)`;
 }
+setInterval(showSlide,3000);
 
-document.querySelector('.prev').onclick = ()=>{
-  index = (index - 1 + images.length) % images.length;
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
+document.querySelector(".next").onclick=()=>showSlide();
+document.querySelector(".prev").onclick=()=>{
+  index=(index-1+images.length)%images.length;
+  slides.style.transform=`translateX(-${index*100}%)`;
+};
+
+/* ===== SCROLL ANIMATION ===== */
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".facility-card",{
+  opacity:1,
+  y:0,
+  duration:1,
+  stagger:0.15,
+  ease:"power4.out",
+  scrollTrigger:{
+    trigger:".facilities-grid",
+    start:"top 80%"
+  }
+});
 </script>
 
 </body>
