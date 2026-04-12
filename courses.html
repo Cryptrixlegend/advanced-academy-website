@@ -15,14 +15,13 @@
 <style>
 :root{
   --bg:#050816;
-  --card:rgba(255,255,255,0.06);
-  --stroke:rgba(255,255,255,0.12);
   --text:#fff;
   --muted:rgba(255,255,255,0.7);
 
   --a1:#4F46E5;
   --a2:#22c55e;
   --a3:#FACC15;
+  --a4:#a855f7;
 }
 
 *{
@@ -47,12 +46,12 @@ body::before{
     radial-gradient(circle at 20% 20%, rgba(79,70,229,0.35), transparent 40%),
     radial-gradient(circle at 80% 30%, rgba(34,197,94,0.25), transparent 40%),
     radial-gradient(circle at 50% 80%, rgba(250,204,21,0.15), transparent 40%);
-  filter:blur(80px);
-  animation:float 12s ease-in-out infinite alternate;
+  filter:blur(90px);
+  animation:floatBG 12s ease-in-out infinite alternate;
   z-index:-2;
 }
 
-@keyframes float{
+@keyframes floatBG{
   0%{transform:translate(0,0);}
   100%{transform:translate(20px,10px);}
 }
@@ -64,7 +63,6 @@ body::before{
   align-items:center;
   padding:15px 5%;
   background:#4F46E5;
-  color:#fff;
 }
 
 .nav-links{
@@ -73,10 +71,9 @@ body::before{
   gap:15px;
 }
 
-.nav-links li a{
-  color:#fff;
+.nav-links a{
+  color:white;
   text-decoration:none;
-  font-weight:500;
 }
 
 /* ================= HERO ================= */
@@ -87,14 +84,13 @@ body::before{
 
 .hero h1{
   font-size:42px;
-  background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));
+  background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3),var(--a4));
   -webkit-background-clip:text;
   color:transparent;
 }
 
 .hero p{
   color:var(--muted);
-  margin-top:10px;
 }
 
 /* ================= GRID ================= */
@@ -107,63 +103,95 @@ body::before{
   gap:18px;
 }
 
-/* ================= COURSE CARD ================= */
+/* ================= ULTRA CARD ================= */
 .card{
   grid-column:span 6;
-  background:var(--card);
-  border:1px solid var(--stroke);
-  backdrop-filter:blur(20px);
-  border-radius:18px;
-  padding:24px;
+  padding:26px;
+  border-radius:20px;
   position:relative;
   overflow:hidden;
 
-  opacity:0;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(25px);
+
   transform:translateY(40px);
-  transition:0.4s;
+  opacity:0;
+
+  transition:0.3s ease;
 }
 
-/* FULL WIDTH HERO COURSE */
+/* FULL WIDTH */
 .card.featured{
   grid-column:span 12;
-  border:1px solid rgba(255,215,0,0.4);
-  box-shadow:0 0 30px rgba(255,215,0,0.15);
 }
 
-/* ================= LIGHTNING EFFECT ================= */
+/* ================= INTERNAL COLOR FLOW ================= */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    rgba(79,70,229,0.25),
+    rgba(34,197,94,0.15),
+    rgba(250,204,21,0.15),
+    rgba(168,85,247,0.15)
+  );
+  opacity:0.6;
+  animation:flow 6s linear infinite;
+  z-index:0;
+}
+
+@keyframes flow{
+  0%{transform:translateX(-20%) translateY(-10%);}
+  50%{transform:translateX(20%) translateY(10%);}
+  100%{transform:translateX(-20%) translateY(-10%);}
+}
+
+/* CONTENT ABOVE EFFECT */
+.card *{
+  position:relative;
+  z-index:2;
+}
+
+/* ================= LIGHTNING BORDER ================= */
 .card::before{
   content:"";
   position:absolute;
   inset:-2px;
   background:linear-gradient(
     120deg,
-    transparent 0%,
-    rgba(255,255,255,0.25) 50%,
-    transparent 100%
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
   );
-  transform:translateX(-100%);
-  animation:shine 4s infinite;
+  transform:translateX(-120%);
+  animation:shine 3.5s infinite;
+  z-index:1;
 }
 
 @keyframes shine{
-  0%{transform:translateX(-100%);}
-  100%{transform:translateX(200%);}
+  0%{transform:translateX(-120%);}
+  100%{transform:translateX(120%);}
 }
 
-/* ================= HOVER EFFECT ================= */
+/* ================= HOVER ENERGY ================= */
 .card:hover{
-  transform:translateY(-8px) scale(1.03);
-  box-shadow:0 25px 60px rgba(0,0,0,0.6);
+  transform:translateY(-10px) scale(1.04);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    0 0 30px rgba(79,70,229,0.3),
+    0 0 60px rgba(34,197,94,0.15);
 }
 
 /* ================= TEXT ================= */
 .card h3{
   margin-bottom:10px;
-  font-size:18px;
 }
 
 .card p{
-  color:var(--muted);
+  color:rgba(255,255,255,0.75);
   font-size:14px;
   line-height:1.6;
 }
@@ -191,7 +219,7 @@ body::before{
 
 <!-- NAVBAR (UNCHANGED) -->
 <div class="navbar">
-  <div class="logo">Advanced Academy</div>
+  <div>Advanced Academy</div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -209,90 +237,82 @@ body::before{
 <!-- HERO -->
 <section class="hero">
   <h1>Our Courses</h1>
-  <p>Structured learning programs designed for academic excellence and real success</p>
+  <p>Premium structured learning programs designed for excellence</p>
 </section>
 
-<!-- COURSES -->
+<!-- GRID -->
 <section class="grid">
 
   <div class="card featured">
     <h3>Ultimate English Mastery Program</h3>
     <p>
-      Focus: <span class="highlight">Complete English Fluency – Grammar, Spoken English, Writing & Personality Development</span>.<br>
-      Duration: <span class="highlight">Lifetime Access</span>.<br>
-      Features: Structured step-by-step learning, real communication practice, confidence building sessions, expert guidance, and continuous doubt support.
+      Focus: <span class="highlight">Complete English Fluency – Grammar, Spoken English, Writing & Personality Development</span><br>
+      Duration: <span class="highlight">Lifetime Access</span><br>
+      Features: Structured learning, communication practice, confidence building, expert guidance, unlimited doubt support.
     </p>
   </div>
 
   <div class="card">
     <h3>Class 9–10 Foundation Program</h3>
     <p>
-      Subjects: <span class="highlight">Mathematics, Science, English</span>.<br>
-      Duration: <span class="highlight">1 Year Structured Program</span>.<br>
-      Features: Strong conceptual clarity, regular practice sessions, and personalized doubt-solving support.
+      Subjects: <span class="highlight">Mathematics, Science, English</span><br>
+      Duration: <span class="highlight">1 Year</span><br>
+      Features: Concept clarity, strong basics, practice sessions, doubt clearing.
     </p>
   </div>
 
   <div class="card">
     <h3>Class 11–12 Science Program</h3>
     <p>
-      Subjects: <span class="highlight">Physics, Chemistry, Mathematics, Biology</span>.<br>
-      Duration: <span class="highlight">2 Years Complete Program</span>.<br>
-      Features: Concept mastery, exam-oriented preparation, structured test series, and performance tracking.
+      Subjects: <span class="highlight">Physics, Chemistry, Mathematics, Biology</span><br>
+      Duration: <span class="highlight">2 Years</span><br>
+      Features: Exam strategy, concept mastery, test series, performance tracking.
     </p>
   </div>
 
   <div class="card">
-    <h3>Board Exam Preparation Program</h3>
+    <h3>Board Exam Preparation</h3>
     <p>
-      Subjects: <span class="highlight">All Major Academic Subjects</span>.<br>
-      Duration: <span class="highlight">As per Board Schedule</span>.<br>
-      Features: Intensive revision sessions, practice papers, and structured doubt clearing classes.
+      Subjects: <span class="highlight">All Major Subjects</span><br>
+      Duration: As per board schedule<br>
+      Features: Revision, practice papers, doubt sessions.
     </p>
   </div>
 
   <div class="card">
     <h3>Competitive Exam Preparation</h3>
     <p>
-      Subjects: <span class="highlight">Mathematics, Reasoning, General Science</span>.<br>
-      Duration: <span class="highlight">Flexible (Exam Based)</span>.<br>
-      Features: Mock tests, strategy building, and performance analysis system.
+      Subjects: <span class="highlight">Maths, Reasoning, Science</span><br>
+      Duration: Exam-based<br>
+      Features: Mock tests, analysis, strategy building.
     </p>
   </div>
 
   <div class="card">
     <h3>Computer Skills Program</h3>
     <p>
-      Fields: <span class="highlight">Computer Basics, MS Office, Tally Prime, Internet & Digital Skills</span>.<br>
-      Duration: <span class="highlight">6 Months – 1 Year</span>.<br>
-      Features: Practical training, hands-on exercises, accounting with Tally, and certificate on completion.
+      Fields: <span class="highlight">MS Office, Tally, Basics, Digital Skills</span><br>
+      Duration: 6 Months – 1 Year<br>
+      Features: Practical training, hands-on learning, certificate.
     </p>
   </div>
 
 </section>
 
-<!-- WHATSAPP (KEEP EXACT STYLE) -->
-<a href="https://wa.me/917055557339" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;animation:float 2s infinite;">
+<!-- WHATSAPP -->
+<a href="https://wa.me/917055557339"
+style="position:fixed;bottom:20px;right:20px;width:55px;height:55px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;">
 <i class="fab fa-whatsapp"></i>
 </a>
-
-<style>
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-  100%{transform:translateY(0);}
-}
-</style>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* SCROLL ANIMATION */
 gsap.to(".card",{
   opacity:1,
   y:0,
   duration:1,
-  stagger:0.12,
+  stagger:0.15,
   ease:"power4.out",
   scrollTrigger:{
     trigger:".grid",
