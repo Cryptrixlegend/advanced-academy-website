@@ -1,4 +1,4 @@
-/* ================== RESET ================== */
+/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -7,12 +7,12 @@
 }
 
 body{
-  background:#0b0f1a;
+  background:#070b14;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ================== BACKGROUND ANIMATION ================== */
+/* ================= BACKGROUND ENERGY ================= */
 body::before{
   content:"";
   position:fixed;
@@ -22,7 +22,7 @@ body::before{
     radial-gradient(circle at 20% 20%, #4F46E5, transparent 40%),
     radial-gradient(circle at 80% 30%, #22C55E, transparent 40%),
     radial-gradient(circle at 50% 80%, #FACC15, transparent 40%);
-  opacity:0.20;
+  opacity:0.18;
   animation:bgMove 12s ease-in-out infinite alternate;
   z-index:-2;
 }
@@ -32,7 +32,7 @@ body::before{
   100%{transform:translate(30px,20px) scale(1.1);}
 }
 
-/* ================== NAVBAR ================== */
+/* ================= NAVBAR ================= */
 .navbar{
   display:flex;
   justify-content:space-between;
@@ -48,7 +48,6 @@ body::before{
 .logo{
   font-size:22px;
   font-weight:bold;
-  color:#fff;
 }
 
 .nav-links{
@@ -66,9 +65,9 @@ body::before{
 .nav-links a::after{
   content:"";
   position:absolute;
-  left:0;
   bottom:-5px;
-  width:0;
+  left:0;
+  width:0%;
   height:2px;
   background:#FACC15;
   transition:0.3s;
@@ -84,16 +83,16 @@ body::before{
   cursor:pointer;
 }
 
-/* ================== HERO ================== */
+/* ================= HERO ================= */
 .hero{
   text-align:center;
-  padding:80px 20px;
+  padding:90px 20px;
   background:linear-gradient(135deg,#4F46E5,#00c6ff,#22c55e,#FACC15);
   background-size:400% 400%;
   animation:gradient 10s ease infinite;
   border-radius:20px;
   margin:20px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
 }
 
 @keyframes gradient{
@@ -112,7 +111,7 @@ body::before{
   font-size:18px;
 }
 
-/* ================== CARDS ================== */
+/* ================= GRID CARDS ================= */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -146,21 +145,21 @@ body::before{
   height:200%;
   background:linear-gradient(45deg,#4F46E5,#00c6ff,#22c55e,#FACC15);
   opacity:0;
-  transition:0.5s;
   filter:blur(40px);
+  transition:0.5s;
 }
 
 .card:hover::before{
-  opacity:0.5;
-  animation:light 3s linear infinite;
+  opacity:0.4;
+  animation:spin 3s linear infinite;
 }
 
-@keyframes light{
+@keyframes spin{
   0%{transform:rotate(0deg);}
   100%{transform:rotate(360deg);}
 }
 
-/* ================== BUTTON ================== */
+/* ================= BUTTON ================= */
 .btn{
   display:inline-block;
   padding:12px 20px;
@@ -176,7 +175,7 @@ body::before{
   box-shadow:0 0 15px #22c55e;
 }
 
-/* ================== WHATSAPP ================== */
+/* ================= WHATSAPP ================= */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -187,6 +186,7 @@ body::before{
   border-radius:50%;
   font-size:22px;
   animation:float 2s infinite;
+  z-index:9999;
 }
 
 @keyframes float{
@@ -195,15 +195,15 @@ body::before{
   100%{transform:translateY(0);}
 }
 
-/* ================== FOOTER ================== */
+/* ================= FOOTER ================= */
 footer{
   text-align:center;
   padding:20px;
-  background:#0b0f1a;
+  background:#070b14;
   margin-top:40px;
 }
 
-/* ================== MOBILE ================== */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
   .nav-links{
     display:none;
