@@ -3,128 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faculty - Advanced Academy</title>
+
+<title>Teachers - Advanced Academy</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== BACKGROUND ===== */
-body { margin:0; font-family:'Poppins',sans-serif; background:#111; color:#fff; }
-body::before { content:''; position:fixed; width:100%; height:100%; background:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:50px 50px; animation:moveBG 20s linear infinite; z-index:-1; }
-@keyframes moveBG {0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
+:root{
+  --bg:#050816;
+  --text:#fff;
+  --muted:rgba(255,255,255,0.7);
 
-/* ===== NAVBAR ===== */
-.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 5%; background:#4F46E5; position:relative; }
-.logo { font-size:22px; font-weight:bold; }
-.nav-links { list-style:none; display:flex; gap:18px; }
-.nav-links a { color:#fff; text-decoration:none; transition:0.3s; }
-.nav-links a:hover { color:#FACC15; }
+  --blue:#4F46E5;
+  --green:#22c55e;
+  --gold:#FACC15;
+}
 
-/* Hamburger for mobile */
-.hamburger { display:none; font-size:1.5rem; cursor:pointer; color:#fff; }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Inter",sans-serif;
+}
 
-/* ===== HERO ===== */
-.hero { text-align:center; padding:60px 10%; background: linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; animation:gradientBG 15s ease infinite; border-radius:20px; margin:30px; }
-@keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
-.hero h1 { font-size:45px; text-shadow:0 0 15px #fff; }
-.hero p { font-size:18px; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-/* ===== TEACHERS ===== */
-.teachers { max-width:1100px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; padding:40px 20px; }
-.teacher-card { background:#1e1e2f; padding:25px; border-radius:20px; text-align:center; position:relative; overflow:hidden; box-shadow:0 5px 20px rgba(0,0,0,0.5); transition:0.5s; }
-.teacher-card img { width:120px; height:120px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:4px solid #FACC15; }
-.teacher-card h3 { color:#22c55e; margin-bottom:5px; }
-.teacher-card p { font-size:14px; color:#fff; line-height:1.6; }
-.teacher-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(45deg,#4F46E5,#00c6ff,#22c55e,#FACC15); background-size:400% 400%; filter:blur(40px); opacity:0; transition:0.5s; z-index:0; }
-.teacher-card:hover::before { opacity:0.5; animation:glowAnim 5s linear infinite; }
-.teacher-card:hover { transform: scale(1.08); }
+/* ================= BACKGROUND ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.15), transparent 40%);
+  filter:blur(90px);
+  animation:bgMove 12s ease-in-out infinite alternate;
+  z-index:-2;
+}
 
-/* ===== GLOW ANIMATION ===== */
-@keyframes glowAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+@keyframes bgMove{
+  0%{transform:translate(0,0);}
+  100%{transform:translate(20px,10px);}
+}
 
-/* ===== FOOTER ===== */
-footer { text-align:center; padding:20px; background:#111; }
+/* ================= NAVBAR ================= */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 5%;
+  background:#4F46E5;
+}
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width:768px) {
-  .nav-links { 
-    display:none; 
-    flex-direction:column; 
-    width:100%; 
-    background:#4F46E5; 
-    position:absolute; 
-    top:60px; left:0; 
-    z-index:1000; 
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+}
+
+/* ================= HERO ================= */
+.hero{
+  text-align:center;
+  padding:70px 20px 30px;
+}
+
+.hero h1{
+  font-size:42px;
+  background:linear-gradient(90deg,var(--blue),var(--green),var(--gold));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* ================= GRID ================= */
+.teachers{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* ================= CARD ================= */
+.teacher-card{
+  position:relative;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(18px);
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  overflow:hidden;
+  transition:0.3s ease;
+  transform-style:preserve-3d;
+}
+
+/* 🔥 LIGHTNING SWEEP */
+.teacher-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transform:translateX(-120%);
+  animation:shine 3.5s infinite;
+  z-index:1;
+}
+
+@keyframes shine{
+  0%{transform:translateX(-120%);}
+  100%{transform:translateX(120%);}
+}
+
+/* 🌈 ENERGY BACKGROUND */
+.teacher-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(79,70,229,0.2),rgba(34,197,94,0.15),rgba(250,204,21,0.15));
+  background-size:300% 300%;
+  animation:energy 6s ease infinite;
+  z-index:0;
+}
+
+@keyframes energy{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* CONTENT ABOVE */
+.teacher-card *{
+  position:relative;
+  z-index:2;
+}
+
+/* ================= IMAGE AURA ================= */
+.teacher-card img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid var(--gold);
+  box-shadow:0 0 25px rgba(250,204,21,0.4);
+  transition:0.3s;
+}
+
+/* ================= HOVER BEAST MODE ================= */
+.teacher-card:hover{
+  transform:translateY(-10px) rotateX(5deg) rotateY(-5deg) scale(1.03);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.6),
+    0 0 40px rgba(79,70,229,0.3);
+}
+
+.teacher-card:hover img{
+  transform:scale(1.08);
+}
+
+/* ================= TEXT ================= */
+.teacher-card h3{
+  margin-top:12px;
+  font-size:18px;
+}
+
+.teacher-card p{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ================= WHATSAPP ================= */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:24px;
+  animation:float 2s infinite;
+  z-index:999;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .nav-links{
+    flex-direction:column;
+    background:rgba(0,0,0,0.85);
+    position:absolute;
+    top:60px;
+    right:0;
+    padding:15px;
+    display:none;
   }
-  .nav-links.active { display:flex; }
-  .hamburger { display:block; }
 
-  .teachers { display:flex; flex-direction:column; align-items:center; padding:20px; }
-  .teacher-card { width:90%; max-width:300px; margin-bottom:20px; }
+  .teachers{
+    grid-template-columns:1fr;
+  }
+
+  .teacher-card{
+    transform:none !important;
+  }
 }
 </style>
-
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">Advanced Academy</div>
   <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="teachers.html">Teachers</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="reviews.html">Students Reviews</a></li>
-      <li><a href="Administration.html">Administration</a></li>
-      <li><a href="admission.html">Admission</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Meet Our Amazing Teachers</h1>
-  <p>Guiding you to academic excellence with passion and expertise 🚀</p>
+  <h1>Meet Our Expert Faculty</h1>
+  <p>Experienced educators shaping future achievers</p>
 </section>
 
 <!-- TEACHERS -->
 <section class="teachers">
+
   <div class="teacher-card">
-    <img src="faculty 1.jpg" alt="Manoj Rhuela sir">
-    <h3>Manoj Rhuela sir</h3>
+    <img src="faculty 1.jpg">
+    <h3>Manoj Rhuela Sir</h3>
     <p><b>Subject:</b> English<br>
-       <b>Experience:</b> 10+ years<br>
-       <b>Specialty:</b> Creative writing, spoken English, personality development.<br>
-       "Inspiring minds and shaping confident communicators!"</p>
+    <b>Experience:</b> 10+ Years<br>
+    <b>Specialty:</b> Spoken English & Personality Development</p>
   </div>
 
   <div class="teacher-card">
-    <img src="faculty 3.jpg" alt="Lokendar sir">
-    <h3>Lokendar sir </h3>
+    <img src="faculty 3.jpg">
+    <h3>Lokendar Sir</h3>
     <p><b>Subject:</b> Chemistry<br>
-       <b>Experience:</b> 10+ years<br>
-       <b>Specialty:</b> Organic & Inorganic Chemistry, practical approach.<br>
-       "Making molecules fun & easy to understand!"</p>
+    <b>Experience:</b> 10+ Years<br>
+    <b>Specialty:</b> Organic & Inorganic Chemistry</p>
   </div>
+
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Advanced Academy Shamli</p>
-</footer>
-
-<!-- MOBILE MENU SCRIPT -->
-<script>
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-</script>
+<!-- WHATSAPP -->
+<a href="https://wa.me/917055557339" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 </body>
 </html>
