@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="description" content="Advanced Academy Shamli - Best coaching institute for classes 9 to 12 and competitive exams.">
-
 <meta name="google-site-verification" content="OuYR-eu_5xxOOorzbn_TP1UIHD2GacmE6KH_-RIIfJg" />
 
 <link rel="icon" href="cropped%20(1).jpg" type="image/jpeg">
@@ -17,69 +16,132 @@
 <style>
 
 /* ===== GLOBAL ===== */
-body {
-font-family: 'Poppins', sans-serif;
-scroll-behavior: smooth;
+body{
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+background:#070A12;
+color:#fff;
 }
 
 /* ===== NAVBAR ===== */
-.navbar {
-background: #4F46E5;
-backdrop-filter: none;
-}
-
-/* ===== BUTTON ===== */
-.btn {
-background: linear-gradient(135deg,#6366F1,#22C55E);
-color: #fff;
-border: none;
-transition: 0.3s;
-}
-
-.btn:hover {
-transform: scale(1.05);
-box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* ===== CARD ===== */
-.card, .course-card {
-transition: 0.3s;
-}
-
-.card:hover, .course-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+.navbar{
+background:rgba(79,70,229,0.85);
+backdrop-filter:blur(12px);
 }
 
 /* ===== HERO ===== */
-.hero-text {
-animation: fadeUp 1s ease;
+.hero{
+padding:100px 10%;
+text-align:center;
 }
 
-@keyframes fadeUp {
-from {opacity:0; transform:translateY(30px);}
-to {opacity:1; transform:translateY(0);}
+.hero-text h1{
+font-size:52px;
+background:linear-gradient(45deg,#4F46E5,#22C55E,#FACC15);
+-webkit-background-clip:text;
+color:transparent;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+0%{filter:drop-shadow(0 0 10px #4F46E5);}
+100%{filter:drop-shadow(0 0 25px #22C55E);}
+}
+
+.hero-text p{
+margin-top:15px;
+font-size:18px;
+opacity:0.85;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+background:linear-gradient(135deg,#4F46E5,#22C55E);
+color:#fff;
+border:none;
+padding:12px 22px;
+border-radius:10px;
+transition:0.3s;
+font-weight:600;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(79,70,229,0.5);
+}
+
+/* ===== CARD ===== */
+.card,.course-card{
+transition:0.4s;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover,.course-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(79,70,229,0.5);
 }
 
 /* ===== COUNTER ===== */
-.counter {
-font-size: 40px;
+.counter{
+font-size:45px;
+color:#FACC15;
+font-weight:bold;
+}
+
+/* ===== SECTION HEADINGS ===== */
+h2{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+color:#fff;
+}
+
+/* ===== FEATURES IMPROVED ===== */
+.feature-grid i{
+font-size:40px;
+color:#4F46E5;
+margin-bottom:10px;
+}
+
+/* ===== STATS ===== */
+.stats{
+background:linear-gradient(135deg,#4F46E5,#22C55E);
+color:#fff;
+padding:60px 10%;
+text-align:center;
 }
 
 /* ===== WHATSAPP ===== */
-.whatsapp {
-position: fixed;
-bottom: 20px;
-right: 20px;
-background: #25D366;
-width: 55px;
-height: 55px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 9999;
-box-shadow: 0 0 20px rgba(37,211,102,0.5);
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+box-shadow:0 0 20px rgba(37,211,102,0.5);
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* ===== FOOTER ===== */
+footer{
+background:#0B0F1A;
+text-align:center;
+padding:25px;
+border-top:1px solid rgba(255,255,255,0.1);
 }
 
 </style>
@@ -115,94 +177,120 @@ box-shadow: 0 0 20px rgba(37,211,102,0.5);
 </nav>
 </header>
 
-<!-- TICKER -->
-<div class="ticker-wrapper top">
-<div class="ticker left">
-<div class="ticker-track">
-<span>📢 Admission Open 2026-27</span>
-<span>📢 जब तक सीखोगे नहीं, तब तक छोड़ेगे नहीं।।</span>
-<span>📢 एक ऐसी Academy जहाँ सफलता के सपने सच होते है।</span>
-<span>📢 Limited Seats Available</span>
-<span>📢 English Speaking Practice Daily</span>
-</div>
-</div>
-</div>
-
-<div class="ticker-wrapper bottom">
-<div class="ticker right">
-<div class="ticker-track">
-<span>🔔 Best Coaching in Shamli</span>
-<span>🔔 English Speaking Practice</span>
-<span>🔔 Book Your Demo Class Now</span>
-<span>🔔 Contact: +91 7055557339</span>
-</div>
-</div>
-</div>
-
 <!-- HERO -->
 <section class="hero">
 <div class="hero-text">
-<h1>Advanced Academy Shamli - Best Coaching Institute in Shamli, Uttar Pradesh</h1>
+<h1>Advanced Academy Shamli</h1>
+<p>Best Coaching Institute for Class 1–12 | Spoken English | Competitive Exams | Personality Development</p>
+
+<br>
+
 <a href="admission.html" class="btn">Book Free Demo</a>
-<a href="courses.html" class="btn secondary">View Courses</a>
+<a href="courses.html" class="btn">Explore Courses</a>
 </div>
 
-<div class="hero-image">
-<img src="IMG-20260411-WA0005.jpg" alt="Advanced Academy">
-<img src="advanced academy 2.webp" alt="Advanced Academy">
-</div>
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-<h2>Why Choose Advanced Academy</h2>
-<div class="feature-grid">
-<div class="card"><i class="fas fa-user-graduate"></i><h3>Expert Teachers</h3><p>Experienced faculty dedicated to student success.</p></div>
-<div class="card"><i class="fas fa-chart-line"></i><h3>Proven Results</h3><p>Top students every year.</p></div>
-<div class="card"><i class="fas fa-chalkboard"></i><h3>Interactive Classes</h3><p>Group discussions & practical learning.</p></div>
-<div class="card"><i class="fas fa-award"></i><h3>Career Guidance</h3><p>Personality development & interview skills.</p></div>
+<h2>Why Students Choose Us</h2>
+
+<div class="feature-grid grid">
+
+<div class="card">
+<i class="fas fa-chalkboard-teacher"></i>
+<h3>Expert Faculty</h3>
+<p>Highly qualified teachers with 10+ years experience in board & competitive exams.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-brain"></i>
+<h3>Concept Clarity</h3>
+<p>Focus on deep understanding instead of rote learning for long-term success.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-chart-line"></i>
+<h3>Guaranteed Growth</h3>
+<p>Regular tests, performance tracking & improvement analysis system.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-users"></i>
+<h3>Personal Attention</h3>
+<p>Small batches ensure individual focus on every student.</p>
+</div>
+
 </div>
 </section>
 
 <!-- COURSES -->
 <section class="courses">
 <h2>Popular Courses</h2>
-<div class="course-grid">
-<div class="course-card">
-<h3>Spoken English & Communication</h3>
-<p>Build fluency, boost confidence, and master real-life communication.</p>
+
+<div class="course-grid grid">
+
+<div class="course-card card">
+<h3>Spoken English Mastery</h3>
+<p>Fluency, confidence & real-life communication training.</p>
 </div>
-<div class="course-card"><h3>Class 9-10 Foundation</h3><p>Strong base in Maths, Science & English.</p></div>
-<div class="course-card"><h3>Class 11-12 Science</h3><p>Physics, Chemistry & Maths preparation.</p></div>
-<div class="course-card"><h3>Board Exam Preparation</h3><p>Complete strategy & revision.</p></div>
-<div class="course-card"><h3>Competitive Exams</h3><p>Government & entrance exam preparation.</p></div>
+
+<div class="course-card card">
+<h3>Class 9–10 Foundation</h3>
+<p>Strong base in Maths, Science & English for board success.</p>
+</div>
+
+<div class="course-card card">
+<h3>Class 11–12 Science</h3>
+<p>Physics, Chemistry, Maths & Biology expert preparation.</p>
+</div>
+
+<div class="course-card card">
+<h3>Board Exam Preparation</h3>
+<p>Full syllabus revision, notes & last-minute strategy.</p>
+</div>
+
+<div class="course-card card">
+<h3>Competitive Exams</h3>
+<p>SSC, Railway, Police & entrance exam preparation.</p>
+</div>
+
 </div>
 </section>
 
 <!-- STATS -->
 <section class="stats">
-<div class="stat"><h2 class="counter" data-target="1000">0</h2><p>Students Taught</p></div>
-<div class="stat"><h2 class="counter" data-target="100">0</h2><p>Top Results</p></div>
-<div class="stat"><h2 class="counter" data-target="10">0</h2><p>Years Experience</p></div>
+
+<div>
+<h2 class="counter" data-target="5000">0</h2>
+<p>Students Taught</p>
+</div>
+
+<div>
+<h2 class="counter" data-target="500">0</h2>
+<p>Top Selections</p>
+</div>
+
+<div>
+<h2 class="counter" data-target="15">0</h2>
+<p>Years Experience</p>
+</div>
+
 </section>
 
 <!-- CONTACT -->
 <section class="contact">
 <h2>Contact Us</h2>
-<p>📞 +91 7055557339</p>
+<p>📞 +91 7055557339 | +91 6395147540</p>
 <p>📍 Mazra Road, Shamli, Uttar Pradesh</p>
-<a class="btn" href="contact.html">Get In Touch</a>
+<p>📧 ruhelamanoj999@gmail.com</p>
+
+<a class="btn" href="contact.html">Get Admission Help</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-<p>© 2026 Advanced Academy Shamli</p>
-
-<div class="social">
-<a href="https://www.justdial.com/Shamli/Advanced-English-Academy-Near-Post-Office-Shamli/9999PX131-X131-250630195957-W7D9_BZDET" target="_blank">
-<i class="fas fa-phone"></i> Just Dial
-</a>
-</div>
+<p>© 2026 Advanced Academy Shamli™ | All Rights Reserved</p>
 </footer>
 
 <!-- WHATSAPP -->
@@ -210,15 +298,41 @@ box-shadow: 0 0 20px rgba(37,211,102,0.5);
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- JS -->
-<script src="js/script.js"></script>
-
+<!-- SCRIPT -->
 <script>
-// Loader only
-window.addEventListener('load', () => {
-  const loader = document.getElementById('quantum-loader');
-  loader.style.opacity = '0';
-  setTimeout(() => loader.style.display = 'none', 500);
+// loader
+window.addEventListener("load",()=>{
+  const loader=document.getElementById("quantum-loader");
+  loader.style.opacity="0";
+  setTimeout(()=>loader.style.display="none",500);
+});
+
+// counter
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+  counter.innerText="0";
+  const update=()=>{
+    const target=+counter.getAttribute("data-target");
+    const current=+counter.innerText;
+    const increment=target/100;
+
+    if(current<target){
+      counter.innerText=Math.ceil(current+increment);
+      setTimeout(update,20);
+    }else{
+      counter.innerText=target;
+    }
+  };
+  update();
+});
+
+// menu
+const hamburger=document.querySelector(".hamburger");
+const nav=document.querySelector(".nav-links");
+
+hamburger.addEventListener("click",()=>{
+  nav.classList.toggle("active");
 });
 </script>
 
