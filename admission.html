@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* ================= GLOBAL ================= */
+/* ===== GLOBAL ===== */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -18,31 +17,31 @@ body{
   overflow-x:hidden;
 }
 
-/* animated neon background */
+/* ===== PREMIUM BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
     radial-gradient(circle at 20% 20%, rgba(79,70,229,0.25), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(250,204,21,0.18), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(250,204,21,0.15), transparent 40%),
     radial-gradient(circle at 50% 80%, rgba(34,197,94,0.15), transparent 40%);
-  animation:moveBG 10s ease-in-out infinite alternate;
+  animation:moveBG 12s ease-in-out infinite alternate;
   z-index:-2;
 }
 
 @keyframes moveBG{
-  0%{transform:translate(0,0)}
-  100%{transform:translate(-30px,20px)}
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(30px,20px) scale(1.1);}
 }
 
-/* floating dots */
+/* floating particles */
 body::after{
   content:"";
   position:fixed;
   inset:0;
   background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size:55px 55px;
+  background-size:60px 60px;
   animation:floatGrid 18s linear infinite;
   z-index:-1;
 }
@@ -52,7 +51,7 @@ body::after{
   to{transform:translateY(-200px)}
 }
 
-/* ================= NAVBAR ================= */
+/* ===== NAVBAR ===== */
 .navbar{
   display:flex;
   justify-content:space-between;
@@ -61,6 +60,9 @@ body::after{
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.1);
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
 .logo{
@@ -96,7 +98,7 @@ body::after{
   width:100%;
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
   padding:70px 10%;
@@ -114,7 +116,12 @@ body::after{
   100%{background-position:0% 50%}
 }
 
-/* ================= COURSES ================= */
+.hero h1{
+  font-size:42px;
+  text-shadow:0 0 20px #fff;
+}
+
+/* ===== COURSES GRID ===== */
 .courses{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -124,51 +131,87 @@ body::after{
   margin:auto;
 }
 
-/* beast cards */
+/* ===== FIXED BEAST CARD ===== */
 .course-card{
-  background:rgba(255,255,255,0.06);
-  padding:20px;
-  border-radius:18px;
   position:relative;
   overflow:hidden;
-  transition:0.4s;
+  padding:22px;
+  border-radius:18px;
+
+  /* GLASS */
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(18px);
+
   border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+
+  transition:0.4s ease;
+  z-index:0;
 }
 
-/* lightning glow */
+/* ✅ FIX: RGB LIGHT ONLY BEHIND (NO TEXT HIDE) */
 .course-card::before{
   content:"";
   position:absolute;
   inset:-2px;
   background:linear-gradient(45deg,#4F46E5,#FACC15,#22c55e,#00c6ff);
-  background-size:400% 400%;
-  filter:blur(18px);
+  background-size:300% 300%;
+  filter:blur(25px);
   opacity:0;
   transition:0.4s;
+  z-index:-1; /* IMPORTANT FIX */
 }
 
 .course-card:hover::before{
   opacity:1;
-  animation:glow 3s linear infinite;
+  animation:rgbMove 4s linear infinite;
 }
 
-@keyframes glow{
+@keyframes rgbMove{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
 
+/* hover lift */
 .course-card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 35px #4F46E5;
+  transform:translateY(-10px) scale(1.04);
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
 }
 
+/* floating dot */
+.course-card::after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:80px;
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  top:-20px;
+  left:20px;
+  filter:blur(20px);
+  animation:float 6s infinite ease-in-out;
+  z-index:-1;
+}
+
+@keyframes float{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(120px,60px)}
+  100%{transform:translate(0,0)}
+}
+
+/* TEXT */
 .course-card h3{
   color:#FACC15;
+  margin-bottom:8px;
 }
 
-/* ================= FORM ================= */
+.course-card p{
+  font-size:14px;
+  opacity:0.9;
+  line-height:1.6;
+}
+
+/* ===== FORM ===== */
 .form-box{
   max-width:600px;
   margin:50px auto;
@@ -197,40 +240,21 @@ button{
   background:linear-gradient(90deg,#4F46E5,#FACC15);
   font-weight:bold;
   cursor:pointer;
+  transition:0.3s;
 }
 
-/* ================= POPUP ================= */
-.popup{
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,0.75);
+button:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 20px #4F46E5;
 }
 
-.popup-box{
-  background:#111;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 40px #4F46E5;
-  animation:pop 0.4s ease;
-}
-
-@keyframes pop{
-  from{transform:scale(0.5);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
-/* ================= FOOTER ================= */
+/* ===== FOOTER (BEAST) ===== */
 footer{
   text-align:center;
   padding:25px;
-  background:rgba(255,255,255,0.05);
-  color:#aaa;
-  margin-top:40px;
+  background:rgba(255,255,255,0.04);
   border-top:1px solid rgba(255,255,255,0.1);
+  color:#aaa;
 }
 
 footer span{
@@ -238,7 +262,7 @@ footer span{
   text-shadow:0 0 10px #4F46E5;
 }
 
-/* ================= WHATSAPP ================= */
+/* ===== WHATSAPP ===== */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -246,9 +270,9 @@ footer span{
   background:#25D366;
   padding:15px;
   border-radius:50%;
-  color:#fff;
   font-size:22px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  color:#fff;
+  animation:float 2s infinite;
 }
 </style>
 </head>
@@ -281,38 +305,38 @@ footer span{
 <section class="courses">
 
   <div class="course-card">
-    <h3>English Mastery ⚡</h3>
-    <p>Spoken + Grammar + Confidence Building</p>
+    <h3>English Mastery</h3>
+    <p>Speak fluent English with confidence using real-life training, grammar mastery & personality development.</p>
   </div>
 
   <div class="course-card">
-    <h3>Class 1 - 5 📘</h3>
-    <p>Strong foundation + basic learning + fun education</p>
+    <h3>Class 1 - 5</h3>
+    <p>Strong foundation with fun learning, reading skills, basic maths & personal attention.</p>
   </div>
 
   <div class="course-card">
-    <h3>Class 6 - 8 📗</h3>
-    <p>Concept building + exams + clarity focus</p>
+    <h3>Class 6 - 8</h3>
+    <p>Concept clarity in Science, Maths & English with regular tests and doubt sessions.</p>
   </div>
 
   <div class="course-card">
-    <h3>Class 9 - 10 🎯</h3>
-    <p>Board exam preparation + NCERT mastery</p>
+    <h3>Class 9 - 10</h3>
+    <p>Board exam mastery with NCERT focus, mock tests & smart exam strategies.</p>
   </div>
 
   <div class="course-card">
-    <h3>Class 11 - 12 🔬</h3>
-    <p>Physics + Chemistry + Maths + Biology</p>
+    <h3>Class 11 - 12 (PCM + Biology)</h3>
+    <p>Physics, Chemistry, Maths & Biology with deep concept clarity & exam preparation.</p>
   </div>
 
   <div class="course-card">
-    <h3>Computer Course 💻</h3>
-    <p>Basic to advanced digital skills + coding intro</p>
+    <h3>Computer Course</h3>
+    <p>MS Office, Typing, Coding basics & complete digital skills training.</p>
   </div>
 
   <div class="course-card">
-    <h3>Competitive Exams 🏆</h3>
-    <p>SSC + Banking + Railway + GK + Reasoning</p>
+    <h3>Competitive Exams</h3>
+    <p>SSC, Banking & Railway preparation with shortcut tricks & mock tests.</p>
   </div>
 
 </section>
@@ -338,18 +362,9 @@ footer span{
   </form>
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <i class="fas fa-check-circle"></i>
-    <h2>Thank You!</h2>
-    <p>Your admission request has been sent.</p>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
-  © 2026 <span>Advanced Academy Shamli</span> ⚡ All Rights Reserved
+  © 2026 <span>Advanced Academy Shamli </span> ⚡ Made by Tanishq
 </footer>
 
 <!-- WHATSAPP -->
@@ -366,14 +381,10 @@ document.getElementById("form").addEventListener("submit",function(e){
   let phone=document.getElementById("phone").value;
   let course=document.getElementById("course").value;
 
-  let msg=`Admission Request:%0AName: ${name}%0APhone: ${phone}%0ACourse: ${course}`;
+  let msg=`Admission Request:%0AName:${name}%0APhone:${phone}%0ACourse:${course}`;
   let url=`https://wa.me/917055557339?text=${msg}`;
 
-  document.getElementById("popup").style.display="flex";
-
-  setTimeout(()=>{
-    window.open(url,"_blank");
-  },900);
+  window.open(url,"_blank");
 });
 </script>
 
