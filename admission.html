@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== GLOBAL ===== */
+
+/* ================= GLOBAL ================= */
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -17,7 +18,7 @@ body{
   overflow-x:hidden;
 }
 
-/* lightning background */
+/* animated neon background */
 body::before{
   content:"";
   position:fixed;
@@ -26,22 +27,21 @@ body::before{
     radial-gradient(circle at 20% 20%, rgba(79,70,229,0.25), transparent 40%),
     radial-gradient(circle at 80% 30%, rgba(250,204,21,0.18), transparent 40%),
     radial-gradient(circle at 50% 80%, rgba(34,197,94,0.15), transparent 40%);
-  animation:moveBG 10s linear infinite;
+  animation:moveBG 10s ease-in-out infinite alternate;
   z-index:-2;
 }
 
 @keyframes moveBG{
   0%{transform:translate(0,0)}
-  50%{transform:translate(-40px,20px)}
-  100%{transform:translate(0,0)}
+  100%{transform:translate(-30px,20px)}
 }
 
-/* floating particles */
+/* floating dots */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size:55px 55px;
   animation:floatGrid 18s linear infinite;
   z-index:-1;
@@ -52,7 +52,7 @@ body::after{
   to{transform:translateY(-200px)}
 }
 
-/* ===== NAVBAR ===== */
+/* ================= NAVBAR ================= */
 .navbar{
   display:flex;
   justify-content:space-between;
@@ -66,7 +66,7 @@ body::after{
 .logo{
   font-size:22px;
   font-weight:700;
-  text-shadow:0 0 12px #4F46E5;
+  text-shadow:0 0 10px #4F46E5;
 }
 
 .nav-links{
@@ -96,7 +96,7 @@ body::after{
   width:100%;
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero{
   text-align:center;
   padding:70px 10%;
@@ -114,12 +114,7 @@ body::after{
   100%{background-position:0% 50%}
 }
 
-.hero h1{
-  font-size:42px;
-  text-shadow:0 0 20px #fff;
-}
-
-/* ===== COURSES ===== */
+/* ================= COURSES ================= */
 .courses{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -138,6 +133,7 @@ body::after{
   overflow:hidden;
   transition:0.4s;
   border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
 }
 
 /* lightning glow */
@@ -164,7 +160,7 @@ body::after{
 }
 
 .course-card:hover{
-  transform:scale(1.06);
+  transform:scale(1.05);
   box-shadow:0 0 35px #4F46E5;
 }
 
@@ -172,7 +168,7 @@ body::after{
   color:#FACC15;
 }
 
-/* ===== FORM ===== */
+/* ================= FORM ================= */
 .form-box{
   max-width:600px;
   margin:50px auto;
@@ -180,6 +176,7 @@ body::after{
   border-radius:20px;
   background:rgba(255,255,255,0.06);
   backdrop-filter:blur(15px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
 }
 
 input,select{
@@ -202,7 +199,7 @@ button{
   cursor:pointer;
 }
 
-/* ===== POPUP THANK YOU ===== */
+/* ================= POPUP ================= */
 .popup{
   position:fixed;
   inset:0;
@@ -221,22 +218,19 @@ button{
   animation:pop 0.4s ease;
 }
 
-.popup-box i{
-  font-size:50px;
-  color:#22c55e;
-}
-
 @keyframes pop{
   from{transform:scale(0.5);opacity:0}
   to{transform:scale(1);opacity:1}
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 footer{
   text-align:center;
   padding:25px;
   background:rgba(255,255,255,0.05);
   color:#aaa;
+  margin-top:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
 }
 
 footer span{
@@ -244,7 +238,7 @@ footer span{
   text-shadow:0 0 10px #4F46E5;
 }
 
-/* ===== WHATSAPP ===== */
+/* ================= WHATSAPP ================= */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -254,6 +248,7 @@ footer span{
   border-radius:50%;
   color:#fff;
   font-size:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 </style>
 </head>
@@ -285,83 +280,39 @@ footer span{
 <!-- COURSES -->
 <section class="courses">
 
-  <section class="courses">
-
   <div class="course-card">
     <h3>English Mastery ⚡</h3>
-    <p>
-      ✔ Spoken English Fluency<br>
-      ✔ Grammar from Basic to Advanced<br>
-      ✔ Personality Development<br>
-      ✔ Real-life communication training<br>
-      👉 Speak confidently anywhere in just weeks
-    </p>
+    <p>Spoken + Grammar + Confidence Building</p>
   </div>
 
   <div class="course-card">
     <h3>Class 1 - 5 📘</h3>
-    <p>
-      ✔ Strong foundation building<br>
-      ✔ Reading, Writing & Math basics<br>
-      ✔ Fun learning environment<br>
-      ✔ Personal attention to every student<br>
-      👉 Perfect start for academic success
-    </p>
+    <p>Strong foundation + basic learning + fun education</p>
   </div>
 
   <div class="course-card">
     <h3>Class 6 - 8 📗</h3>
-    <p>
-      ✔ Concept clarity in Science & Maths<br>
-      ✔ School exam preparation<br>
-      ✔ Regular practice tests<br>
-      ✔ Doubt clearing sessions<br>
-      👉 Build a strong academic base
-    </p>
+    <p>Concept building + exams + clarity focus</p>
   </div>
 
   <div class="course-card">
     <h3>Class 9 - 10 🎯</h3>
-    <p>
-      ✔ Board exam focused teaching<br>
-      ✔ NCERT complete coverage<br>
-      ✔ Previous year paper practice<br>
-      ✔ Exam strategy + time management<br>
-      👉 Score higher with smart preparation
-    </p>
+    <p>Board exam preparation + NCERT mastery</p>
   </div>
 
   <div class="course-card">
-    <h3>Class 11 - 12 (PCM + Biology) 🔬</h3>
-    <p>
-      ✔ Physics, Chemistry, Maths, Biology<br>
-      ✔ Concept-based learning<br>
-      ✔  Board exam preparation<br>
-      ✔ Regular mock tests<br>
-      👉 Science made simple & powerful
-    </p>
+    <h3>Class 11 - 12 🔬</h3>
+    <p>Physics + Chemistry + Maths + Biology</p>
   </div>
 
   <div class="course-card">
     <h3>Computer Course 💻</h3>
-    <p>
-      ✔ Basic to Advanced Computer Skills<br>
-      ✔ MS Office, Typing, Internet<br>
-      ✔ Coding basics introduction<br>
-      ✔ Practical training sessions<br>
-      👉 Become digital-ready for future jobs
-    </p>
+    <p>Basic to advanced digital skills + coding intro</p>
   </div>
 
   <div class="course-card">
     <h3>Competitive Exams 🏆</h3>
-    <p>
-      ✔ SSC, Banking, Railway preparation<br>
-      ✔ Reasoning + Maths + GK<br>
-      ✔ Daily practice tests<br>
-      ✔ Shortcut techniques<br>
-      👉 Crack exams with confidence
-    </p>
+    <p>SSC + Banking + Railway + GK + Reasoning</p>
   </div>
 
 </section>
@@ -378,7 +329,7 @@ footer span{
       <option>Class 1 - 5</option>
       <option>Class 6 - 8</option>
       <option>Class 9 - 10</option>
-      <option>Class 11 - 12 </option>
+      <option>Class 11 - 12</option>
       <option>Computer Course</option>
       <option>Competitive Exams</option>
     </select>
@@ -398,7 +349,7 @@ footer span{
 
 <!-- FOOTER -->
 <footer>
-  © 2026 <span>Advanced Academy Shamli</span> ⚡ Built with Excellence by Tanishq
+  © 2026 <span>Advanced Academy Shamli</span> ⚡ All Rights Reserved
 </footer>
 
 <!-- WHATSAPP -->
@@ -415,14 +366,14 @@ document.getElementById("form").addEventListener("submit",function(e){
   let phone=document.getElementById("phone").value;
   let course=document.getElementById("course").value;
 
-  let msg=`Admission Request:%0AName:${name}%0APhone:${phone}%0ACourse:${course}`;
+  let msg=`Admission Request:%0AName: ${name}%0APhone: ${phone}%0ACourse: ${course}`;
   let url=`https://wa.me/917055557339?text=${msg}`;
 
   document.getElementById("popup").style.display="flex";
 
   setTimeout(()=>{
     window.open(url,"_blank");
-  },1000);
+  },900);
 });
 </script>
 
