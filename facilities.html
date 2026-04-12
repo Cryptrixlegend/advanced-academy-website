@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facilities - Advanced Academy Shamli™</title>
+
+<title>Advanced Academy Facilities™</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,7 +14,9 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 
 <style>
-/* ========== ROOT SYSTEM ========== */
+/* =========================
+   DESIGN SYSTEM (CORE)
+========================= */
 :root{
   --bg:#050816;
   --card:rgba(255,255,255,0.06);
@@ -23,9 +26,14 @@
   --accent:#4F46E5;
   --accent2:#22c55e;
   --accent3:#FACC15;
+
+  --radius:18px;
+  --space:16px;
 }
 
-/* ========== BASE ========== */
+/* =========================
+   BASE
+========================= */
 *{
   margin:0;
   padding:0;
@@ -39,63 +47,67 @@ body{
   overflow-x:hidden;
 }
 
-/* ========== AURORA BACKGROUND ========== */
+/* =========================
+   AURORA BACKGROUND
+========================= */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.4), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.3), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.2), transparent 40%);
-  filter:blur(90px);
-  animation:floatBG 10s ease-in-out infinite alternate;
+    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.15), transparent 40%);
+  filter:blur(80px);
+  animation:floatBG 12s ease-in-out infinite alternate;
   z-index:-2;
 }
 
 @keyframes floatBG{
-  0%{transform:scale(1) translate(0,0);}
-  100%{transform:scale(1.1) translate(20px,10px);}
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(15px,10px) scale(1.05);}
 }
 
-/* ========== CURSOR ========== */
-.cursor{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:white;
+/* =========================
+   CURSOR (DESKTOP ONLY)
+========================= */
+.cursor,.cursor-ring{
   position:fixed;
   pointer-events:none;
-  mix-blend-mode:difference;
   z-index:9999;
   transform:translate(-50%,-50%);
+}
+
+.cursor{
+  width:10px;
+  height:10px;
+  background:white;
+  border-radius:50%;
+  mix-blend-mode:difference;
 }
 
 .cursor-ring{
   width:40px;
   height:40px;
-  border:1px solid rgba(255,255,255,0.3);
+  border:1px solid rgba(255,255,255,0.25);
   border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:9998;
-  transform:translate(-50%,-50%);
 }
 
-/* ========== NAVBAR ========== */
+/* =========================
+   NAVBAR
+========================= */
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  backdrop-filter:blur(20px);
-  background:rgba(10,10,20,0.6);
+  backdrop-filter:blur(18px);
+  background:rgba(10,10,20,0.55);
   border-bottom:1px solid var(--stroke);
-  padding:15px 20px;
+  padding:14px 18px;
 }
 
 .logo{
   font-weight:700;
-  font-size:18px;
 }
 
 .nav-links{
@@ -109,8 +121,8 @@ header{
 .nav-links a{
   color:var(--text);
   text-decoration:none;
-  font-size:14px;
-  opacity:0.8;
+  font-size:13px;
+  opacity:0.75;
   transition:0.3s;
 }
 
@@ -119,24 +131,28 @@ header{
   color:var(--accent3);
 }
 
-/* ========== TITLE ========== */
+/* =========================
+   TITLE
+========================= */
 .section-title{
   text-align:center;
-  font-size:42px;
+  font-size:40px;
   margin:50px 0;
   background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
   -webkit-background-clip:text;
   color:transparent;
 }
 
-/* ========== BENTO GRID ========== */
+/* =========================
+   BENTO GRID
+========================= */
 .facilities-grid{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   padding:20px;
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:18px;
+  gap:16px;
 }
 
 .facility-card{
@@ -144,42 +160,26 @@ header{
   background:var(--card);
   border:1px solid var(--stroke);
   backdrop-filter:blur(20px);
-  border-radius:20px;
-  padding:28px;
+  border-radius:var(--radius);
+  padding:26px;
   position:relative;
   overflow:hidden;
-  transform:translateY(40px);
+
   opacity:0;
+  transform:translateY(40px);
 }
 
-/* bento variation */
+/* large feature card */
 .facility-card:nth-child(3){
   grid-column:span 12;
-}
-
-.facility-card i{
-  font-size:34px;
-  margin-bottom:14px;
-  color:var(--accent3);
-}
-
-.facility-card h3{
-  margin-bottom:10px;
-  font-size:20px;
-}
-
-.facility-card p{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
 }
 
 /* hover glow */
 .facility-card::before{
   content:"";
   position:absolute;
-  inset:-2px;
-  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,0.2),transparent 40%);
+  inset:0;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,0.12),transparent 40%);
   opacity:0;
   transition:0.3s;
 }
@@ -188,10 +188,28 @@ header{
   opacity:1;
 }
 
-/* ========== GALLERY ========== */
+.facility-card i{
+  font-size:30px;
+  margin-bottom:12px;
+  color:var(--accent3);
+}
+
+.facility-card h3{
+  margin-bottom:8px;
+}
+
+.facility-card p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================
+   GALLERY
+========================= */
 .gallery{
   margin-top:80px;
-  padding:40px 20px;
+  padding:30px 20px;
 }
 
 .slider{
@@ -200,11 +218,12 @@ header{
   overflow:hidden;
   border-radius:20px;
   border:1px solid var(--stroke);
+  position:relative;
 }
 
 .slides{
   display:flex;
-  transition:0.8s cubic-bezier(0.22,1,0.36,1);
+  transition:transform 0.9s cubic-bezier(0.22,1,0.36,1);
 }
 
 .slides img{
@@ -212,7 +231,6 @@ header{
   flex-shrink:0;
 }
 
-/* buttons */
 .btn{
   position:absolute;
   top:50%;
@@ -222,13 +240,14 @@ header{
   color:white;
   padding:10px;
   border-radius:50%;
-  cursor:pointer;
 }
 
 .prev{left:10px;}
 .next{right:10px;}
 
-/* ========== WHATSAPP ========== */
+/* =========================
+   WHATSAPP
+========================= */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -251,10 +270,25 @@ header{
   50%{transform:translateY(-8px);}
 }
 
-/* ========== MOBILE ========== */
+/* =========================
+   MOBILE SYSTEM
+========================= */
 @media(max-width:768px){
+
+  .facilities-grid{
+    grid-template-columns:1fr;
+  }
+
   .facility-card{
     grid-column:span 12;
+  }
+
+  .cursor,.cursor-ring{
+    display:none;
+  }
+
+  .section-title{
+    font-size:28px;
   }
 }
 </style>
@@ -288,25 +322,25 @@ header{
   <div class="facility-card">
     <i class="fas fa-chalkboard-teacher"></i>
     <h3>Smart Classrooms</h3>
-    <p>Interactive AI-enhanced digital boards for immersive learning.</p>
+    <p>SMART boards for immersive learning experience.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-snowflake"></i>
-    <h3>AC Learning Environment</h3>
-    <p>Optimized temperature-controlled rooms for peak focus.</p>
+    <h3>AC Learning Zones</h3>
+    <p>Comfort-first environment designed for focus and clarity.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-couch"></i>
     <h3>Student Lounge</h3>
-    <p>Relax, collaborate and recharge in a premium social space.</p>
+    <p>A premium relaxation and collaboration space for students.</p>
   </div>
 
   <div class="facility-card">
     <i class="fas fa-laptop"></i>
-    <h3>Advanced Computer Lab</h3>
-    <p>Hands-on training with modern computing systems.</p>
+    <h3>Computer Lab</h3>
+    <p>Modern systems for practical skill development.</p>
   </div>
 
 </div>
@@ -320,6 +354,7 @@ header{
     <img src="IMG-20260401-WA0125.jpg">
     <img src="gallery2.jpg.png">
   </div>
+
   <button class="btn prev">&#10094;</button>
   <button class="btn next">&#10095;</button>
 </div>
@@ -330,49 +365,66 @@ header{
 </a>
 
 <script>
-/* ===== CURSOR ===== */
+/* =========================
+   CURSOR (DESKTOP ONLY)
+========================= */
+const isMobile = window.innerWidth <= 768;
+
 const cursor = document.querySelector(".cursor");
 const ring = document.querySelector(".cursor-ring");
 
-window.addEventListener("mousemove",(e)=>{
-  gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:0.1});
-  gsap.to(ring,{x:e.clientX,y:e.clientY,duration:0.4});
-});
+if(!isMobile){
+  window.addEventListener("mousemove",(e)=>{
+    gsap.to(cursor,{x:e.clientX,y:e.clientY,duration:0.08});
+    gsap.to(ring,{x:e.clientX,y:e.clientY,duration:0.25});
+  });
+}
 
-/* ===== HOVER MAGNETIC ===== */
+/* =========================
+   HOVER LIGHT
+========================= */
 document.querySelectorAll(".facility-card").forEach(card=>{
   card.addEventListener("mousemove",(e)=>{
     let rect = card.getBoundingClientRect();
-    card.style.setProperty("--x", (e.clientX - rect.left)+"px");
-    card.style.setProperty("--y", (e.clientY - rect.top)+"px");
+    card.style.setProperty("--x",(e.clientX-rect.left)+"px");
+    card.style.setProperty("--y",(e.clientY-rect.top)+"px");
   });
 });
 
-/* ===== SLIDER AUTO ===== */
+/* =========================
+   SLIDER (AUTO + SWIPE)
+========================= */
 let index = 0;
 const slides = document.querySelector(".slides");
 const images = document.querySelectorAll(".slides img");
 
-function showSlide(){
+function nextSlide(){
   index = (index + 1) % images.length;
   slides.style.transform = `translateX(-${index * 100}%)`;
 }
-setInterval(showSlide,3000);
 
-document.querySelector(".next").onclick=()=>showSlide();
-document.querySelector(".prev").onclick=()=>{
-  index=(index-1+images.length)%images.length;
-  slides.style.transform=`translateX(-${index*100}%)`;
+let auto = setInterval(nextSlide,3000);
+
+document.querySelector(".next").onclick = nextSlide;
+document.querySelector(".prev").onclick = ()=>{
+  index = (index - 1 + images.length) % images.length;
+  slides.style.transform = `translateX(-${index * 100}%)`;
 };
 
-/* ===== SCROLL ANIMATION ===== */
+/* pause on interaction */
+document.querySelector(".slider").addEventListener("mouseenter",()=>clearInterval(auto));
+document.querySelector(".slider").addEventListener("mouseleave",()=>auto=setInterval(nextSlide,3000));
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.to(".facility-card",{
   opacity:1,
   y:0,
   duration:1,
-  stagger:0.15,
+  stagger:0.12,
   ease:"power4.out",
   scrollTrigger:{
     trigger:".facilities-grid",
