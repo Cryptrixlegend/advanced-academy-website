@@ -3,257 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Gallery - Advanced Academy Shamli</title>
-<link rel="stylesheet" href="css/style.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-/* ===== BODY ===== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #121212; /* dark but not full black */
-  color: #fff;
+
+/* ================= BASE ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 }
 
-/* ===== NAVBAR ===== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 50px;
-  background: #1a1a1a;
-}
-.navbar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
-}
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
-  transition: color 0.3s;
-}
-.nav-links li a:hover {
-  color: #1ed760;
+body{
+  background:#0b0f1a;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* ===== GALLERY BOX ===== */
-.gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 20px;
+/* ================= APPLE GLASS NAVBAR ================= */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 5%;
+  background:rgba(20,20,30,0.6);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
-.gallery h1 {
-  text-align: center;
-  padding: 15px 40px;
-  font-size: 36px;
-  border-radius: 15px;
-  animation: colorShift 6s infinite alternate;
-  box-shadow: 0 0 20px #1ed760, 0 0 40px #1ed760 inset;
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:18px;
 }
 
-@keyframes colorShift {
-  0% { background: #0f0; color: #000; box-shadow: 0 0 20px #0f0, 0 0 40px #0f0 inset;}
-  25% { background: #0ff; color: #000; box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;}
-  50% { background: #ff0; color: #000; box-shadow: 0 0 20px #ff0, 0 0 40px #ff0 inset;}
-  75% { background: #f0f; color: #000; box-shadow: 0 0 20px #f0f, 0 0 40px #f0f inset;}
-  100% { background: #1ed760; color: #000; box-shadow: 0 0 20px #1ed760, 0 0 40px #1ed760 inset;}
+.nav-links a{
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
 }
 
-/* ===== SLIDER ===== */
-.slider {
-  position: relative;
-  width: 90%;
-  max-width: 900px;
-  height: 500px;
-  margin-top: 40px;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-  background: #1a1a1a;
+.nav-links a:hover{
+  color:white;
 }
 
-.slides {
-  display: flex;
-  height: 100%;
-  transition: transform 1s ease-in-out;
+/* ================= HERO (NETFLIX STYLE) ================= */
+.hero{
+  padding:40px 20px 10px;
+  text-align:center;
 }
 
-.slides img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* ensures full image visible */
-  flex-shrink: 0;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.5s, filter 0.5s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+.hero h1{
+  font-size:38px;
+  font-weight:600;
+  letter-spacing:1px;
+  background:linear-gradient(90deg,#fff,#a1a1ff,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.slides img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.1);
+.hero p{
+  opacity:0.6;
+  margin-top:8px;
+  font-size:14px;
 }
 
-/* ===== BUTTONS ===== */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(30, 215, 96, 0.7);
-  color: #fff;
-  border: none;
-  padding: 12px 15px;
-  cursor: pointer;
-  font-size: 22px;
-  border-radius: 50%;
-  z-index: 10;
-  transition: 0.3s;
-}
-.prev:hover, .next:hover {
-  background: rgba(30, 215, 96, 1);
-}
-.prev { left: 15px; }
-.next { right: 15px; }
-
-/* ===== LIGHTBOX ===== */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.95);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-.lightbox img {
-  max-width: 85%;
-  max-height: 85%;
-  border-radius: 10px;
-  animation: zoomIn 0.4s ease;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-}
-.lightbox .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 35px;
-  color: white;
-  cursor: pointer;
-}
-.light-prev, .light-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: none;
-  font-size: 35px;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-}
-.light-prev:hover, .light-next:hover {
-  background: rgba(255,255,255,0.5);
+/* ================= SLIDER ================= */
+.slider{
+  width:95%;
+  max-width:1200px;
+  margin:30px auto;
+  overflow:hidden;
+  border-radius:20px;
+  position:relative;
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* TRACK */
+.slides{
+  display:flex;
+  transition:transform 1s cubic-bezier(0.25,1,0.5,1);
 }
 
-/* ===== FOOTER ===== */
-footer {
-  padding: 25px;
-  text-align: center;
-  background: #1a1a1a;
-}
-footer .social a {
-  color: #1ed760;
-  text-decoration: none;
-  margin-left: 15px;
-}
-.whatsapp {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #25D366;
-  color: #fff;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 22px;
-  text-decoration: none;
+/* SLIDE */
+.slide{
+  min-width:100%;
+  height:600px;
+  position:relative;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width: 768px) {
-  .slider { height: 300px; }
-  .gallery h1 { font-size: 28px; padding: 12px 25px; }
+/* IMAGE (NETFLIX FULL FOCUS) */
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.05);
+  filter:brightness(0.85) contrast(1.1);
+  transition:1s ease;
 }
+
+/* ================= APPLE LIGHT OVERLAY ================= */
+.slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 60%);
+  pointer-events:none;
+}
+
+/* ================= LIGHTNING HOVER ================= */
+.slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  transform:translateX(-120%);
+}
+
+.slide:hover::before{
+  animation:shine 0.8s ease;
+}
+
+@keyframes shine{
+  0%{transform:translateX(-120%);}
+  100%{transform:translateX(120%);}
+}
+
+.slide:hover img{
+  transform:scale(1.12);
+  filter:brightness(1) contrast(1.2);
+}
+
+/* ================= BUTTONS ================= */
+.btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.08);
+  border:none;
+  color:white;
+  font-size:20px;
+  padding:12px 16px;
+  border-radius:50%;
+  cursor:pointer;
+  transition:0.3s;
+  backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+  background:rgba(255,255,255,0.2);
+  transform:translateY(-50%) scale(1.1);
+}
+
+.prev{left:15px;}
+.next{right:15px;}
+
+/* ================= WHATSAPP ================= */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  color:white;
+  animation:float 2s infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .slide{height:350px;}
+  .hero h1{font-size:26px;}
+}
+
 </style>
 </head>
+
 <body>
-<header>
+
+<!-- NAVBAR -->
 <nav class="navbar">
-<div class="logo">Advanced Academy</div>
-<ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="teachers.html">Teachers</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="reviews.html">Students Reviews</a></li>
-      <li><a href="Administration.html">Administration</a></li>
-      <li><a href="admission.html">Admission</a></li>
-      <li><a href="contact.html">Contact</a></li>
-</ul>
-<div class="hamburger"><i class="fas fa-bars"></i></div>
+  <div class="logo">Advanced Academy</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="teachers.html">Teachers</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="reviews.html">Students Reviews</a></li>
+    <li><a href="Administration.html">Administration</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
-</header>
 
-<section class="gallery">
-<h1>Our Gallery</h1>
-<div class="slider">
-<button class="prev"><i class="fas fa-chevron-left"></i></button>
-<div class="slides" id="slides-container">
-<img src="advanced.webp" class="slide">
-<img src="gallery1.jpg.png" class="slide">
-<img src="gallery5.jpeg" class="slide"> 
-<img src="Academy image1.jpg" class="slide">
-<img src="Academy image2.jpg" class="slide">
-<img src="Academy image3.jpg" class="slide">
-<img src="Academy image 4.jpg" class="slide">
-<img src="Academy image 5.jpg" class="slide">
-<img src="Academy image 6.jpg" class="slide">
-<img src="Academy image 7.jpg" class="slide">
-<img src="Academy image 8.jpg" class="slide">
-<img src="Academy image 9.jpg" class="slide">
-<img src="Academy image 10.jpg" class="slide">
-<img src="gallery.jpg.png" class="slide">
-<img src="gallery 4.jpeg" class="slide">
-<img src="gallery3.jpg.png" class="slide">
-<img src="advanced academy 2.webp" class="slide">
-</div>
-<button class="next"><i class="fas fa-chevron-right"></i></button>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-<span class="close">&times;</span>
-<img class="lightbox-img" id="lightbox-img">
-<button class="light-prev"><i class="fas fa-chevron-left"></i></button>
-<button class="light-next"><i class="fas fa-chevron-right"></i></button>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Academy Visual Experience</h1>
+  <p>Apple precision meets Netflix immersion</p>
 </section>
+
+<!-- SLIDER -->
+<div class="slider">
+
+  <button class="btn prev">&#10094;</button>
+
+  <div class="slides" id="track">
+
+    <div class="slide"><img src="advanced.webp"></div>
+    <div class="slide"><img src="gallery1.jpg.png"></div>
+    <div class="slide"><img src="gallery5.jpeg"></div>
+    <div class="slide"><img src="Academy image1.jpg"></div>
+    <div class="slide"><img src="Academy image2.jpg"></div>
+    <div class="slide"><img src="Academy image3.jpg"></div>
+    <div class="slide"><img src="Academy image 4.jpg"></div>
+    <div class="slide"><img src="Academy image 5.jpg"></div>
+    <div class="slide"><img src="Academy image 6.jpg"></div>
+    <div class="slide"><img src="Academy image 7.jpg"></div>
+    <div class="slide"><img src="Academy image 8.jpg"></div>
+    <div class="slide"><img src="Academy image 9.jpg"></div>
+    <div class="slide"><img src="Academy image 10.jpg"></div>
+
+  </div>
+
+  <button class="btn next">&#10095;</button>
+</div>
 
 <footer>
 <p>© 2026 Advanced Academy Shamli</p>
@@ -264,74 +261,32 @@ footer .social a {
 <a href="https://wa.me/917055557339" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-// ===== NAVBAR HAMBURGER =====
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-// ===== INFINITE SLIDER =====
-const slidesContainer = document.getElementById('slides-container');
-const slides = Array.from(slidesContainer.children);
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentIndex = 0;
+const track = document.getElementById("track");
+const slides = document.querySelectorAll(".slide");
+let index = 0;
 
-// Clone for seamless infinite
-slides.forEach(slide => slidesContainer.appendChild(slide.cloneNode(true)));
-const totalSlides = slidesContainer.children.length;
-
-function moveToSlide(index) {
-  slidesContainer.style.transition = 'transform 1s ease-in-out';
-  slidesContainer.style.transform = `translateX(${-index * 100}%)`;
+function move(){
+  track.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// Auto slide
-let slideInterval = setInterval(() => {
-  currentIndex++;
-  moveToSlide(currentIndex);
-  if (currentIndex >= totalSlides / 2) {
-    setTimeout(() => {
-      slidesContainer.style.transition = 'none';
-      currentIndex = 0;
-      moveToSlide(currentIndex);
-    }, 1000);
-  }
-}, 5000);
-
-// Buttons
-nextBtn.addEventListener('click', () => {
-  clearInterval(slideInterval);
-  currentIndex++;
-  moveToSlide(currentIndex);
-  if (currentIndex >= totalSlides / 2) {
-    setTimeout(() => { slidesContainer.style.transition='none'; currentIndex=0; moveToSlide(currentIndex); },1000);
-  }
+document.querySelector(".next").addEventListener("click", ()=>{
+  index = (index + 1) % slides.length;
+  move();
 });
 
-prevBtn.addEventListener('click', () => {
-  clearInterval(slideInterval);
-  currentIndex--;
-  if (currentIndex < 0) {
-    slidesContainer.style.transition='none';
-    currentIndex = totalSlides / 2 - 1;
-    moveToSlide(currentIndex);
-    setTimeout(()=>{slidesContainer.style.transition='transform 1s ease-in-out';},50);
-  } else moveToSlide(currentIndex);
+document.querySelector(".prev").addEventListener("click", ()=>{
+  index = (index - 1 + slides.length) % slides.length;
+  move();
 });
 
-// ===== LIGHTBOX =====
-const lightbox = document.getElementById('lightbox');
-const lightImg = document.getElementById('lightbox-img');
-const lightClose = document.querySelector('.lightbox .close');
-const lightPrev = document.querySelector('.light-prev');
-const lightNext = document.querySelector('.light-next');
-const originalSlides = slides.slice(0, slides.length / 2);
+/* AUTO SLIDE 3s */
+setInterval(()=>{
+  index = (index + 1) % slides.length;
+  move();
+},3000);
 
-originalSlides.forEach((slide,i)=>slide.addEventListener('click',()=>{lightbox.style.display='flex'; lightImg.src=slide.src; currentIndex=i;}));
-lightClose.addEventListener('click',()=>lightbox.style.display='none');
-lightNext.addEventListener('click',()=>{currentIndex=(currentIndex+1)%originalSlides.length; lightImg.src=originalSlides[currentIndex].src;});
-lightPrev.addEventListener('click',()=>{currentIndex=(currentIndex-1+originalSlides.length)%originalSlides.length; lightImg.src=originalSlides[currentIndex].src;});
-lightbox.addEventListener('click',e=>{if(e.target===lightbox) lightbox.style.display='none';});
 </script>
+
 </body>
 </html>
