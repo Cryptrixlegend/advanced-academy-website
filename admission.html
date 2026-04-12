@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admission - Advanced Academy</title>
+<title>Admission - Advanced Academy Shamli</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -12,39 +12,41 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:#070A12;
+  background:#05060A;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* animated neon grid background */
+/* lightning background */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.15), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(250,204,21,0.12), transparent 40%),
-    radial-gradient(circle at 40% 80%, rgba(34,197,94,0.12), transparent 40%);
-  animation:moveBG 12s linear infinite;
+    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.25), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(250,204,21,0.18), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(34,197,94,0.15), transparent 40%);
+  animation:moveBG 10s linear infinite;
   z-index:-2;
 }
+
 @keyframes moveBG{
   0%{transform:translate(0,0)}
-  50%{transform:translate(-30px,20px)}
+  50%{transform:translate(-40px,20px)}
   100%{transform:translate(0,0)}
 }
 
-/* floating glow particles */
+/* floating particles */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size:60px 60px;
-  animation:floatGrid 20s linear infinite;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size:55px 55px;
+  animation:floatGrid 18s linear infinite;
   z-index:-1;
 }
+
 @keyframes floatGrid{
   from{transform:translateY(0)}
   to{transform:translateY(-200px)}
@@ -57,30 +59,25 @@ body::after{
   align-items:center;
   padding:15px 5%;
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.1);
-  position:sticky;
-  top:0;
-  z-index:1000;
 }
 
 .logo{
   font-size:22px;
   font-weight:700;
-  color:#fff;
-  text-shadow:0 0 10px #4F46E5;
+  text-shadow:0 0 12px #4F46E5;
 }
 
 .nav-links{
-  list-style:none;
   display:flex;
+  list-style:none;
   gap:18px;
 }
 
 .nav-links a{
   color:#fff;
   text-decoration:none;
-  transition:0.3s;
   position:relative;
 }
 
@@ -107,8 +104,8 @@ body::after{
   border-radius:25px;
   background:linear-gradient(-45deg,#4F46E5,#00c6ff,#22c55e,#FACC15);
   background-size:400% 400%;
-  animation:gradient 12s ease infinite;
-  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  animation:gradient 10s ease infinite;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
 }
 
 @keyframes gradient{
@@ -121,12 +118,8 @@ body::after{
   font-size:42px;
   text-shadow:0 0 20px #fff;
 }
-.hero p{
-  font-size:18px;
-  opacity:0.9;
-}
 
-/* ===== COURSES (BEAST CARDS) ===== */
+/* ===== COURSES ===== */
 .courses{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -136,33 +129,32 @@ body::after{
   margin:auto;
 }
 
+/* beast cards */
 .course-card{
-  position:relative;
   background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(15px);
   padding:20px;
   border-radius:18px;
+  position:relative;
   overflow:hidden;
   transition:0.4s;
   border:1px solid rgba(255,255,255,0.08);
 }
 
-/* lightning border */
+/* lightning glow */
 .course-card::before{
   content:"";
   position:absolute;
   inset:-2px;
   background:linear-gradient(45deg,#4F46E5,#FACC15,#22c55e,#00c6ff);
   background-size:400% 400%;
-  z-index:0;
-  filter:blur(20px);
+  filter:blur(18px);
   opacity:0;
   transition:0.4s;
 }
 
 .course-card:hover::before{
   opacity:1;
-  animation:glow 4s linear infinite;
+  animation:glow 3s linear infinite;
 }
 
 @keyframes glow{
@@ -171,36 +163,13 @@ body::after{
   100%{background-position:0% 50%}
 }
 
-/* hover lift */
 .course-card:hover{
-  transform:translateY(-10px) scale(1.05);
-  box-shadow:0 25px 60px rgba(79,70,229,0.4);
+  transform:scale(1.06);
+  box-shadow:0 0 35px #4F46E5;
 }
 
-/* floating light dot */
-.course-card::after{
-  content:"";
-  position:absolute;
-  width:80px;
-  height:80px;
-  background:rgba(255,255,255,0.08);
-  border-radius:50%;
-  top:-20px;
-  left:20px;
-  filter:blur(25px);
-  animation:float 6s infinite ease-in-out;
-}
-
-@keyframes float{
-  0%{transform:translate(0,0)}
-  50%{transform:translate(120px,60px)}
-  100%{transform:translate(0,0)}
-}
-
-.course-card h3,
-.course-card p{
-  position:relative;
-  z-index:2;
+.course-card h3{
+  color:#FACC15;
 }
 
 /* ===== FORM ===== */
@@ -211,13 +180,6 @@ body::after{
   border-radius:20px;
   background:rgba(255,255,255,0.06);
   backdrop-filter:blur(15px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.6);
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-.form-box h2{
-  text-align:center;
-  color:#FACC15;
 }
 
 input,select{
@@ -236,25 +198,18 @@ button{
   border:none;
   border-radius:12px;
   background:linear-gradient(90deg,#4F46E5,#FACC15);
-  color:#fff;
   font-weight:bold;
   cursor:pointer;
-  transition:0.3s;
 }
 
-button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 25px #4F46E5;
-}
-
-/* ===== POPUP ===== */
+/* ===== POPUP THANK YOU ===== */
 .popup{
   position:fixed;
   inset:0;
   display:none;
   align-items:center;
   justify-content:center;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.75);
 }
 
 .popup-box{
@@ -266,22 +221,22 @@ button:hover{
   animation:pop 0.4s ease;
 }
 
+.popup-box i{
+  font-size:50px;
+  color:#22c55e;
+}
+
 @keyframes pop{
   from{transform:scale(0.5);opacity:0}
   to{transform:scale(1);opacity:1}
 }
 
-/* ===== FOOTER (BEAST) ===== */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:25px;
-  margin-top:40px;
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  border-top:1px solid rgba(255,255,255,0.1);
-  font-size:14px;
   color:#aaa;
-  letter-spacing:1px;
 }
 
 footer span{
@@ -289,20 +244,17 @@ footer span{
   text-shadow:0 0 10px #4F46E5;
 }
 
-/* ===== WHATSAPP FLOAT ===== */
+/* ===== WHATSAPP ===== */
 .whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
   background:#25D366;
-  color:#fff;
   padding:15px;
   border-radius:50%;
+  color:#fff;
   font-size:22px;
-  box-shadow:0 0 20px rgba(0,0,0,0.4);
-  animation:float 2s infinite;
 }
-
 </style>
 </head>
 
@@ -325,48 +277,154 @@ footer span{
   </ul>
 </nav>
 
-<!-- ✅ NEW HERO -->
+<!-- HERO -->
 <section class="hero">
-  <h1>Meet Our Director</h1>
-  <p>Vision • Leadership • Excellence</p>
-
-  <div class="cta-buttons">
-    <a href="admission.html" class="btn btn-primary">Apply Now</a>
-    <a href="contact.html" class="btn btn-secondary">Contact</a>
-  </div>
+  <h1>Admissions Open 2026 ⚡</h1>
 </section>
 
-<div class="container">
+<!-- COURSES -->
+<section class="courses">
 
-  <h1 class="director-name">Mr. Manoj Ruhela</h1>
-  <p class="director-title">Director, Advanced Academy</p>
+  <section class="courses">
 
-  <div class="img-wrapper">
-    <img src="MANOJ SIR .jpg" alt="Mr. Manoj Ruhela" class="director-img">
+  <div class="course-card">
+    <h3>English Mastery ⚡</h3>
+    <p>
+      ✔ Spoken English Fluency<br>
+      ✔ Grammar from Basic to Advanced<br>
+      ✔ Personality Development<br>
+      ✔ Real-life communication training<br>
+      👉 Speak confidently anywhere in just weeks
+    </p>
   </div>
 
-  <p class="director-intro">With years of dedication in education, our director has guided hundreds of students toward success. His vision is to create a learning environment where every student can grow and achieve excellence.</p>
-
-  <h2 style="color:#ffcc00;">Message from Director</h2>
-  <div class="message" id="message"></div>
-
-  <div class="stats">
-    <div class="stat-box"><h2>10+</h2><p>Years Experience</p></div>
-    <div class="stat-box"><h2>1000+</h2><p>Students Taught</p></div>
-    <div class="stat-box"><h2>95%</h2><p>Success Rate</p></div>
+  <div class="course-card">
+    <h3>Class 1 - 5 📘</h3>
+    <p>
+      ✔ Strong foundation building<br>
+      ✔ Reading, Writing & Math basics<br>
+      ✔ Fun learning environment<br>
+      ✔ Personal attention to every student<br>
+      👉 Perfect start for academic success
+    </p>
   </div>
 
+  <div class="course-card">
+    <h3>Class 6 - 8 📗</h3>
+    <p>
+      ✔ Concept clarity in Science & Maths<br>
+      ✔ School exam preparation<br>
+      ✔ Regular practice tests<br>
+      ✔ Doubt clearing sessions<br>
+      👉 Build a strong academic base
+    </p>
+  </div>
+
+  <div class="course-card">
+    <h3>Class 9 - 10 🎯</h3>
+    <p>
+      ✔ Board exam focused teaching<br>
+      ✔ NCERT complete coverage<br>
+      ✔ Previous year paper practice<br>
+      ✔ Exam strategy + time management<br>
+      👉 Score higher with smart preparation
+    </p>
+  </div>
+
+  <div class="course-card">
+    <h3>Class 11 - 12 (PCM + Biology) 🔬</h3>
+    <p>
+      ✔ Physics, Chemistry, Maths, Biology<br>
+      ✔ Concept-based learning<br>
+      ✔  Board exam preparation<br>
+      ✔ Regular mock tests<br>
+      👉 Science made simple & powerful
+    </p>
+  </div>
+
+  <div class="course-card">
+    <h3>Computer Course 💻</h3>
+    <p>
+      ✔ Basic to Advanced Computer Skills<br>
+      ✔ MS Office, Typing, Internet<br>
+      ✔ Coding basics introduction<br>
+      ✔ Practical training sessions<br>
+      👉 Become digital-ready for future jobs
+    </p>
+  </div>
+
+  <div class="course-card">
+    <h3>Competitive Exams 🏆</h3>
+    <p>
+      ✔ SSC, Banking, Railway preparation<br>
+      ✔ Reasoning + Maths + GK<br>
+      ✔ Daily practice tests<br>
+      ✔ Shortcut techniques<br>
+      👉 Crack exams with confidence
+    </p>
+  </div>
+
+</section>
+
+<!-- FORM -->
+<div class="form-box">
+  <h2>Apply via WhatsApp</h2>
+  <form id="form">
+    <input id="name" placeholder="Full Name" required>
+    <input id="phone" placeholder="Phone Number" required>
+
+    <select id="course">
+      <option>English Mastery</option>
+      <option>Class 1 - 5</option>
+      <option>Class 6 - 8</option>
+      <option>Class 9 - 10</option>
+      <option>Class 11 - 12 </option>
+      <option>Computer Course</option>
+      <option>Competitive Exams</option>
+    </select>
+
+    <button type="submit">Send on WhatsApp</button>
+  </form>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <i class="fas fa-check-circle"></i>
+    <h2>Thank You!</h2>
+    <p>Your admission request has been sent.</p>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  © 2026 <span>Advanced Academy Shamli</span> • Built by Premium designer Tanishq with great Energy ⚡
+  © 2026 <span>Advanced Academy Shamli</span> ⚡ Built with Excellence by Tanishq
 </footer>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/917055557339">
+<a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("form").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let course=document.getElementById("course").value;
+
+  let msg=`Admission Request:%0AName:${name}%0APhone:${phone}%0ACourse:${course}`;
+  let url=`https://wa.me/917055557339?text=${msg}`;
+
+  document.getElementById("popup").style.display="flex";
+
+  setTimeout(()=>{
+    window.open(url,"_blank");
+  },1000);
+});
+</script>
 
 </body>
 </html>
