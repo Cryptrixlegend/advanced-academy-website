@@ -5,216 +5,241 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administration - Advanced Academy Shamli</title>
 
-<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- SEO Meta -->
-<meta name="description" content="Meet the Leadership & Administration team of Advanced Academy Shamli. Director, Sub-Director, Manager and more.">
-<meta property="og:title" content="Administration - Advanced Academy Shamli">
-<meta property="og:description" content="Meet the Leadership & Administration team of Advanced Academy Shamli. Director, Sub-Director, Manager and more.">
-<meta property="og:type" content="website">
-
 <style>
-/* ===== GENERAL ===== */
-* { box-sizing: border-box; margin:0; padding:0; }
-body {
-  font-family:'Poppins', sans-serif;
-  background:#f4f4f9;
-  color:#333;
+
+/* ===== BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+  background:#05060a;
+  color:#fff;
   overflow-x:hidden;
 }
-a { text-decoration:none; color:inherit; }
-h2 { font-weight:700; }
+
+/* ===== CINEMATIC BACKGROUND ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79,70,229,0.35), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(34,197,94,0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(250,204,21,0.15), transparent 40%);
+  filter: blur(90px);
+  animation: moveBG 12s ease-in-out infinite alternate;
+  z-index:-2;
+}
+
+@keyframes moveBG{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(30px,20px) scale(1.1);}
+}
+
+/* noise overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  opacity:0.05;
+  z-index:-1;
+}
 
 /* ===== NAVBAR ===== */
-.navbar {
+.navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:15px 5%;
-  background:#4F46E5;
-  color:#fff;
-  position:relative;
+  background:rgba(20,20,40,0.6);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
   z-index:1000;
-}
-.logo { font-size:22px; font-weight:bold; }
-.nav-links {
-  list-style:none;
-  display:flex;
-  gap:18px;
-}
-.nav-links li a {
-  color:#fff;
-  padding:5px 10px;
-  transition:0.3s;
-}
-.nav-links li a:hover { color:#FACC15; }
-.hamburger {
-  display:none;
-  font-size:1.5rem;
-  cursor:pointer;
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
 }
 
-/* ===== ADMIN SECTION ===== */
-.admin-section {
-  padding:50px 20px;
+.logo{font-size:22px;font-weight:700;}
+
+.nav-links{
+  display:flex;
+  list-style:none;
+  gap:18px;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0%;
+  height:2px;
+  background:#4F46E5;
+  transition:0.3s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+/* ===== SECTION ===== */
+.admin-section{
+  padding:70px 20px;
   max-width:1300px;
   margin:auto;
 }
-.admin-section h2 {
+
+.admin-section h2{
   text-align:center;
-  font-size:2.5rem;
-  margin-bottom:40px;
-  color:#4F46E5;
-  position:relative;
-}
-.admin-section h2::after {
-  content:'';
-  width:60px;
-  height:4px;
-  background:#FACC15;
-  display:block;
-  margin:15px auto 0;
-  border-radius:2px;
+  font-size:3rem;
+  margin-bottom:50px;
+  background:linear-gradient(90deg,#4F46E5,#22c55e,#FACC15);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.admin-grid {
+/* ===== GRID ===== */
+.admin-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:35px;
 }
 
-/* ===== ADMIN CARD ===== */
-.admin-card {
+/* ===== CARD (HEAVY SHADOW + GLASS + LIGHTNING) ===== */
+.admin-card{
   position:relative;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(15px);
-  border-radius:15px;
+  border-radius:18px;
   padding:25px;
-  text-align:center;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(18px);
   overflow:hidden;
-  transition:all 0.4s ease;
-}
-.admin-card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 0 25px rgba(79,70,229,0.5);
-  border:1px solid #4F46E5;
+  transition:0.6s cubic-bezier(0.16,1,0.3,1);
+
+  /* HEAVY SHADOW (YOU REQUESTED) */
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.6),
+    inset 0 0 25px rgba(255,255,255,0.05);
 }
 
-/* Animated Gradient Background */
-.admin-card::before {
-  content:'';
+/* lightning sweep */
+.admin-card::before{
+  content:"";
   position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: linear-gradient(45deg, #4F46E5, #FACC15, #4F46E5, #FACC15);
-  background-size:300% 300%;
-  z-index:0;
-  filter: blur(60px);
-  animation: gradientBG 8s ease infinite;
-}
-@keyframes gradientBG {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
+  top:-50%;
+  left:-60%;
+  width:60%;
+  height:200%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+  transform:rotate(25deg);
+  animation:shine 6s infinite;
 }
 
-/* Card Content */
-.admin-card img {
+@keyframes shine{
+  0%{left:-60%;}
+  100%{left:120%;}
+}
+
+/* glow border */
+.admin-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  padding:2px;
+  background:linear-gradient(45deg,#4F46E5,#22c55e,#FACC15,#4F46E5);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  opacity:0.5;
+}
+
+/* hover beast mode */
+.admin-card:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.7),
+    0 0 40px rgba(79,70,229,0.4);
+}
+
+/* IMAGE */
+.admin-card img{
   width:100%;
-  border-radius:15px;
+  border-radius:14px;
   margin-bottom:15px;
-  position:relative;
-  z-index:1;
-  transition:0.4s;
-}
-.admin-card:hover img { transform:scale(1.08); }
-.admin-card h3 {
-  margin-bottom:10px;
-  font-size:1.5rem;
-  color:#fff;
-  position:relative;
-  z-index:1;
-}
-.admin-card p {
-  font-size:14px;
-  color:#eee;
-  position:relative;
-  z-index:1;
-}
-.admin-card .badge {
-  display:inline-block;
-  background:#4F46E5;
-  color:#fff;
-  padding:6px 15px;
-  border-radius:10px;
-  margin-bottom:10px;
-  position:relative;
-  z-index:1;
-  overflow:hidden;
-}
-.admin-card .badge::after {
-  content:'';
-  position:absolute;
-  top:0; left:-100%;
-  width:100%; height:100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.7), transparent);
-}
-.admin-card:hover .badge::after {
-  left:100%;
-  transition:0.6s;
+  transition:0.5s;
 }
 
-/* ===== WHATSAPP BUTTON ===== */
-.whatsapp-btn {
+.admin-card:hover img{
+  transform:scale(1.05);
+}
+
+/* TEXT */
+.admin-card h3{
+  font-size:1.4rem;
+  margin-bottom:8px;
+}
+
+.admin-card p{
+  font-size:14px;
+  opacity:0.85;
+}
+
+/* badge */
+.badge{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:20px;
+  background:#4F46E5;
+  font-size:12px;
+  margin-bottom:10px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
   position:fixed;
   bottom:25px;
   right:25px;
   background:#25D366;
-  color:#fff;
   width:60px;
   height:60px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
   font-size:28px;
-  z-index:10000;
-  transition:0.3s;
+  z-index:9999;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  animation:float 2s infinite;
 }
-.whatsapp-btn:hover {
-  transform:scale(1.1);
-  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+  100%{transform:translateY(0);}
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  .nav-links {
-    display:none;
-    flex-direction:column;
-    background:#4F46E5;
-    position:absolute;
-    top:60px; left:0;
-    width:100%;
-    padding:15px 0;
-    border-radius:0 0 8px 8px;
-    z-index:1100;
-    transition:all 0.3s ease;
-  }
-  .nav-links.active { display:flex; }
-  .hamburger { display:block; color:#fff; }
-
-  .admin-grid { grid-template-columns:1fr; gap:20px; }
+  .admin-section h2{font-size:2rem;}
+  .admin-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">Advanced Academy</div>
   <ul class="nav-links">
@@ -226,64 +251,43 @@ h2 { font-weight:700; }
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="reviews.html">Students Reviews</a></li>
     <li><a href="Administration.html">Administration</a></li>
-    <li><a href="director.html">Director</a></li>
     <li><a href="admission.html">Admission</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 
-<!-- ADMIN SECTION -->
 <section class="admin-section">
-  <h2>Our Administration Team</h2>
+  <h2>Leadership & Administration</h2>
+
   <div class="admin-grid">
 
-    <!-- Director -->
     <div class="admin-card">
-      <img src="faculty 1.jpg" alt="Mr. Manoj Ruhela Sir">
+      <img src="faculty 1.jpg">
       <span class="badge">Director</span>
-      <h3>Mr. Manoj Ruhela Sir</h3>
-      <p>
-        Director - The backbone of Advanced Academy, known for excellence, leadership, 
-        and dedication. His vision drives the institute forward and inspires every 
-        student to achieve success and build a bright future.
-      </p>
+      <h3>Manoj Ruhela Sir</h3>
+      <p>Visionary leadership driving excellence in education and student success.</p>
     </div>
 
-    <!-- Sub Director -->
     <div class="admin-card">
-      <img src="faculty 2.jpg" alt="Mr. Ram Kumar Sir">
-      <span class="badge">Sub-Director</span>
-      <h3>Mr. Ram Kumar Sir</h3>
-      <p>
-        Ensures high academic standards and guidance.
-      </p>
+      <img src="faculty 2.jpg">
+      <span class="badge">Sub Director</span>
+      <h3>Ram Kumar Sir</h3>
+      <p>Ensures discipline, academic structure and student growth.</p>
     </div>
 
-    <!-- Manager -->
     <div class="admin-card">
-      <img src="faculty 3.jpg" alt="Mr. Lokender Panchal Sir">
+      <img src="faculty 3.jpg">
       <span class="badge">Manager</span>
-      <h3>Mr. Lokender Panchal Sir</h3>
-      <p>
-        Manages operations and student experience.
-      </p>
+      <h3>Lokender Sir</h3>
+      <p>Handles operations and smooth functioning of the academy.</p>
     </div>
 
   </div>
 </section>
 
-<!-- WhatsApp Floating Button -->
 <a href="https://wa.me/917055557339" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<script>
-/* ===== HAMBURGER MENU ===== */
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-</script>
-
 </body>
-                                                          </html>
+</html>
